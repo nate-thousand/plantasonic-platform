@@ -1,0 +1,47 @@
+import type { NoteEvent } from './types';
+import type { MotionManagerDebugState } from '../motion/Motion';
+import type { SourceDebugState } from '../sources/Source';
+import type { RendererDebugState } from '../renderers/Renderer';
+import type { SimulationManagerDebugState } from '../simulation/Simulation';
+import type { LayerManagerDebugState } from '../compositing/LayerManager';
+import type { PostProcessorDebugState } from '../compositing/PostProcessor';
+import type { InputDebugState } from '../input/InputTypes';
+import type { AudioDebugState } from '../audio/AudioTypes';
+import type { ExportDebugState } from '../export/ExportTypes';
+import type { ScriptDebugState } from '../scripting/ScriptTypes';
+import type { PerformanceDebugState } from '../performance/PerformanceTypes';
+
+export interface EngineDebugState {
+  preset: string;
+  effects: string[];
+  patterns: string[];
+  motions: string[];
+  density: number;
+  speed: number;
+  glitchAmount: number;
+  trailAmount: number;
+  symmetry: number;
+  petals: number;
+  spiralAmount: number;
+  cellularAmount: number;
+  scanlineAmount: number;
+  strength: number;
+  randomness: number;
+  frequency: number;
+  amplitude: number;
+  lastNoteOn: NoteEvent | null;
+  fps: number;
+  time: number;
+  motion: MotionManagerDebugState;
+  source: SourceDebugState;
+  renderer: RendererDebugState;
+  simulation: SimulationManagerDebugState;
+  compositing: LayerManagerDebugState;
+  postProcessing: PostProcessorDebugState;
+  audio: AudioDebugState;
+  input: InputDebugState;
+  glyph: import('../glyphs/Glyph').GlyphDebugState;
+  export: ExportDebugState;
+  script: ScriptDebugState;
+  performance: PerformanceDebugState;
+}

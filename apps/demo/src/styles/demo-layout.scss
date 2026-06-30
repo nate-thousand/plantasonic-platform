@@ -1,0 +1,52 @@
+/**
+ * Demo-only helpers — not layout chrome (owned by Design System Creative Workspace).
+ */
+
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--ds-color-surface-app);
+  color: var(--ds-color-text-primary);
+  font-family: var(--ds-font-family-sans);
+}
+
+.demo-region-placeholder {
+  display: grid;
+  place-items: center;
+  min-height: 12rem;
+  padding: var(--ds-space-4, 1rem);
+  text-align: center;
+}
+
+.demo-event-log {
+  list-style: none;
+  margin: var(--ds-space-2, 0.5rem) 0 0;
+  padding: 0;
+  font-family: var(--ds-font-family-mono, monospace);
+  font-size: var(--ds-font-size-xs, 0.75rem);
+}
+
+.demo-event-log__entry {
+  padding: 0.125rem 0;
+  color: var(--ds-color-text-secondary);
+  border-bottom: 1px solid var(--ds-color-border-subtle, rgba(255, 255, 255, 0.06));
+}
+
+.demo-event-log__entry:first-child {
+  color: var(--ds-color-accent-primary, var(--ds-color-text-primary));
+}
+
+.demo-preset-list .btn.active,
+.demo-preset-bundle-btn.active {
+  border-color: var(--ds-color-accent-primary, var(--bs-primary));
+  color: var(--ds-color-accent-primary, var(--bs-primary));
+}
+
+.demo-region-hidden {
+  display: none !important;
+}

@@ -1,0 +1,47 @@
+{
+  "id": "coral",
+  "name": "Desert",
+  "species": "Coral",
+  "description": "Dry, minimal, open landscape. Sparse plucks, short decay, airy harmonics, and heat shimmer.",
+  "mood": "dry / minimal / open / mirage",
+  "asciiState": "ecosystem",
+  "category": "soundWorlds",
+  "tags": ["desert", "cactus", "sand", "heat", "sparse"],
+  "visual": {
+    "asciiTheme": "desert",
+    "motionStyle": "horizon-wave",
+    "colorPalette": ["#c8a870", "#e8c890", "#a88850", "#f0d8a0"],
+    "visualIntensity": 0.34,
+    "animationStyle": "slow"
+  },
+  "midi": {
+    "program": 6,
+    "modWheel": 35,
+    "expression": 50,
+    "pitchBendRange": 1,
+    "velocityCurve": "bright"
+  },
+  "synth": {
+    "oscillator": "triangle",
+    "filterHz": 1800,
+    "filterQ": 0.5,
+    "envelope": {
+      "attack": 0.02,
+      "release": 0.8
+    },
+    "effects": {
+      "delay": 0.08,
+      "reverb": 0.22
+    }
+  },
+  "controls": {
+    "mold": 14,
+    "tone": 35,
+    "texture": 42,
+    "bloom": 18,
+    "growthRate": 32,
+    "drift": 28,
+    "mutation": 18,
+    "energy": 35
+  }
+}

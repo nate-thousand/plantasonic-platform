@@ -1,0 +1,24 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
+    "baseUrl": ".",
+    "paths": {
+      "@plantasonic/platform-demo/instrument-app": [
+        "../demo/src/instrumentApp.ts"
+      ],
+      "plantasonic-design-system/shell": [
+        "node_modules/plantasonic-design-system/src/shell/index.ts"
+      ],
+      "plantasonic-design-system/instrument": [
+        "node_modules/plantasonic-design-system/src/instrument/index.ts"
+      ],
+      "plantasonic-design-system/creative-workspace": [
+        "node_modules/plantasonic-design-system/src/creative-workspace/index.ts"
+      ]
+    }
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
+}

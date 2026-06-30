@@ -1,0 +1,12 @@
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--ds-color-surface-app);
+  color: var(--ds-color-text-primary);
+  font-family: var(--ds-font-family-sans);
+}

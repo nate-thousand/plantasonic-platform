@@ -1,0 +1,19 @@
+{
+  "name": "@plantasonic/create-app",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Scaffold thin Plantasonic platform consumer applications",
+  "type": "module",
+  "bin": {
+    "create-plantasonic-app": "./bin/create-plantasonic-app.mjs",
+    "plantasonic": "./bin/plantasonic.mjs"
+  },
+  "files": [
+    "bin",
+    "lib",
+    "templates"
+  ],
+  "scripts": {
+    "typecheck": "node --check bin/create-plantasonic-app.mjs && node --check bin/plantasonic.mjs && node --check lib/create-app.mjs"
+  }
+}

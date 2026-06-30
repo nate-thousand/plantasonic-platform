@@ -1,0 +1,28 @@
+{
+  "name": "{{PACKAGE_NAME}}",
+  "version": "0.0.0",
+  "private": true,
+  "description": "{{APP_DESCRIPTION}}",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "validate": "node scripts/validate-app.mjs"
+  },
+  "dependencies": {
+    "@plantasonic/platform": "workspace:*",
+    "@plantasonic/platform-demo": "workspace:*",
+    "@plantasonic/platform-types": "workspace:*",
+    "ascii-visual-engine": "workspace:*",
+    "bootstrap": "^5.0.2",
+    "plantasia-sound-engine": "workspace:*",
+    "plantasonic-design-system": "file:../../../plantasonic-xyz/plantasonic-design-system"
+  },
+  "devDependencies": {
+    "sass": "^1.89.2",
+    "typescript": "^5.7.3",
+    "vite": "^6.0.7"
+  }
+}

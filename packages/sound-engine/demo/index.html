@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Plantasia Sound Engine — Control Surface</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div id="app">
+      <main id="stage">
+        <header id="stage-header">
+          <div>
+            <h1>Plantasia Sound Engine</h1>
+            <p id="stage-subtitle">Audio locked — click Start Audio to unlock</p>
+          </div>
+          <div class="btn-row">
+            <button type="button" id="btn-start" class="primary">Start Audio</button>
+            <button type="button" id="btn-generative" disabled>Start Generative</button>
+            <button type="button" id="btn-play-preset" disabled>Play Preset Chord</button>
+            <button type="button" id="btn-stop" disabled>Stop</button>
+          </div>
+        </header>
+
+        <div id="viz-area">
+          <canvas id="waveform-canvas" aria-label="Waveform"></canvas>
+          <div id="meter-row">
+            <div class="meter" data-meter="master">
+              <span class="meter-label">Master</span>
+              <div class="meter-bar"><div class="meter-fill"></div></div>
+              <span class="meter-value">0</span>
+            </div>
+            <div class="meter" data-meter="peak">
+              <span class="meter-label">Peak</span>
+              <div class="meter-bar"><div class="meter-fill"></div></div>
+              <span class="meter-value">0</span>
+            </div>
+            <div class="meter" data-meter="rms">
+              <span class="meter-label">RMS</span>
+              <div class="meter-bar"><div class="meter-fill"></div></div>
+              <span class="meter-value">0</span>
+            </div>
+            <div class="meter" data-meter="bass">
+              <span class="meter-label">Bass</span>
+              <div class="meter-bar"><div class="meter-fill"></div></div>
+              <span class="meter-value">0</span>
+            </div>
+            <div class="meter" data-meter="mid">
+              <span class="meter-label">Mid</span>
+              <div class="meter-bar"><div class="meter-fill"></div></div>
+              <span class="meter-value">0</span>
+            </div>
+            <div class="meter" data-meter="treble">
+              <span class="meter-label">Treble</span>
+              <div class="meter-bar"><div class="meter-fill"></div></div>
+              <span class="meter-value">0</span>
+            </div>
+          </div>
+        </div>
+
+        <div id="live-feed" aria-live="polite"></div>
+      </main>
+
+      <aside id="panel">
+        <div id="panel-toolbar">
+          <button type="button" id="btn-panel-close" class="small" aria-label="Collapse panel">◀</button>
+          <span style="font-size:0.8rem;color:var(--muted)">Control Panel</span>
+        </div>
+        <div id="panel-scroll">
+          <!-- Sections injected by main.js -->
+          <div id="sections-root"></div>
+        </div>
+        <div id="status-bar" data-kind="ok" role="status" aria-live="polite">Loading engine…</div>
+      </aside>
+    </div>
+
+    <button type="button" id="panel-toggle" class="primary">Controls</button>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
