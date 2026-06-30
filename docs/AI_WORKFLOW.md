@@ -6,6 +6,8 @@ Official development workflow for building Plantasonic applications with AI-assi
 
 Plantasonic is designed as the standard foundation for AI first applications. The workflow connects design, UI generation, implementation, version control, and deployment into a single pipeline where each tool has a clear role and handoff point.
 
+`v0.12.0` marks **Foundation Complete**: the Platform owns reusable orchestration, engines, Design System, Theme System, templates, AI workflow, and documentation. `plantasonic-xyz` is the reference application; Signal 9 is the first product application.
+
 ```
 Figma
     ↓
@@ -34,7 +36,7 @@ These principles govern every step of the workflow:
 
 1. **Plantasonic remains the source of truth** — applications are thin consumers of the platform SDK, generator, and orchestration layer. Generated or imported code must conform to platform architecture, not replace it.
 
-2. **Design tokens remain the source of truth** — visual language flows from `plantasonic-design-system` tokens and variables. Figma designs and generated UI must align with published tokens, not introduce parallel styling systems.
+2. **Design tokens remain the source of truth** — visual language flows from `packages/design-system` tokens, variables, and the platform `themes/` catalog. Figma designs and generated UI must align with published tokens, not introduce parallel styling systems.
 
 3. **Generated UI is integrated, not copied blindly** — v0 output is a starting point. Components are adapted to use Design System primitives, platform mount APIs, and existing shell patterns before merge.
 
@@ -79,7 +81,7 @@ pnpm plantasonic create audio-reactive my-app --concept plantasonic
 pnpm --filter @plantasonic/my-app dev
 ```
 
-Customize the creative layer only. Mount via platform SDK; import Design System via package paths.
+Customize the creative layer only. Mount via platform SDK; import Design System via package paths; choose reusable themes from the platform theme catalog where applicable.
 
 **Handoff:** working application branch with validation passing.
 

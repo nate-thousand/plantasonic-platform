@@ -6,7 +6,9 @@ Home documentation for the **Plantasonic AI First Application Platform** develop
 
 **Plantasonic** is an AI First Application Platform — the source of truth for reusable systems that power creative, audio-reactive, and instrument-style applications.
 
-**plantasonic-platform** (this repository) is where platform development happens: SDK, generator, engines, templates, skills, and documentation.
+**plantasonic-platform** (this repository) is where platform development happens: SDK, generator, Design System, Theme System, engines, templates, skills, and documentation.
+
+Current stable milestone: **v0.12.0 — Foundation Complete**.
 
 ## Ecosystem hierarchy
 
@@ -22,8 +24,9 @@ Future apps                       ← inherit platform; customize themes, tokens
 
 | Layer | Repository / path | Role |
 |-------|-------------------|------|
-| **Platform** | `plantasonic-platform` | SDK, generator, orchestration, engines, templates, docs |
-| **Design System** | `plantasonic-design-system` | UI shell, tokens, components, Creative Workspace |
+| **Platform** | `plantasonic-platform` | SDK, generator, orchestration, engines, themes, templates, docs |
+| **Design System** | `packages/design-system/` | UI shell, tokens, components, Creative Workspace |
+| **Theme System** | `themes/` | Reusable theme catalog |
 | **Reference host** | `plantasonic-xyz` v0.4.0 | Official reference application — demonstrates all platform capabilities |
 | **Product apps** | `apps/signal-9-live/`, generated apps | App-specific creative layer on top of platform |
 | **Future apps** | `pnpm create:app <slug>` | Inherit platform; customize identity and content |
@@ -49,6 +52,8 @@ Design System · Sound Engine · Visual Engine
 | `packages/sdk/` | `@plantasonic/platform` — orchestration SDK |
 | `packages/shared-types/` | `@plantasonic/platform-types` — contracts |
 | `packages/create-plantasonic-app/` | Prototype generator CLI |
+| `packages/design-system/` | `plantasonic-design-system` — tokens, shell, components, Creative Workspace |
+| `themes/` | Reusable theme catalog |
 | `apps/demo/` | Full platform demo |
 | `apps/plantasonic-reference/` | Thin consumer reference |
 | `templates/` | Prototype template catalog |
@@ -85,9 +90,9 @@ Iterate
 - [MIGRATION_GUIDE.md](./MIGRATION_GUIDE.md) — legacy app cutover
 - [VALIDATION_CHECKLIST.md](./VALIDATION_CHECKLIST.md) — release checks
 
-## External repositories (not modified from here)
+## External repositories and mirrors
 
-- `plantasonic-design-system` — UI, tokens, shell (nested in plantasonic-xyz today)
+- `../plantasonic-xyz/plantasonic-design-system` — temporary Design System mirror retained until Phase 6
 - `plantasia-sound-engine` — audio (vendored in `packages/sound-engine/`)
 - `ascii-visual-engine` — visuals (vendored in `packages/visual-engine/`)
 - `plantasonic-xyz` — official reference host application (v0.4.0)

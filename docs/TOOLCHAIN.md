@@ -44,20 +44,20 @@ See [AI_WORKFLOW.md](./AI_WORKFLOW.md) for the end-to-end development flow.
 
 ## Plantasonic Design System
 
-**Repository:** `plantasonic-design-system` (sibling to platform)
+**Location:** `packages/design-system/`
 
 **Role:** UI source of truth — tokens, shell, Creative Workspace layouts
 
 **Begins:** Where visual language, component APIs, and layout presets are defined.
 
-**Ends:** At the package import boundary. Applications consume via npm/file link; they do not copy or fork DS source.
+**Ends:** At the package import boundary. Applications consume `plantasonic-design-system`; they do not copy or fork DS source.
 
 **Best practices:**
 
 - Import tokens via `css/variables.css` and theme SCSS layers
 - Use `renderApplicationShell()` and `renderCreativeWorkspace()` — do not rebuild shell layout
 - Map Figma components to existing DS exports before generating new UI
-- Request DS changes upstream; do not patch locally in application repos
+- Make reusable DS changes in `packages/design-system/`; do not patch locally in application repos
 - Design tokens override ad-hoc styling in generated or hand-written code
 
 ---
@@ -141,7 +141,7 @@ See [AI_WORKFLOW.md](./AI_WORKFLOW.md) for the end-to-end development flow.
 
 **Repository:** `plantasonic-platform` (this repo)
 
-**Role:** Orchestration layer — SDK, generator, types, skills, docs, validation
+**Role:** AI First Application Platform — SDK, generator, Design System, Theme System, engines, skills, docs, validation
 
 **Begins:** Where application orchestration, engine adapters, preset bundles, and workspace persistence are defined.
 
@@ -163,12 +163,14 @@ See [AI_WORKFLOW.md](./AI_WORKFLOW.md) for the end-to-end development flow.
 | `@plantasonic/platform` | Orchestration SDK |
 | `@plantasonic/platform-types` | Shared contracts |
 | `@plantasonic/create-app` | Prototype generator |
+| `plantasonic-design-system` | Design System workspace package |
+| `themes/` | Reusable theme catalog |
 
 ---
 
 ## Plantasonic Design Tokens
 
-**Location:** `plantasonic-design-system` (CSS variables, SCSS theme layers)
+**Location:** `packages/design-system/` (CSS variables, SCSS theme layers) and `themes/` (reusable theme catalog)
 
 **Role:** Visual source of truth across design and code
 

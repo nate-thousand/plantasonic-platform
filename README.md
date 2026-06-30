@@ -4,6 +4,8 @@ The **home of Plantasonic Platform development** — the AI First Application Pl
 
 This repository is the source of truth for orchestration, SDK, generator, templates, skills, and documentation. Every future application, engine integration, and prototype follows the workflow defined here.
 
+**Current milestone:** `v0.12.0` — **Foundation Complete**.
+
 ## What this is
 
 - **AI First Application Platform** — orchestration layer for the entire ecosystem
@@ -67,6 +69,15 @@ Future apps                       ← inherit platform; customize themes, tokens
 | **Future apps** | Generated via `pnpm create:app`; own creative layer only |
 
 See [docs/REFERENCE_APP.md](./docs/REFERENCE_APP.md) for the reference application guide.
+
+## Foundation Complete
+
+`v0.12.0` marks the completed foundation for the Plantasonic AI First Application Platform.
+
+- The Platform owns reusable orchestration, engines, Design System, Theme System, templates, AI workflow, and documentation.
+- `plantasonic-xyz` is the official reference application.
+- Signal 9 is the first product application to build on the foundation.
+- Future apps should inherit platform systems and customize only app-specific themes, tokens, assets, presets, plugins, mappings, and product logic.
 
 ## Requirements
 
@@ -196,6 +207,7 @@ See [templates/README.md](./templates/README.md).
 | [docs/AI_WORKFLOW.md](./docs/AI_WORKFLOW.md) | AI first development workflow |
 | [docs/TOOLCHAIN.md](./docs/TOOLCHAIN.md) | Official toolchain reference |
 | [docs/PLATFORM_OVERVIEW.md](./docs/PLATFORM_OVERVIEW.md) | Ecosystem home |
+| [HANDOFF.md](./HANDOFF.md) | Foundation Complete handoff |
 | [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) | Layer model |
 | [docs/APPLICATION_GUIDE.md](./docs/APPLICATION_GUIDE.md) | Building thin apps |
 | [docs/GENERATOR_GUIDE.md](./docs/GENERATOR_GUIDE.md) | Scaffolding |
@@ -207,6 +219,7 @@ See [templates/README.md](./templates/README.md).
 
 ## Future roadmap
 
+- Signal 9 product application development
 - Additional application blueprints
 - Additional prototype templates (installation, generative-art, etc.)
 - `@plantasonic/app-kit` — stable mount API package

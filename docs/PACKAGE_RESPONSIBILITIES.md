@@ -2,7 +2,7 @@
 
 Each package in the Plantasonic ecosystem has exactly one responsibility. This document defines what each package owns and what it must never do.
 
-## plantasonic-design-system
+## plantasonic-design-system (`packages/design-system/`)
 
 **Owns:** UI components, layout primitives, theming, accessibility, design tokens
 
@@ -14,6 +14,20 @@ Each package in the Plantasonic ecosystem has exactly one responsibility. This d
 - Know about audio analysis or visual rendering
 
 **Integrates via:** Workspace region DOM targets provided by the platform. User interactions emit platform events.
+
+---
+
+## Theme System (`themes/`)
+
+**Owns:** Reusable theme package definitions and theme catalog metadata
+
+**Must never:**
+- Rename Design System tokens
+- Change token values without an approved Design System release
+- Own app-specific theme choices
+- Override runtime app behavior directly
+
+**Integrates via:** Applications choose supported themes; Design System owns token generation and CSS output.
 
 ---
 
@@ -47,7 +61,7 @@ Each package in the Plantasonic ecosystem has exactly one responsibility. This d
 
 ## plantasonic-platform (this repo)
 
-**Owns:** Application lifecycle, event bus, workspace layout contract, preset registry, engine adapter orchestration, integration types
+**Owns:** AI First Application Platform foundation — application lifecycle, event bus, workspace layout contract, preset registry, engine adapter orchestration, integration types, Design System workspace package, Theme System catalog, generator, AI workflow, and documentation
 
 **Must never:**
 - Implement UI components (delegates to Design System)

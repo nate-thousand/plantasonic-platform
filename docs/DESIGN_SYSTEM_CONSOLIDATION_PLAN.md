@@ -2,7 +2,7 @@
 
 Audit and migration plan for making **Plantasonic Design System** part of **Plantasonic Platform** as the single source of truth for engines, design system, themes, templates, AI workflow, and app generation.
 
-**Status:** Phase 2 executed — `plantasonic-design-system` lives in `packages/design-system/`, and reusable theme package definitions live in `themes/` without changing package name, exports, token values, component behavior, or runtime theme output.
+**Status:** Foundation Complete through Phase 2 — `plantasonic-design-system` lives in `packages/design-system/`, and reusable theme package definitions live in `themes/` without changing package name, exports, token values, component behavior, or runtime theme output.
 
 ---
 
@@ -22,7 +22,7 @@ Audit and migration plan for making **Plantasonic Design System** part of **Plan
 | Examples | Yes | `examples/` | Pattern documentation (not runnable apps) |
 | Scripts | Yes | `scripts/` | Placeholder interfaces (validate, release, audit) |
 
-**Platform version:** `0.11.0` (root `package.json` / `CHANGELOG.md`)
+**Platform version:** `0.12.0` — Foundation Complete (root `package.json` / `CHANGELOG.md`)
 
 **Engine vendoring:** `packages/sound-engine` and `packages/visual-engine` are workspace packages vendored into this monorepo. They currently share the platform git remote (not independent submodule remotes in this checkout).
 

@@ -5,6 +5,44 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.12.0] - 2026-06-30
+
+### Foundation Complete
+
+- Declared the Plantasonic Platform foundation complete for future application development.
+- Documented Plantasonic as the **AI First Application Platform** and the source of truth for reusable systems.
+- Confirmed `plantasonic-xyz` v0.4.0 as the official reference application.
+- Confirmed Signal 9 Live as the first product application built on the platform.
+
+### Added
+
+- `packages/design-system/` — consolidated `plantasonic-design-system` package inside the platform workspace while preserving package name, exports, token values, component behavior, documentation, and tests.
+- `themes/` — reusable theme catalog with `default` dark/light token mirrors and planned `plantasia` / `signal9` placeholders.
+- `HANDOFF.md` — release handoff for application development after the Foundation Complete milestone.
+
+### Changed
+
+- Tracked platform consumers now resolve `plantasonic-design-system` through workspace dependencies.
+- Platform docs now separate Design System token ownership, Theme System package ownership, and application theme choices.
+- README, roadmap, reference app docs, and toolchain docs now use the Foundation Complete hierarchy: Platform → `plantasonic-xyz` reference app → Signal 9 product app → future apps.
+
+### Validation
+
+- `corepack pnpm install --no-frozen-lockfile`
+- `corepack pnpm --filter plantasonic-design-system build`
+- `corepack pnpm --filter plantasonic-design-system lint`
+- `corepack pnpm --filter plantasonic-design-system test`
+- `corepack pnpm -r build`
+- `corepack pnpm -r --if-present lint`
+- `corepack pnpm -r --if-present test`
+- Design System package export map verified
+
+### Known follow-up
+
+- Phase 3+ consolidation work remains planned and should not be started as part of this release freeze.
+- The temporary `plantasonic-xyz/plantasonic-design-system` mirror remains until Phase 6.
+- Signal 9 app-specific theme values remain app-owned until an approved theme extraction.
+
 ## [0.11.0] - 2026-06-30
 
 ### Added

@@ -2,6 +2,8 @@
 
 Milestones for `plantasonic-platform`, in order.
 
+Current stable milestone: **v0.12.0 — Foundation Complete**.
+
 ## 1. Repository Foundation
 
 **Status: Complete**
@@ -247,3 +249,17 @@ Make Plantasonic Platform the single source of truth for the Design System, them
 - [x] **Signal 9 Live** documented as the first real product app built on the platform
 - [x] Platform hierarchy documented: Platform → reference host → product apps → future apps
 - [x] Docs: [docs/REFERENCE_APP.md](./docs/REFERENCE_APP.md)
+
+## 21. Foundation Complete
+
+**Status: Complete (v0.12.0)**
+
+The Plantasonic AI First Application Platform foundation is complete and ready for future application development.
+
+- [x] Platform owns reusable orchestration, engines, Design System, Theme System, templates, AI workflow, and documentation
+- [x] `plantasonic-xyz` established as the official reference application
+- [x] Signal 9 documented as the first product application
+- [x] Release handoff documented in [HANDOFF.md](./HANDOFF.md)
+- [x] Validation baseline documented in [CHANGELOG.md](./CHANGELOG.md)
+
+Next implementation step: Signal 9 product development. Do not proceed to Phase 3 without a separately approved plan.
