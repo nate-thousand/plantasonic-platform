@@ -97,6 +97,56 @@ export interface VisualEngineMountTarget {
   element: HTMLElement;
 }
 
+/** Video source input for ascii-visual-engine VideoSource */
+export type VisualEngineVideoInput =
+  | string
+  | {
+      src?: string;
+      /** Pre-created video element (e.g. canvas captureStream fallback) */
+      element?: HTMLVideoElement;
+      loop?: boolean;
+      muted?: boolean;
+      autoplay?: boolean;
+      fitMode?: 'fit' | 'fill' | 'stretch' | 'center';
+    };
+
+/** Status of the active video source pipeline */
+export interface VisualEngineVideoStatus {
+  sourceMode: 'procedural' | 'source';
+  activeSourceId: string | null;
+  ready: boolean;
+  playing: boolean;
+  error: string | null;
+  width: number;
+  height: number;
+}
+
+/** Frame capture / GIF export status from ascii-visual-engine */
+export interface VisualEngineFrameCaptureStatus {
+  state: 'idle' | 'recording' | 'paused' | 'stopped';
+  frameCount: number;
+  duration: number;
+  frameRate: number;
+}
+
+/** Options for GIF export from captured engine frames */
+export interface VisualEngineGifExportOptions {
+  frameRate?: number;
+  loop?: boolean;
+  transparent?: boolean;
+  width?: number;
+  height?: number;
+  filename?: string;
+}
+
+export interface VisualEngineExportResult {
+  ok: boolean;
+  format: 'gif' | 'png' | 'svg' | 'ascii' | 'json' | 'sequence' | 'mp4' | 'webm' | 'pdf';
+  blob?: Blob;
+  filename?: string;
+  error?: string;
+}
+
 export interface VisualEngineAdapter extends EngineAdapter {
   readonly id: 'visual';
   /** Prepare adapter (does not mount canvas) */
@@ -113,6 +163,36 @@ export interface VisualEngineAdapter extends EngineAdapter {
   setPreset(preset: Preset | string): Promise<void>;
   /** Update a visual engine control (0–1 normalized) */
   updateParameter(name: string, value: number): Promise<void>;
+  /** Set an engine control without clamping (source/post controls) */
+  setControl(name: string, value: number): Promise<void>;
+  /** Set ASCII glyph render color (hex or css color string) */
+  setAsciiColor(color: string): Promise<void>;
+  /** Set active glyph characters (emoji / symbol set) */
+  setGlyphSet(glyphs: string[]): Promise<void>;
+  /** Drive per-glyph random scale from bass level (0–1) */
+  setBassGlyphScale(level: number): Promise<void>;
+  /** Switch between procedural motion and external source sampling */
+  setSourceMode(mode: 'procedural' | 'source'): Promise<void>;
+  /** Load a video into the built-in VideoSource and activate source mode */
+  loadVideoSource(input: VisualEngineVideoInput): Promise<void>;
+  /** Minimal preset + disable pattern/motion layers that overwrite source sampling */
+  prepareVideoAsciiPipeline(): Promise<void>;
+  /** Toggle video-to-ASCII sampling vs standalone procedural visualizer */
+  setVideoBackgroundEnabled(enabled: boolean): Promise<void>;
+  playVideo(): Promise<void>;
+  pauseVideo(): Promise<void>;
+  restartVideo(): Promise<void>;
+  getVideoStatus(): VisualEngineVideoStatus;
+  /** Begin capturing rendered engine frames (non-blocking; hooks render loop) */
+  startFrameCapture(frameRate?: number): { ok: boolean; error?: string };
+  /** Stop capture and wait for pending frame blobs */
+  stopFrameCapture(): Promise<void>;
+  cancelFrameCapture(): void;
+  getFrameCaptureStatus(): VisualEngineFrameCaptureStatus;
+  /** Export captured frames as GIF from engine canvas output */
+  exportCapturedGif(options?: VisualEngineGifExportOptions): Promise<VisualEngineExportResult>;
+  /** Engine stage canvas used for frame capture */
+  getCaptureCanvas(): HTMLCanvasElement | null;
   /** Respond to container dimension changes */
   resize(width: number, height: number): void;
   /** Current adapter and engine status */
@@ -121,6 +201,16 @@ export interface VisualEngineAdapter extends EngineAdapter {
   getParameterSnapshot(): Readonly<Record<string, number>>;
   /** Release all resources */
   dispose(): Promise<void>;
+  /** Synchronous control write for live slider drag (no await / microtask delay) */
+  setControlSync(name: string, value: number): void;
+  /** Live decoder diagnostics for debug overlay */
+  getTransmissionDiagnostics(): {
+    cols: number;
+    rows: number;
+    glyphCount: number;
+    renderTimeMs: number;
+    rendererId: string;
+  } | null;
 }
 
 /** Map of registered engine adapters keyed by adapter id */

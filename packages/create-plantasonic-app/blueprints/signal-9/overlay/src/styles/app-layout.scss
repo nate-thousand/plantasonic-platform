@@ -1,0 +1,28 @@
+/** Root sizing and blueprint semantic theme — not workspace layout (owned by Creative Workspace). */
+
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--ds-color-surface-app);
+  color: var(--ds-color-text-primary);
+  font-family: var(--ds-font-family-sans);
+}
+
+/** App-scoped semantic theme — does not override global Design System tokens */
+[data-blueprint='signal-9'],
+[data-blueprint='signal-9'] #app {
+  --app-color-signal: #00ff9f;
+  --app-color-danger: #ff3355;
+  --app-color-warning: #ffcc00;
+  --app-color-active: #66eeff;
+  --app-color-offline: #334455;
+}
+
+[data-blueprint='signal-9'] .ps-creative-workspace {
+  --app-accent: var(--app-color-signal);
+}

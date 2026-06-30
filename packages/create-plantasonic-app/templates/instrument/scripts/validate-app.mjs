@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-/** Validates generated app is thin and platform-driven */
-import { readFileSync, readdirSync, statSync } from 'node:fs';
+/** Validates generated app is thin, platform-driven, and concept-safe */
+import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -34,6 +34,33 @@ for (const file of walk(srcRoot)) {
   if (/variables\.css$/.test(rel) || /bootstrap-theme\.scss$/.test(rel)) {
     failures.push(`${rel}: do not duplicate Design System assets locally`);
   }
+}
+
+const conceptMetaPath = path.join(appRoot, 'concept.meta.json');
+if (existsSync(conceptMetaPath)) {
+  const meta = JSON.parse(readFileSync(conceptMetaPath, 'utf8'));
+  const inspectPaths = [
+    path.join(srcRoot, 'content'),
+    path.join(appRoot, 'README.md'),
+    path.join(appRoot, 'index.html'),
+  ].filter((p) => existsSync(p));
+
+  let inspectText = '';
+  for (const inspectPath of inspectPaths) {
+    if (statSync(inspectPath).isDirectory()) {
+      inspectText += walk(inspectPath).map((f) => readFileSync(f, 'utf8')).join('\n');
+    } else {
+      inspectText += readFileSync(inspectPath, 'utf8');
+    }
+  }
+
+  for (const term of meta.forbiddenTerms ?? []) {
+    if (inspectText.includes(term)) {
+      failures.push(`concept "${meta.conceptId}" forbidden term found: ${term}`);
+    }
+  }
+} else {
+  failures.push('missing concept.meta.json — regenerate with --concept <id>');
 }
 
 if (failures.length) {

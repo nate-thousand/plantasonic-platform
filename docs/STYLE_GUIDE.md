@@ -11,9 +11,9 @@ Coding and documentation conventions for plantasonic-platform.
 
 ## Monorepo
 
-- pnpm workspaces (`packages/*`, `apps/*`)
+- pnpm workspaces (`packages/*` plus internal validation workspaces)
 - Internal deps: `workspace:*`
-- Build order: types → sdk → apps
+- Build order: types → sdk → reusable packages → internal demos/scaffolds
 
 ## Naming
 
@@ -27,11 +27,12 @@ Coding and documentation conventions for plantasonic-platform.
 - Cross-reference related docs
 - Keep README concise; detail in `docs/`
 
-## Apps (generated or reference)
+## Applications
 
-- Thin — creative layer only
+- Independent repositories — creative layer only
 - DS imports via package paths, never copied locally
 - `mountInstrumentApp()` for bootstrap
+- Platform repo `apps/` entries are internal demos/scaffolds only, not product app ownership
 
 ## Cross references
 

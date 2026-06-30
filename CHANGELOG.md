@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Declared the Plantasonic Platform foundation complete for future application development.
 - Documented Plantasonic as the **AI First Application Platform** and the source of truth for reusable systems.
 - Confirmed `plantasonic-xyz` v0.4.0 as the official reference application.
-- Confirmed Signal 9 Live as the first product application built on the platform.
+- Confirmed `signal-9-live` as the separate first product application built on the platform.
 
 ### Added
 
@@ -24,7 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Tracked platform consumers now resolve `plantasonic-design-system` through workspace dependencies.
 - Platform docs now separate Design System token ownership, Theme System package ownership, and application theme choices.
-- README, roadmap, reference app docs, and toolchain docs now use the Foundation Complete hierarchy: Platform → `plantasonic-xyz` reference app → Signal 9 product app → future apps.
+- README, roadmap, reference app docs, and toolchain docs now use the Foundation Complete hierarchy: Platform → `plantasonic-xyz` reference app → `signal-9-live` product app → future apps.
 
 ### Validation
 
@@ -35,13 +35,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `corepack pnpm -r build`
 - `corepack pnpm -r --if-present lint`
 - `corepack pnpm -r --if-present test`
-- Design System package export map verified
+- Package export maps verified
 
 ### Known follow-up
 
 - Phase 3+ consolidation work remains planned and should not be started as part of this release freeze.
 - The temporary `plantasonic-xyz/plantasonic-design-system` mirror remains until Phase 6.
-- Signal 9 app-specific theme values remain app-owned until an approved theme extraction.
+- `signal-9-live` app-specific theme values remain app-owned until an approved theme extraction.
 
 ## [0.11.0] - 2026-06-30
 

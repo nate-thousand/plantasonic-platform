@@ -33,7 +33,6 @@ export class VideoSource extends PixelSourceBase {
     } else {
       this.video = document.createElement('video');
       this.video.playsInline = true;
-      this.video.crossOrigin = 'anonymous';
     }
 
     let src: string | null = null;
@@ -86,12 +85,14 @@ export class VideoSource extends PixelSourceBase {
     }
   }
 
-  play(): void {
-    void this.video?.play();
+  play(): Promise<void> {
+    if (!this.video) return Promise.resolve();
+    return this.video.play().catch(() => undefined);
   }
 
-  pause(): void {
+  pause(): Promise<void> {
     this.video?.pause();
+    return Promise.resolve();
   }
 
   setLoop(loop: boolean): void {

@@ -11,9 +11,10 @@
   "files": [
     "bin",
     "lib",
+    "concepts",
     "templates"
   ],
   "scripts": {
-    "typecheck": "node --check bin/create-plantasonic-app.mjs && node --check bin/plantasonic.mjs && node --check lib/create-app.mjs"
+    "typecheck": "node --check bin/create-plantasonic-app.mjs && node --check bin/plantasonic.mjs && node --check lib/create-app.mjs && node --check lib/concepts.mjs"
   }
 }

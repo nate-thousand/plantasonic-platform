@@ -5,6 +5,21 @@ import { existsSync, mkdirSync, readdirSync, readFileSync, statSync, writeFileSy
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+import {
+  buildBlueprintMeta,
+  buildBlueprintVars,
+  listBlueprintOverlayFiles,
+  listBlueprints,
+  resolveBlueprint,
+} from './blueprints.mjs';
+import {
+  buildConceptMeta,
+  buildConceptVars,
+  listConceptOverlayFiles,
+  listConceptTemplates,
+  resolveConcept,
+} from './concepts.mjs';
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 export const PACKAGE_ROOT = path.resolve(__dirname, '..');
 export const TEMPLATES_ROOT = path.join(PACKAGE_ROOT, 'templates');
@@ -23,12 +38,18 @@ export const PROTOTYPE_TYPES = {
     description: 'Bridge-focused instrument with reactive preset bundles and strong audio→visual mappings',
     defaultPort: 5176,
   },
+  'visual-synth': {
+    label: 'Visual Synth',
+    description: 'Audio-reactive visual synth — visual-first sessions with bridge-driven motion and glitch',
+    defaultPort: 5178,
+  },
 };
 
 /**
  * @typedef {Object} CreateAppOptions
  * @property {string} slug
  * @property {keyof typeof PROTOTYPE_TYPES} prototypeType
+ * @property {string} [concept]
  * @property {string} [name]
  * @property {number} [port]
  * @property {string} [output]
@@ -42,6 +63,7 @@ export const PROTOTYPE_TYPES = {
  * @property {string} outputPath
  * @property {string} packageName
  * @property {string} prototypeType
+ * @property {string} [conceptId]
  * @property {string[]} warnings
  */
 
@@ -49,29 +71,42 @@ export function printPlantasonicHelp() {
   const types = Object.entries(PROTOTYPE_TYPES)
     .map(([id, meta]) => `    ${id.padEnd(16)} ${meta.description}`)
     .join('\n');
+  const blueprints = listBlueprints()
+    .map((id) => `    ${id.padEnd(16)} Application blueprint (identity + startup)`)
+    .join('\n');
+  const concepts = listConceptTemplates()
+    .map((c) => `    ${c.id.padEnd(16)} ${c.tagline}`)
+    .join('\n');
 
   console.log(`plantasonic — Plantasonic Platform CLI
 
 Usage:
   plantasonic create <prototype-type> <app-slug> [options]
 
-Prototype types:
+Prototype types (technical setup):
 ${types}
 
+Application blueprints (identity + startup experience):
+${blueprints || '    (none)'}
+
+Concept templates (identity only):
+${concepts}
+
 Options:
-  --name <string>     Display name (default: title-cased slug)
+  --concept <id>      Blueprint or concept template id (recommended)
+  --name <string>     Display name (default: concept name or title-cased slug)
   --port <number>     Dev server port (default: per prototype type)
   --output <path>     Output directory (default: apps/<slug> in monorepo)
   --force             Overwrite existing directory
   --help              Show this help
 
 Examples:
-  pnpm plantasonic create instrument flora-lab
-  pnpm plantasonic create audio-reactive pulse-field --name "Pulse Field"
-  pnpm create:app my-app --type audio-reactive
+  pnpm plantasonic create audio-reactive signal-9-live --concept signal-9
+  pnpm plantasonic create audio-reactive flowers --concept flowers
+  pnpm plantasonic create audio-reactive plantasonic-v2 --concept plantasonic
 
 Legacy:
-  create-plantasonic-app <slug> [--type instrument]
+  create-plantasonic-app <slug> [--type instrument] [--concept plantasonic]
 `);
 }
 
@@ -83,13 +118,14 @@ Usage:
 
 Options:
   --type <string>     Prototype type (default: instrument)
+  --concept <id>      Blueprint or concept template (signal-9, plantasonic, flowers)
   --name <string>     Display name
   --port <number>     Dev server port
   --output <path>     Output directory
   --force             Overwrite existing directory
   --help              Show this help
 
-See also: pnpm plantasonic create <type> <slug>
+See also: pnpm plantasonic create <type> <slug> --concept <id>
 `);
 }
 
@@ -172,6 +208,78 @@ function copyAndRenderTemplate(templateRoot, templateRelPath, targetPath, vars) 
   writeFileSync(targetPath, rendered, 'utf8');
 }
 
+function buildBaseVars({ slug, prototypeType, name, port, monorepoRoot }) {
+  const meta = PROTOTYPE_TYPES[prototypeType];
+  const displayName = name ?? titleCaseSlug(slug);
+  const devPort = Number.isFinite(port) ? port : meta.defaultPort;
+  const camel = toCamelCase(slug);
+  const constPrefix = toConstPrefix(slug);
+  const packageName = monorepoRoot ? `@plantasonic/${slug}` : slug;
+
+  return {
+    APP_SLUG: slug,
+    APP_ID: slug,
+    APP_NAME: displayName,
+    APP_TITLE: displayName,
+    APP_TAGLINE: 'A platform audiovisual instrument.',
+    APP_DESCRIPTION: `${displayName} — a thin consumer of @plantasonic/platform.`,
+    PROTOTYPE_TYPE: prototypeType,
+    PACKAGE_NAME: packageName,
+    APP_CAMEL: camel,
+    APP_CONST: constPrefix,
+    EVENT_SOURCE: slug,
+    PORT: String(devPort),
+    CONCEPT_ID: 'none',
+    PRESET_BROWSER_LABEL: `${displayName} Presets`,
+    DEFAULT_TEMPO: '72',
+    THEME_INTENT: 'dark',
+    VISUAL_DIRECTION: 'Assign a --concept template for visual direction.',
+    SOUND_DIRECTION: 'Assign a --concept template for sound direction.',
+    CONCEPT_ABOUT: `${displayName} — assign a --concept template for app identity.`,
+  };
+}
+
+function applyConceptOverlay(outputDir, concept, vars) {
+  const overlayFiles = listConceptOverlayFiles(concept.overlayRoot);
+  for (const rel of overlayFiles) {
+    copyAndRenderTemplate(concept.overlayRoot, rel, path.join(outputDir, rel), vars);
+  }
+  writeFileSync(
+    path.join(outputDir, 'concept.meta.json'),
+    `${JSON.stringify(buildConceptMeta(concept), null, 2)}\n`,
+    'utf8',
+  );
+}
+
+function applyBlueprintOverlay(outputDir, blueprint, vars) {
+  const overlayFiles = listBlueprintOverlayFiles(blueprint.overlayRoot);
+  for (const rel of overlayFiles) {
+    copyAndRenderTemplate(blueprint.overlayRoot, rel, path.join(outputDir, rel), vars);
+  }
+  writeFileSync(
+    path.join(outputDir, 'blueprint.meta.json'),
+    `${JSON.stringify(buildBlueprintMeta(blueprint), null, 2)}\n`,
+    'utf8',
+  );
+}
+
+function resolveIdentityTemplate(identityId) {
+  if (!identityId) return null;
+  const blueprint = resolveBlueprint(identityId);
+  if (blueprint) return { kind: 'blueprint', template: blueprint };
+  try {
+    const concept = resolveConcept(identityId);
+    return { kind: 'concept', template: concept };
+  } catch {
+    const conceptIds = listConceptTemplates()
+      .map((c) => c.id)
+      .join(', ');
+    throw new Error(
+      `Unknown blueprint or concept "${identityId}". Blueprints: ${listBlueprints().join(', ') || 'none'}. Concepts: ${conceptIds}`,
+    );
+  }
+}
+
 /**
  * @param {CreateAppOptions} options
  * @returns {CreateAppResult}
@@ -181,6 +289,7 @@ export function createApp(options) {
   const {
     slug,
     prototypeType = 'instrument',
+    concept: conceptId,
     name,
     port,
     output,
@@ -192,13 +301,26 @@ export function createApp(options) {
     throw new Error('App slug must be lowercase kebab-case (e.g. my-instrument)');
   }
 
-  const meta = PROTOTYPE_TYPES[prototypeType];
   const templateRoot = resolveTemplateRoot(prototypeType);
   const monorepoRoot = detectMonorepoRoot(cwd);
-  const displayName = name ?? titleCaseSlug(slug);
-  const devPort = Number.isFinite(port) ? port : meta.defaultPort;
-  const camel = toCamelCase(slug);
-  const constPrefix = toConstPrefix(slug);
+  const identity = conceptId ? resolveIdentityTemplate(conceptId) : null;
+
+  let vars = buildBaseVars({ slug, prototypeType, name, port, monorepoRoot });
+  if (identity?.kind === 'blueprint') {
+    const blueprint = identity.template;
+    vars = buildBlueprintVars(blueprint, {
+      ...vars,
+      APP_NAME: name ?? blueprint.identity?.name ?? blueprint.id,
+      APP_TITLE: name ?? blueprint.identity?.name ?? blueprint.id,
+    });
+  } else if (identity?.kind === 'concept') {
+    const concept = identity.template;
+    vars = buildConceptVars(concept, {
+      ...vars,
+      APP_NAME: name ?? concept.name,
+      APP_TITLE: name ?? concept.name,
+    });
+  }
 
   const defaultOutput = monorepoRoot
     ? path.join(monorepoRoot, 'apps', slug)
@@ -213,31 +335,19 @@ export function createApp(options) {
     mkdirSync(outputDir, { recursive: true });
   }
 
-  const packageName = monorepoRoot ? `@plantasonic/${slug}` : slug;
-
-  const vars = {
-    APP_SLUG: slug,
-    APP_ID: slug,
-    APP_NAME: displayName,
-    APP_TITLE: displayName,
-    APP_DESCRIPTION:
-      prototypeType === 'audio-reactive'
-        ? `${displayName} — an audio-reactive platform instrument.`
-        : `${displayName} — a thin consumer of @plantasonic/platform.`,
-    PROTOTYPE_TYPE: prototypeType,
-    PACKAGE_NAME: packageName,
-    APP_CAMEL: camel,
-    APP_CONST: constPrefix,
-    EVENT_SOURCE: slug,
-    PORT: String(devPort),
-    PRESET_BROWSER_LABEL:
-      prototypeType === 'audio-reactive' ? 'Reactive Presets' : `${displayName} Presets`,
-    DEFAULT_TEMPO: prototypeType === 'audio-reactive' ? '84' : '72',
-  };
-
   const templateFiles = walkTemplateFiles(templateRoot);
   for (const rel of templateFiles) {
     copyAndRenderTemplate(templateRoot, rel, path.join(outputDir, rel), vars);
+  }
+
+  if (identity?.kind === 'blueprint') {
+    applyBlueprintOverlay(outputDir, identity.template, vars);
+  } else if (identity?.kind === 'concept') {
+    applyConceptOverlay(outputDir, identity.template, vars);
+  } else {
+    warnings.push(
+      'No --concept provided. App uses neutral prototype defaults — assign a blueprint or concept for identity.',
+    );
   }
 
   if (!monorepoRoot) {
@@ -247,14 +357,21 @@ export function createApp(options) {
   return {
     success: true,
     outputPath: outputDir,
-    packageName,
+    packageName: vars.PACKAGE_NAME,
     prototypeType,
+    conceptId: identity?.template?.id,
+    blueprintId: identity?.kind === 'blueprint' ? identity.template.id : undefined,
     warnings,
   };
 }
 
 export function printCreateResult(result, { monorepoRoot }) {
-  console.log(`\nCreated ${result.prototypeType} app at ${result.outputPath}\n`);
+  const identityLabel = result.blueprintId
+    ? ` + blueprint ${result.blueprintId}`
+    : result.conceptId
+      ? ` + concept ${result.conceptId}`
+      : '';
+  console.log(`\nCreated ${result.prototypeType}${identityLabel} app at ${result.outputPath}\n`);
   if (monorepoRoot) {
     console.log('Next steps (from monorepo root):');
     console.log('  pnpm install');
@@ -284,6 +401,7 @@ export function parsePlantasonicCreateArgs(argv) {
     else if (arg === '--name') options.name = argv[++i];
     else if (arg === '--port') options.port = Number(argv[++i]);
     else if (arg === '--output') options.output = argv[++i];
+    else if (arg === '--concept') options.concept = argv[++i];
     else if (arg.startsWith('-')) throw new Error(`Unknown option: ${arg}`);
     else positional.push(arg);
   }
@@ -309,6 +427,7 @@ export function parseCreateAppArgs(argv) {
     if (arg === '--help' || arg === '-h') options.help = true;
     else if (arg === '--force') options.force = true;
     else if (arg === '--type') options.prototypeType = argv[++i];
+    else if (arg === '--concept') options.concept = argv[++i];
     else if (arg === '--name') options.name = argv[++i];
     else if (arg === '--port') options.port = Number(argv[++i]);
     else if (arg === '--output') options.output = argv[++i];

@@ -60,6 +60,8 @@ export interface AudioReactiveBridge {
   connect(sound: SoundEngineAdapter, visual: VisualEngineAdapter): void;
   disconnect(): void;
   updateMapping(config: Partial<AudioReactiveBridgeConfig>): void;
+  /** User slider base for reactive modulation (0–1 normalized target space) */
+  setMappingBase(target: VisualTarget, value: number): void;
   getStatus(): AudioReactiveBridgeStatus;
   dispose(): Promise<void>;
 }

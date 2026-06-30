@@ -1,12 +1,12 @@
 # Performance Report
 
-Generated: 2026-06-30T19:13:03.293Z · Version: 1.0.1
+Generated: 2026-06-30T20:42:04.755Z · Version: 1.0.1
 
 ## Benchmarks (local)
 
 | Operation | ms |
 | --- | --- |
-| token-validate | 75 |
+| token-validate | 98 |
 
 ## Artifacts
 

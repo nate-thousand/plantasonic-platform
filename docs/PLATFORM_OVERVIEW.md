@@ -10,16 +10,20 @@ Home documentation for the **Plantasonic AI First Application Platform** develop
 
 Current stable milestone: **v0.12.0 — Foundation Complete**.
 
+## Permanent Architecture Rule
+
+The Plantasonic Platform is completely application agnostic.
+
+Applications consume the Platform. Applications are developed, versioned, and deployed independently.
+
 ## Ecosystem hierarchy
 
 ```
 Plantasonic Platform              ← source of truth for reusable systems
     ↓
-plantasonic-xyz v0.4.0            ← official reference host
+Reusable Packages                 ← SDK · DS · themes · engines · templates · AI workflow
     ↓
-Signal 9 Live                     ← first real product app
-    ↓
-Future apps                       ← inherit platform; customize themes, tokens, assets, app logic
+Independent Applications          ← plantasonic-xyz · Signal 9 · Plantasia · future apps
 ```
 
 | Layer | Repository / path | Role |
@@ -27,22 +31,19 @@ Future apps                       ← inherit platform; customize themes, tokens
 | **Platform** | `plantasonic-platform` | SDK, generator, orchestration, engines, themes, templates, docs |
 | **Design System** | `packages/design-system/` | UI shell, tokens, components, Creative Workspace |
 | **Theme System** | `themes/` | Reusable theme catalog |
-| **Reference host** | `plantasonic-xyz` v0.4.0 | Official reference application — demonstrates all platform capabilities |
-| **Product apps** | `apps/signal-9-live/`, generated apps | App-specific creative layer on top of platform |
-| **Future apps** | `pnpm create:app <slug>` | Inherit platform; customize identity and content |
+| **Reference app** | `plantasonic-xyz` v0.4.0 | Independent official reference application |
+| **Product apps** | Signal 9, Plantasia, future apps | Independent repositories that consume the Platform |
 
 See [REFERENCE_APP.md](./REFERENCE_APP.md) for the full reference application guide.
 
 ## Ecosystem map
 
 ```
-Applications (creative layer — Signal 9, future apps)
+Plantasonic Platform
     ↓
-plantasonic-xyz (reference host)
+Reusable Packages
     ↓
-@plantasonic/platform (this repo)
-    ↓
-Design System · Sound Engine · Visual Engine
+Independent Applications
 ```
 
 ## Repository structure
@@ -54,8 +55,6 @@ Design System · Sound Engine · Visual Engine
 | `packages/create-plantasonic-app/` | Prototype generator CLI |
 | `packages/design-system/` | `plantasonic-design-system` — tokens, shell, components, Creative Workspace |
 | `themes/` | Reusable theme catalog |
-| `apps/demo/` | Full platform demo |
-| `apps/plantasonic-reference/` | Thin consumer reference |
 | `templates/` | Prototype template catalog |
 | `skills/` | Cursor agent workflows |
 | `.cursor/rules/` | Always-on AI rules |
@@ -95,4 +94,6 @@ Iterate
 - `../plantasonic-xyz/plantasonic-design-system` — temporary Design System mirror retained until Phase 6
 - `plantasia-sound-engine` — audio (vendored in `packages/sound-engine/`)
 - `ascii-visual-engine` — visuals (vendored in `packages/visual-engine/`)
-- `plantasonic-xyz` — official reference host application (v0.4.0)
+- `plantasonic-xyz` — independent official reference application (v0.4.0)
+- Signal 9 — independent first product application
+- Plantasia — independent product/application ecosystem

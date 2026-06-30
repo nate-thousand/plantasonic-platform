@@ -1,9 +1,0 @@
-{
-  "id": "signal9",
-  "name": "Signal 9",
-  "status": "planned",
-  "description": "Placeholder for a reusable Signal 9 theme package. Phase 2 intentionally leaves Signal 9 application files untouched.",
-  "inherits": "default",
-  "tokenSources": [],
-  "runtimeChanged": false
-}

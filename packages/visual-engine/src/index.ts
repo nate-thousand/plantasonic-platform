@@ -202,12 +202,17 @@ export {
   gridToSvg,
   exportSvg,
   exportPngScreenshot,
+  encodeGif,
+  exportGifFromCanvases,
+  captureCanvasBlob,
+  downloadBlob,
   SCENE_FORMAT_VERSION,
 } from './export';
 export type {
   ExportResult,
   ExportFormat,
   ScreenshotOptions,
+  GifExportOptions,
   RecordedFrame,
   RecordingStatus,
   PlaybackStatus,

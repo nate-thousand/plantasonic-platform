@@ -1,9 +1,0 @@
-{
-  "id": "plantasia",
-  "name": "Plantasia",
-  "status": "planned",
-  "description": "Placeholder for a reusable Plantasia brand theme package. Phase 2 does not introduce new token values.",
-  "inherits": "default",
-  "tokenSources": [],
-  "runtimeChanged": false
-}

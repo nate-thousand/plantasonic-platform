@@ -19,9 +19,16 @@ This repository is the source of truth for orchestration, SDK, generator, templa
 ## What this is not
 
 - Not an application repository
+- Not the owner of `signal-9-live`, Plantasia, `plantasonic-xyz`, or future product apps
 - Not published to npm yet
 
 Sound and visual engines live in `packages/sound-engine` and `packages/visual-engine` as vendored workspace packages — they remain separate codebases with their own git remotes.
+
+## Architecture Rule
+
+The Plantasonic Platform is completely application agnostic.
+
+Applications consume the Platform. Applications are developed, versioned, and deployed independently.
 
 ## Repository structure
 
@@ -39,9 +46,7 @@ plantasonic-platform/
 │   ├── design-system/      # plantasonic-design-system
 │   ├── sound-engine/       # plantasia-sound-engine
 │   └── visual-engine/      # ascii-visual-engine
-├── apps/
-│   ├── demo/               # Full platform demo
-│   └── plantasonic-reference/
+├── apps/                   # Internal demos/scaffolds only, not product apps
 ├── scripts/                # Future tooling (placeholders)
 └── examples/               # Pattern documentation
 ```
@@ -51,22 +56,21 @@ plantasonic-platform/
 ```
 Plantasonic Platform              ← source of truth (this repo)
     ↓
-plantasonic-xyz v0.4.0            ← official reference host
+Reusable Packages                 ← SDK · Design System · Theme System · Engines · Templates
     ↓
-Signal 9 Live                     ← first real product app
-    ↓
-Future apps                       ← inherit platform; customize themes, tokens, assets, app logic
+Independent Applications          ← plantasonic-xyz · signal-9-live · Plantasia · Future Apps
 ```
 
 | Repository / app | Role |
 |------------------|------|
 | **plantasonic-platform** | SDK, generator, orchestration, engines, themes, templates, docs |
 | **plantasonic-design-system** | UI, tokens, shell, Creative Workspace layouts |
-| **plantasonic-xyz** v0.4.0 | Official reference host — demonstrates all platform capabilities |
-| **Signal 9 Live** (`apps/signal-9-live/`) | First real product app — blueprint `signal-9` |
 | **plantasia-sound-engine** | Audio (vendored in `packages/sound-engine/`) |
 | **ascii-visual-engine** | Visuals (vendored in `packages/visual-engine/`) |
-| **Future apps** | Generated via `pnpm create:app`; own creative layer only |
+| **plantasonic-xyz** v0.4.0 | Separate independent official reference application |
+| **signal-9-live** | Separate independent first product application |
+| **Plantasia** | Independent product/application ecosystem |
+| **Future apps** | Independent repositories that consume the Platform |
 
 See [docs/REFERENCE_APP.md](./docs/REFERENCE_APP.md) for the reference application guide.
 
@@ -75,9 +79,9 @@ See [docs/REFERENCE_APP.md](./docs/REFERENCE_APP.md) for the reference applicati
 `v0.12.0` marks the completed foundation for the Plantasonic AI First Application Platform.
 
 - The Platform owns reusable orchestration, engines, Design System, Theme System, templates, AI workflow, and documentation.
-- `plantasonic-xyz` is the official reference application.
-- Signal 9 is the first product application to build on the foundation.
-- Future apps should inherit platform systems and customize only app-specific themes, tokens, assets, presets, plugins, mappings, and product logic.
+- `plantasonic-xyz` is the independent official reference application.
+- `signal-9-live` is the independent first product application.
+- Plantasia and future apps are independent repositories that consume platform systems and customize only app-specific themes, tokens, assets, presets, plugins, mappings, and product logic.
 
 ## Requirements
 
@@ -169,21 +173,19 @@ Iterate
 | Command | Purpose |
 |---------|---------|
 | `pnpm dev` | Platform demo (5173) |
-| `pnpm dev:reference` | Reference thin app (5174) |
 | `pnpm create:app <slug>` | Scaffold new app |
-| `pnpm validate:reference` | Validate reference app |
 | `pnpm build` | Build all packages |
 | `pnpm typecheck` | TypeScript check |
 
 ## Create applications
 
 ```bash
-pnpm plantasonic create audio-reactive signal-9-live --concept signal-9
 pnpm plantasonic create audio-reactive my-instrument --name "My Instrument"
-pnpm --filter @plantasonic/signal-9-live dev
 ```
 
-Application **blueprints** (`signal-9`) define full startup experiences. **Concept templates** (`plantasonic`, `flowers`) provide identity-only overlays.
+The generator creates thin platform consumers. Product applications should live in independent repositories after scaffolding.
+
+Application **blueprints** define full startup experiences. **Concept templates** provide identity-only overlays.
 
 See [docs/GENERATOR_GUIDE.md](./docs/GENERATOR_GUIDE.md) and skill `create-prototype`.
 
@@ -219,7 +221,6 @@ See [templates/README.md](./templates/README.md).
 
 ## Future roadmap
 
-- Signal 9 product application development
 - Additional application blueprints
 - Additional prototype templates (installation, generative-art, etc.)
 - `@plantasonic/app-kit` — stable mount API package

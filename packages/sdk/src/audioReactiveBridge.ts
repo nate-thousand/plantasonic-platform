@@ -8,6 +8,7 @@ import type {
   PlatformEventBus,
   SoundEngineAdapter,
   VisualEngineAdapter,
+  VisualTarget,
 } from '@plantasonic/platform-types';
 
 import {
@@ -121,6 +122,7 @@ export function createAudioReactiveBridge(
     const vis = visual;
     if (!vis || !config.enabled) return;
 
+    const snapshot = vis.getParameterSnapshot();
     const appliedTargets = new Set<string>();
 
     for (const mapping of config.mappings) {
@@ -130,15 +132,26 @@ export function createAudioReactiveBridge(
       if (appliedTargets.has(targetKey)) continue;
       appliedTargets.add(targetKey);
 
-      const base = baseValues.get(targetKey) ?? VISUAL_TARGET_DEFAULTS[mapping.target];
-      const featureValue = readFeature(features, mapping.feature);
-      const delta = featureValue * mapping.amount * config.sensitivity;
-      const value = clamp01(base + delta - mapping.amount * config.sensitivity * 0.35);
       const controlName = resolveVisualControlName(mapping.target);
+      const defaultBase = baseValues.get(targetKey) ?? VISUAL_TARGET_DEFAULTS[mapping.target];
+      const snapshotBase = snapshot[controlName];
+      const base =
+        snapshotBase !== undefined
+          ? snapshotBase
+          : defaultBase;
 
-      void vis.updateParameter(controlName, value).catch((error: unknown) => {
-        reportError('updateParameter', error);
-      });
+      const featureValue = readFeature(features, mapping.feature);
+      const swing = mapping.amount * config.sensitivity * 0.22;
+      const delta = (featureValue - 0.5) * swing;
+
+      let value: number;
+      if (mapping.target === 'density' || mapping.target === 'scale' || mapping.target === 'brightness') {
+        value = Math.max(0.05, base * (1 + delta));
+        void vis.setControlSync(controlName, value);
+      } else {
+        value = clamp01(base + delta);
+        void vis.setControlSync(controlName, value);
+      }
     }
   };
 
@@ -270,6 +283,10 @@ export function createAudioReactiveBridge(
         smoothing: config.smoothing,
         mappings: config.mappings,
       });
+    },
+
+    setMappingBase(target: VisualTarget, value: number): void {
+      baseValues.set(target, clamp01(value));
     },
 
     getStatus(): AudioReactiveBridgeStatus {

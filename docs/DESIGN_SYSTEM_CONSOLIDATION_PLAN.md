@@ -4,6 +4,8 @@ Audit and migration plan for making **Plantasonic Design System** part of **Plan
 
 **Status:** Foundation Complete through Phase 2 — `plantasonic-design-system` lives in `packages/design-system/`, and reusable theme package definitions live in `themes/` without changing package name, exports, token values, component behavior, or runtime theme output.
 
+**Permanent architecture rule:** The Plantasonic Platform is completely application agnostic. Applications consume the Platform. Applications are developed, versioned, and deployed independently.
+
 ---
 
 ## 1. Current repository audit
@@ -13,7 +15,7 @@ Audit and migration plan for making **Plantasonic Design System** part of **Plan
 | Area | Present | Location | Notes |
 |------|---------|----------|-------|
 | `packages/` | Yes | `packages/*` | sdk, shared-types, create-plantasonic-app, design-system, sound-engine, visual-engine |
-| `apps/` | Yes | `apps/*` | demo, plantasonic-reference, plantasonic-v2, signal-9-live |
+| `apps/` | Internal only | `apps/*` | Demo/scaffold validation workspaces only; not product app ownership |
 | `templates/` | Yes | `templates/` | Catalog stubs (instrument active; 6 placeholder types) |
 | `themes/` | Yes | `themes/*` | `default` mirrors DS dark/light tokens; `plantasia` and `signal9` are placeholders |
 | `docs/` | Yes | `docs/` | 20 guides including AI_WORKFLOW, TOOLCHAIN |
@@ -26,7 +28,7 @@ Audit and migration plan for making **Plantasonic Design System** part of **Plan
 
 **Engine vendoring:** `packages/sound-engine` and `packages/visual-engine` are workspace packages vendored into this monorepo. They currently share the platform git remote (not independent submodule remotes in this checkout).
 
-### plantasonic-xyz (sibling reference host)
+### plantasonic-xyz (independent reference application)
 
 | Area | Location | Role |
 |------|----------|------|
@@ -136,13 +138,19 @@ plantasonic-platform/
     signal9/                ← NEW (from blueprint app semantic themes)
     plantasia/              ← NEW (default Plantasonic brand theme)
   apps/
-    demo/                   ← EXISTS (platform integration demo)
-    plantasonic-xyz/        ← MOVE from sibling repo (reference host — Phase 6)
-    plantasonic-reference/  ← EXISTS
-    plantasonic-v2/         ← EXISTS (interim cutover)
-    signal-9-live/          ← EXISTS (blueprint app)
+    demo/                   ← INTERNAL validation/demo only
+    plantasonic-reference/  ← INTERNAL thin-consumer scaffold only
   templates/                ← EXISTS (generator catalog)
   docs/                     ← EXISTS
+```
+
+Independent applications live outside this repository:
+
+```
+plantasonic-xyz              ← official reference application
+Signal 9                     ← first product application
+Plantasia                    ← independent product/application ecosystem
+Future apps                  ← independent repositories consuming the Platform
 ```
 
 ### Mapping current → target
@@ -160,7 +168,7 @@ plantasonic-platform/
 | `themes/default/` | DS `tokens/theme.dark.tokens.json`, `theme.light.tokens.json` | **Phase 2 complete** |
 | `themes/signal9/` | Placeholder; Signal 9 app-specific values stay in app | **Phase 2 placeholder** |
 | `themes/plantasia/` | Placeholder; inherits default until reusable mappings are approved | **Phase 2 placeholder** |
-| `apps/plantasonic-xyz/` | Sibling repo `../plantasonic-xyz/` (reference host) | Phase 6 |
+| Independent reference app | Sibling repo `../plantasonic-xyz/` | Stays external |
 
 ---
 
@@ -208,7 +216,7 @@ plantasonic-platform/
 
 ## 4. What stays app-specific in plantasonic-xyz
 
-These remain in the application layer (eventually `apps/plantasonic-xyz/` as the monorepo reference host):
+These remain in the independent application layer (`../plantasonic-xyz/`):
 
 | Path | Contents | Why app-specific |
 |------|----------|------------------|
@@ -372,14 +380,14 @@ Document the boundary; do not merge without explicit API design.
 2. Deduplicate template catalogs (`templates/` vs `create-plantasonic-app/templates/`)
 3. Resolve DS `src/platform/` naming documentation vs SDK
 
-### Phase 6 — Absorb plantasonic-xyz reference host
+### Phase 6 — Remove temporary mirrors
 
-1. Move `plantasonic-xyz/src/` → `apps/plantasonic-xyz/` (official reference host in monorepo)
-2. Update Vercel project root to monorepo app path
-3. Deprecate sibling `plantasonic-xyz` repo with redirect README pointing to `apps/plantasonic-xyz/`
-4. Remove mirrored `plantasonic-xyz/plantasonic-design-system` copy (after Phase 1 workspace deps are stable)
+1. Keep `plantasonic-xyz` as an independent reference application repository
+2. Update independent consumers to use the platform-owned Design System package or published version
+3. Remove mirrored `plantasonic-xyz/plantasonic-design-system` copy after consumers are stable
+4. Preserve product app repository boundaries
 
-**Validation gate:** plantasonic.vercel.app deploys from monorepo; reference host behavior unchanged.
+**Validation gate:** Independent reference app behavior unchanged; Platform remains application agnostic.
 
 ---
 
@@ -392,7 +400,7 @@ The **lowest-risk sequence** is:
 3. **Switch deps to workspace:*** — eliminate `file:../../../plantasonic-xyz/...` in one coordinated PR
 4. **Verify before delete** — run full validation checklist on all apps before removing sibling paths
 5. **Extract themes second** — after DS is stable in monorepo, move blueprint themes to `themes/`
-6. **Absorb xyz reference host last** — reference host migration is independent of DS consolidation
+6. **Remove mirrors last** — independent applications are not absorbed into the Platform
 
 This avoids simultaneous changes to tokens, engines, app behavior, and deployment.
 

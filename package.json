@@ -8,8 +8,6 @@
     "dev": "pnpm --filter @plantasonic/platform-demo dev",
     "create:app": "node packages/create-plantasonic-app/bin/create-plantasonic-app.mjs",
     "plantasonic": "node packages/create-plantasonic-app/bin/plantasonic.mjs",
-    "dev:reference": "pnpm --filter @plantasonic/plantasonic-reference dev",
-    "validate:reference": "pnpm --filter @plantasonic/plantasonic-reference validate",
     "typecheck": "pnpm -r typecheck",
     "clean": "pnpm -r exec rm -rf dist"
   },

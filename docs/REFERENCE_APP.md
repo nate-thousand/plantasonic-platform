@@ -2,7 +2,7 @@
 
 **plantasonic-xyz v0.4.0** is the official reference application for the **Plantasonic AI First Application Platform**.
 
-It is not a throwaway demo. It is the **reference host** — a living, deployable application that demonstrates every major platform capability in one place. New apps, templates, and blueprints should trace their architecture back to patterns shown here.
+It is not a throwaway demo and it is not part of this repository. It is an **independent reference application** — a living, deployable app that demonstrates every major platform capability in one place. New apps, templates, and blueprints should trace their architecture back to patterns shown here.
 
 Platform milestone `v0.12.0` marks **Foundation Complete**. The reference host remains the canonical example for applying that foundation.
 
@@ -11,22 +11,20 @@ Platform milestone `v0.12.0` marks **Foundation Complete**. The reference host r
 ## Platform hierarchy
 
 ```
-Plantasonic Platform          ← source of truth for reusable systems
+Plantasonic Platform          ← application-agnostic source of truth for reusable systems
     ↓
-plantasonic-xyz v0.4.0        ← official reference host (this document)
+Reusable Packages             ← SDK · DS · themes · engines · templates · AI workflow
     ↓
-Signal 9 Live                 ← first real product app built on the platform
-    ↓
-Future apps                   ← inherit platform; customize themes, tokens, assets, app logic
+Independent Applications      ← plantasonic-xyz · Signal 9 · Plantasia · future apps
 ```
 
 | Layer | Role |
 |-------|------|
 | **Plantasonic Platform** | SDK, generator, engines, templates, skills, docs — reusable infrastructure |
 | **Design System** | UI shell, tokens, components, Creative Workspace layouts |
-| **plantasonic-xyz** | Reference host that demonstrates the full platform stack |
-| **Signal 9 Live** | First real application — blueprint `signal-9`, product-specific creative layer |
-| **Future apps** | Generated or hand-built; consume platform packages; own branding and content |
+| **plantasonic-xyz** | Independent official reference application that demonstrates the full platform stack |
+| **Signal 9** | Independent first product application |
+| **Plantasia / future apps** | Independent repositories; consume platform packages and own product-specific content |
 
 ---
 
@@ -58,21 +56,20 @@ plantasonic-xyz v0.4.0 is the canonical example for each platform surface:
 
 | Artifact | Location today | Notes |
 |----------|----------------|-------|
-| Reference application | `../plantasonic-xyz/` (sibling repo) | v0.4.0 — production deploy at plantasonic.vercel.app |
+| Reference application | `../plantasonic-xyz/` (independent repo) | v0.4.0 — production deploy at plantasonic.vercel.app |
 | Design System | `packages/design-system/` | Platform-owned workspace package; sibling copy remains as a temporary mirror until Phase 6 |
 | Theme System | `themes/` | Platform-owned theme catalog; default mirrors dark/light DS tokens |
 | Platform thin consumer | `../plantasonic-xyz/src/platform-consumer/` | Creative layer injection pattern |
-| Platform demo (in monorepo) | `apps/demo/` | Integration sandbox — not the reference host |
-| Thin consumer scaffold | `apps/plantasonic-reference/` | Minimal wiring example for migration |
-| First product app | `apps/signal-9-live/` | Blueprint `signal-9` — first real app on the platform |
+| Internal demo/scaffold | `apps/` | Internal validation/demo scaffolds only; not product app ownership |
+| First product app | Signal 9 | Independent product application repository |
 
-Future consolidation (Phase 6) will absorb the reference host into `apps/plantasonic-xyz/` within this monorepo. The Design System and Theme System foundation now live in this repo; the sibling Design System copy remains as a read-only mirror until Phase 6.
+The reference application stays independent. The Design System and Theme System foundation live in this repo; the sibling Design System copy remains as a temporary mirror until a later cleanup phase.
 
 ---
 
 ## Reference vs product apps
 
-### plantasonic-xyz (reference host)
+### plantasonic-xyz (independent reference app)
 
 - Demonstrates **all** platform capabilities
 - Owns default preset bundles, platform overview content, and developer-facing surfaces
@@ -82,9 +79,9 @@ Future consolidation (Phase 6) will absorb the reference host into `apps/plantas
 ### Signal 9 Live (first product app)
 
 - Built with `pnpm plantasonic create audio-reactive signal-9-live --concept signal-9`
-- Owns cyberpunk broadcast creative direction, Signal 9 branding, and blueprint-specific themes
+- Lives outside the platform as an independent product application
+- Owns cyberpunk broadcast creative direction, Signal 9 branding, and product-specific themes
 - Inherits platform orchestration — does not reimplement engines or shell wiring
-- See [apps/signal-9-live/README.md](../apps/signal-9-live/README.md)
 
 ### Future apps
 
@@ -129,7 +126,6 @@ Platform monorepo apps for comparison:
 ```bash
 pnpm dev              # Platform demo (5173)
 pnpm dev:reference    # Thin consumer scaffold (5174)
-pnpm --filter @plantasonic/signal-9-live dev   # Signal 9 (5176)
 ```
 
 Validation:

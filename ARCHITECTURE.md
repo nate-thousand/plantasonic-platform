@@ -6,30 +6,32 @@ This document describes the architecture of `plantasonic-platform` and how it fi
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                     Plantasonic Applications                │
-│         (creative direction, UX, composition)               │
+│                    Plantasonic Platform                     │
+│             application-agnostic reusable foundation         │
 └──────────────────────────┬──────────────────────────────────┘
-                           │ uses
+                           │ provides
                            ▼
 ┌─────────────────────────────────────────────────────────────┐
-│                  @plantasonic/platform                      │
-│                                                             │
-│  createApplication · lifecycle · eventBus · workspace       │
-│  presetRegistry · pluginManager · engine adapters           │
+│                     Reusable Packages                       │
+│  SDK · Design System · Theme System · templates · docs      │
+│  Audio Engine · ASCII Engine · Visual Engine · MIDI         │
 └──────┬──────────────────┬──────────────────┬────────────────┘
-       │ orchestrates     │ orchestrates     │ orchestrates
+       │ consumed by      │ consumed by      │ consumed by
        ▼                  ▼                  ▼
 ┌──────────────┐  ┌──────────────┐  ┌──────────────────────┐
-│ Design System│  │ Sound Engine │  │   Visual Engine      │
-│              │  │              │  │                      │
-│ UI · layout  │  │ audio · MIDI │  │ rendering · shaders  │
+│plantasonic-xyz│ │signal-9-live │  │ Plantasia / Future   │
+│ reference app │ │ product app  │  │ independent apps     │
 └──────────────┘  └──────────────┘  └──────────────────────┘
 ```
+
+The Plantasonic Platform is completely application agnostic. Applications consume the Platform. Applications are developed, versioned, and deployed independently.
 
 ## Responsibility Boundaries
 
 ### Platform Owns
 
+- Design System and Theme System
+- Shared components and templates
 - Application lifecycle (idle → initializing → ready → running → stopped)
 - Event bus for cross-component communication
 - Workspace region layout contract
@@ -40,10 +42,9 @@ This document describes the architecture of `plantasonic-platform` and how it fi
 
 ### Platform Does Not Own
 
-- UI rendering (Design System)
-- Audio synthesis or playback (Sound Engine)
-- Visual rendering or shaders (Visual Engine)
+- Product applications: `signal-9-live`, Plantasia, `plantasonic-xyz`, or future apps
 - Creative direction or application UX (Applications)
+- Application repositories, deployment, release history, or product roadmaps
 
 ## Package Dependency Rules
 
@@ -52,10 +53,10 @@ This document describes the architecture of `plantasonic-platform` and how it fi
     └── @plantasonic/platform
             └── @plantasonic/platform-types
 
-External packages (future):
-    plantasonic-design-system  ← consumed by applications, not platform internals
+Workspace packages:
+    plantasonic-design-system  ← consumed by demos and applications, not the platform SDK
     plantasia-sound-engine     ← wrapped by SoundEngineAdapter
-    plantasia-visual-engine    ← wrapped by VisualEngineAdapter
+    ascii-visual-engine        ← wrapped by VisualEngineAdapter
 ```
 
 **Rules:**
@@ -168,10 +169,10 @@ Storage is behind a replaceable `ProjectStorageAdapter` — first pass uses loca
 
 ## Thin application pattern
 
-Production applications (including Plantasonic) should inject content into platform orchestration:
+Independent applications should inject content into platform orchestration:
 
 ```
-apps/plantasonic-reference/src/
+my-application/src/
   main.ts                 → mountInstrumentApp(container, plantasonicAppContent)
   plantasonicAppContent.ts → { application, shell, presetBundles, plugins, branding }
   config/                 → app-owned configuration
@@ -181,7 +182,7 @@ apps/plantasonic-reference/src/
 
 Platform wiring lives in `mountInstrumentApp()` (`@plantasonic/platform-demo/instrument-app`), which composes `renderCreativeWorkspace({ preset: 'instrument' })` inside the instrument shell. Applications must not duplicate shell, workspace layout, tokens, adapters, or persistence logic.
 
-See [docs/PLANTASONIC_APP_MIGRATION.md](./docs/PLANTASONIC_APP_MIGRATION.md).
+Internal platform demo/scaffold apps may exist for validation, but product applications live outside the Platform repository.
 
 ## Workspace Regions
 
@@ -228,7 +229,7 @@ interface EngineAdapter {
 Specialized adapters extend the base:
 
 - `SoundEngineAdapter` — wraps `plantasia-sound-engine`
-- `VisualEngineAdapter` — wraps `plantasia-visual-engine`
+- `VisualEngineAdapter` — wraps `ascii-visual-engine`
 
 The platform orchestrates adapter lifecycle. Adapters delegate all domain logic to their engine packages.
 
@@ -296,7 +297,7 @@ Repository setup, SDK contracts, demo scaffold.
 
 ### Phase 10: Plantasonic App Migration (first pass complete)
 
-- Reference app at `apps/plantasonic-reference/` demonstrates thin consumer pattern
+- Internal reference scaffold demonstrates thin consumer pattern
 - `mountInstrumentApp()` accepts injected `InstrumentAppContent`
 - Migration guide: [docs/PLANTASONIC_APP_MIGRATION.md](./docs/PLANTASONIC_APP_MIGRATION.md)
 
@@ -306,8 +307,8 @@ Repository setup, SDK contracts, demo scaffold.
 - Generated apps use `mountInstrumentApp()` with injected content
 - Validation script enforces thin-app constraints
 
-### Phase 12: Production migration (next)
+### Phase 12: Independent application migration (next)
 
-- Cut over real Plantasonic repository using migration guide
+- Independent applications consume the Platform without moving into this repository
 
 See [ROADMAP.md](./ROADMAP.md) for the full milestone list.

@@ -8,20 +8,28 @@
 
 Plantasonic Platform is the **AI First Application Platform** for the Plantasonic ecosystem. The foundation is complete: reusable platform systems now live in this repository, and future applications should inherit them instead of duplicating them.
 
+The Platform is completely application agnostic. Applications consume the Platform and are developed, versioned, and deployed independently.
+
 ## Current hierarchy
 
 ```text
 Plantasonic Platform
   Source of truth for reusable systems
 
-plantasonic-xyz
-  Official reference application
+Reusable Packages
+  SDK, Design System, Theme System, engines, templates, AI workflow, documentation
 
-Signal 9 Live
-  First product application
+plantasonic-xyz
+  Independent official reference application
+
+signal-9-live
+  Independent first product application
+
+Plantasia
+  Independent product/application ecosystem
 
 Future apps
-  Thin consumers that customize app-specific themes, assets, presets, plugins, mappings, and logic
+  Independent repositories that customize app-specific themes, assets, presets, plugins, mappings, and logic
 ```
 
 ## Foundation included
@@ -41,23 +49,23 @@ Future apps
 - Design System package shape, exports, token values, and component behavior
 - Engine package locations and runtime behavior
 - Reference application model
-- Signal 9 application boundary
+- Independent application boundary
 
 ## What remains planned
 
 - Phase 3: shared Vite/TypeScript config helpers
 - Phase 4: engine naming alignment evaluation
 - Phase 5: AI context and template catalog consolidation
-- Phase 6: absorb `plantasonic-xyz` reference host into `apps/plantasonic-xyz/`
+- Phase 6: remove temporary Design System mirror once independent consumers are updated
 - Platform v1.0 packaging and publish decisions
 
 ## Development guidance
 
 - Build applications from the platform using `pnpm plantasonic create ...`.
-- Keep app work in the creative layer.
+- Keep app work in independent application repositories.
 - Do not duplicate Design System, Theme System, engine, or platform SDK logic in apps.
 - Treat `plantasonic-xyz` as the reference host for architecture and capability demonstrations.
-- Treat Signal 9 as the first product application, not as a platform refactor target.
+- Treat `signal-9-live`, Plantasia, and future apps as independent consumers, not as platform-owned workspaces.
 
 ## Validation baseline
 
@@ -75,4 +83,4 @@ corepack pnpm -r --if-present test
 
 ## Next recommended work
 
-Start Signal 9 product development on top of the completed foundation. Defer further platform consolidation until a separately approved Phase 3 plan.
+Start independent application development on top of the completed foundation. Defer further platform consolidation until a separately approved Phase 3 plan.

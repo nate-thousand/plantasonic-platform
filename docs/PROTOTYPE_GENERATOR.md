@@ -57,6 +57,32 @@ Generated apps include the full platform stack pre-wired:
 
 App code is limited to **creative configuration** — names, presets, branding, plugins.
 
+## Application blueprints
+
+Blueprints define **identity and startup experience** as data-driven definitions under `packages/create-plantasonic-app/blueprints/`. They generate app-owned configuration without modifying the Platform SDK, Design System, or engines.
+
+First complete blueprint: **signal-9** (Signal 9 Live)
+
+```bash
+pnpm plantasonic create audio-reactive signal-9-live --concept signal-9
+```
+
+Each blueprint includes:
+
+| Layer | Generated files |
+|-------|-------------------|
+| Identity | `content/concept.ts`, `content/branding.ts` |
+| Startup workspace | `config/startupWorkspace.ts`, `config/shellConfig.ts` |
+| Presets | `content/presetBundles.ts`, `content/startupPresets.ts` |
+| Scenes | `content/scenes.ts`, `content/mappings.ts` |
+| HUD | `config/hud.ts` |
+| Theme | `config/theme.ts`, `styles/app-layout.scss` |
+| Assets | `content/assets.ts`, `assets/README.md` |
+
+Canonical definition: `blueprints/signal-9/blueprint.json`
+
+See [packages/create-plantasonic-app/blueprints/README.md](../packages/create-plantasonic-app/blueprints/README.md).
+
 ## CLI options
 
 ### `pnpm plantasonic create <type> <slug>`
@@ -65,7 +91,8 @@ App code is limited to **creative configuration** — names, presets, branding, 
 |--------|-------------|
 | `<prototype-type>` | Required. `instrument` or `audio-reactive` |
 | `<app-slug>` | Required. Lowercase kebab-case id (e.g. `flora-lab`) |
-| `--name` | Display name (default: title-cased slug) |
+| `--concept` | Blueprint or concept id (e.g. `signal-9`, `plantasonic`) |
+| `--name` | Display name (default: title-cased slug or blueprint name) |
 | `--port` | Vite dev server port (default: per type — 5175 instrument, 5176 audio-reactive) |
 | `--output` | Output directory (default: `apps/<slug>` in monorepo) |
 | `--force` | Overwrite existing directory |

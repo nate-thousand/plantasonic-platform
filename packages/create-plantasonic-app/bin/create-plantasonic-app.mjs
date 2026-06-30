@@ -26,6 +26,7 @@ function main() {
   const result = createApp({
     slug,
     prototypeType: options.prototypeType,
+    concept: options.concept,
     name: options.name,
     port: options.port,
     output: options.output,

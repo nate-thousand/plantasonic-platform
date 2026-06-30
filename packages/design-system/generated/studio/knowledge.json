@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-30T19:13:03.092Z",
+  "generatedAt": "2026-06-30T20:42:04.409Z",
   "sdkVersion": "1.0.0",
   "entries": [
     {
@@ -11,7 +11,7 @@
         "tokens",
         "design-system"
       ],
-      "createdAt": "2026-06-30T19:13:03.085Z"
+      "createdAt": "2026-06-30T20:42:04.407Z"
     },
     {
       "id": "principle.lightweight-client",
@@ -22,7 +22,7 @@
         "platform",
         "architecture"
       ],
-      "createdAt": "2026-06-30T19:13:03.091Z"
+      "createdAt": "2026-06-30T20:42:04.409Z"
     },
     {
       "id": "practice.spec-authoritative",
@@ -33,7 +33,7 @@
         "studio",
         "specification"
       ],
-      "createdAt": "2026-06-30T19:13:03.091Z"
+      "createdAt": "2026-06-30T20:42:04.409Z"
     }
   ]
 }

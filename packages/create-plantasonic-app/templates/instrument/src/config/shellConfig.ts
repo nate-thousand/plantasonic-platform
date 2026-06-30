@@ -7,7 +7,7 @@ export const {{APP_CAMEL}}ShellConfig: ApplicationShellConfig = {
   title: {{APP_CONST}}_BRANDING.appTitle,
   variant: 'instrument',
   mode: 'edit',
-  theme: 'dark',
+  theme: '{{THEME_INTENT}}',
   persistState: false,
   navigation: {
     title: {{APP_CONST}}_BRANDING.appTitle,

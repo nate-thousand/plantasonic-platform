@@ -1,0 +1,7 @@
+/** {{APP_NAME}} branding — concept: signal-9-live */
+export const {{APP_CONST}}_BRANDING = {
+  appTitle: '{{APP_TITLE}}',
+  tagline: '{{APP_TAGLINE}}',
+  presetBrowserLabel: '{{PRESET_BROWSER_LABEL}}',
+  about: '{{CONCEPT_ABOUT}}',
+} as const;

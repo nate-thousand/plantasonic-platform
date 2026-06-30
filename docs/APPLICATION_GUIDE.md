@@ -2,6 +2,8 @@
 
 How to build thin Plantasonic applications on the platform.
 
+The Plantasonic Platform is completely application agnostic. Applications consume the Platform and are developed, versioned, and deployed independently.
+
 ## Principles
 
 Every app must be **thin**. Apps own creative content only — not infrastructure.
@@ -26,7 +28,7 @@ Every app must be **thin**. Apps own creative content only — not infrastructur
 ## Recommended structure
 
 ```
-apps/my-app/src/
+my-app/src/
   main.ts
   appContent.ts
   config/          # ApplicationConfig, shell, workspace
@@ -45,8 +47,8 @@ await mountInstrumentApp(container, myAppContent);
 
 ## References
 
-- Runnable: `apps/plantasonic-reference/`
-- Production: `../plantasonic-xyz/src/platform-consumer/`
+- Internal scaffold: `apps/plantasonic-reference/` (validation only, not product ownership)
+- Reference application: `../plantasonic-xyz/src/platform-consumer/` (independent repository)
 - Template: `templates/instrument/`
 
 ## Cross references

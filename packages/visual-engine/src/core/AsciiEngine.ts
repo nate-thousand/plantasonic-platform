@@ -146,6 +146,8 @@ export class AsciiEngine {
   private time = 0;
   private lastFps = 0;
   private lastNoteOn: NoteEvent | null = null;
+  private bassGlyphScale = 0;
+  private bassGlyphScaleSmoothed = 0;
 
   constructor(options: AsciiEngineOptions) {
     this.canvas = options.canvas;
@@ -640,6 +642,22 @@ export class AsciiEngine {
   resize(width: number, height: number): void {
     this.rendererManager.resize(width, height);
     this.eventBus.emit('resize', { width, height });
+  }
+
+  setColor(color: string): void {
+    this.rendererManager.setColor(color);
+  }
+
+  /** Normalized bass level (0–1) for per-glyph random scale pulses. */
+  setBassGlyphScale(level: number): void {
+    this.bassGlyphScale = Math.min(1, Math.max(0, level));
+  }
+
+  setGlyphSet(glyphs: string[]): void {
+    if (glyphs.length === 0) return;
+    this.glyphRegistry.disable();
+    this.glyphRegistry.setResolvedGlyphSet(glyphs);
+    this.rendererManager.setGlyphSet(glyphs);
   }
 
   getPreset(): AsciiPreset {
@@ -1192,6 +1210,25 @@ export class AsciiEngine {
     }
   }
 
+  private applyBassReactiveGlyphScale(grid: GridState): void {
+    this.bassGlyphScaleSmoothed += (this.bassGlyphScale - this.bassGlyphScaleSmoothed) * 0.58;
+    const bass = this.bassGlyphScaleSmoothed;
+    if (bass <= 0.01) {
+      for (const cell of grid.cells) {
+        if (cell.scale !== 1) cell.scale = 1;
+      }
+      return;
+    }
+
+    for (const cell of grid.cells) {
+      const hash =
+        Math.sin(cell.x * 12.9898 + cell.y * 78.233 + this.time * 0.7) * 43758.5453;
+      const rand = hash - Math.floor(hash);
+      const pulse = bass * (0.5 + rand * 1.45);
+      cell.scale = 1 + pulse * 2.5;
+    }
+  }
+
   private buildGlyphContext(_dt: number) {
     const grid = this.rendererManager.getGridState(this.time);
     const simDebug = this.simulationManager.getDebugState();
@@ -1303,6 +1340,7 @@ export class AsciiEngine {
     this.glyphRegistry.setDeltaTime(dt);
     const glyphGrid = this.rendererManager.getGridState(this.time);
     this.glyphRegistry.applyToGrid(glyphGrid, this.buildGlyphContext(dt));
+    this.applyBassReactiveGlyphScale(glyphGrid);
 
     this.performanceManager.markPhase('render');
     const trailsEnabled = this.pluginManager.get('trails')?.enabled ?? false;

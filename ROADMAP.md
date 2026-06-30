@@ -52,7 +52,7 @@ Current stable milestone: **v0.12.0 — Foundation Complete**.
 **Status: Complete**
 
 - Demo orchestrator uses `renderCreativeWorkspace({ preset: 'instrument' })` + `bindCreativeWorkspace()`
-- `plantasonic-v2` and `plantasonic-reference` inherit layout via `@plantasonic/platform-demo`
+- Independent application consumers inherit layout through `@plantasonic/platform-demo`
 - Removed duplicated canvas/stage layout CSS from demo styles
 - Apps import `scss/creative-workspace.scss`; stage is dominant, controls float above
 
@@ -160,7 +160,7 @@ Current stable milestone: **v0.12.0 — Foundation Complete**.
 **Status: Complete (reference host v0.4.0)**
 
 - Migration guide: [docs/PLANTASONIC_APP_MIGRATION.md](./docs/PLANTASONIC_APP_MIGRATION.md)
-- Reference app scaffold: `apps/plantasonic-reference/` — thin platform consumer
+- Reference application boundary documented for separate `plantasonic-xyz`
 - Parameterized mount: `mountInstrumentApp()` exports app-owned content injection
 - **plantasonic-xyz v0.4.0** — established as the official reference host for the AI First Application Platform
 - Reference guide: [docs/REFERENCE_APP.md](./docs/REFERENCE_APP.md)
@@ -188,7 +188,7 @@ Current stable milestone: **v0.12.0 — Foundation Complete**.
 - [ ] Implement `generative-art`, `installation`, `visual-synth`, `portfolio-demo`, `research` templates
 - [ ] Template-specific preset defaults and workspace configs (remaining types)
 - [ ] Runnable examples per template type
-- [ ] Additional application blueprints beyond Signal 9
+- [ ] Additional application blueprints beyond `signal-9`
 
 ## 16. Plugin Ecosystem
 
@@ -228,7 +228,7 @@ Official support for AI first application development from design through deploy
 
 **Status: In progress**
 
-Make Plantasonic Platform the single source of truth for the Design System, themes, and reference host — without changing token values, engine behavior, or app runtime.
+Make Plantasonic Platform the single source of truth for reusable systems — without owning product applications or changing token values, engine behavior, or app runtime.
 
 - [x] Audit complete — [docs/DESIGN_SYSTEM_CONSOLIDATION_PLAN.md](./docs/DESIGN_SYSTEM_CONSOLIDATION_PLAN.md)
 - [x] Phase 1: Vendor `plantasonic-design-system` into `packages/design-system/` (workspace deps, preserve exports)
@@ -236,9 +236,8 @@ Make Plantasonic Platform the single source of truth for the Design System, them
 - [ ] Phase 3: Shared Vite/tsconfig helpers — eliminate duplicated DS alias blocks
 - [ ] Phase 4: Engine naming alignment (audio-engine, ascii-engine placeholders — no engine refactors)
 - [ ] Phase 5: AI context and template catalog consolidation
-- [ ] Phase 6: Absorb `plantasonic-xyz` reference host into `apps/plantasonic-xyz/`
-- [ ] Remove sibling path dependency (`../plantasonic-xyz/plantasonic-design-system`)
-- [ ] Update Vercel roots for showcase and reference host
+- [ ] Phase 6: Remove temporary Design System mirror after independent consumers are updated
+- [ ] Preserve independent app repository boundaries (`plantasonic-xyz`, `signal-9-live`, Plantasia, future apps)
 
 ## 20. Reference Application (plantasonic-xyz v0.4.0)
 
@@ -246,8 +245,8 @@ Make Plantasonic Platform the single source of truth for the Design System, them
 
 - [x] **plantasonic-xyz v0.4.0** established as the official reference application for the AI First Application Platform
 - [x] Reference host demonstrates: Platform Overview, Design System, Theme System, Components, Templates, Audio Engine, ASCII Engine, Visual Engine, Video Engine slot, MIDI, AI Workflow, Developer Tools, Settings, Documentation, Live Instrument
-- [x] **Signal 9 Live** documented as the first real product app built on the platform
-- [x] Platform hierarchy documented: Platform → reference host → product apps → future apps
+- [x] `plantasonic-xyz` documented as an independent repository that demonstrates the Platform
+- [x] Platform hierarchy documented: Platform → reusable packages → independent applications
 - [x] Docs: [docs/REFERENCE_APP.md](./docs/REFERENCE_APP.md)
 
 ## 21. Foundation Complete
@@ -257,9 +256,9 @@ Make Plantasonic Platform the single source of truth for the Design System, them
 The Plantasonic AI First Application Platform foundation is complete and ready for future application development.
 
 - [x] Platform owns reusable orchestration, engines, Design System, Theme System, templates, AI workflow, and documentation
-- [x] `plantasonic-xyz` established as the official reference application
-- [x] Signal 9 documented as the first product application
+- [x] `plantasonic-xyz` established as the independent official reference application
+- [x] `signal-9-live`, Plantasia, and future apps documented as independent consumers
 - [x] Release handoff documented in [HANDOFF.md](./HANDOFF.md)
 - [x] Validation baseline documented in [CHANGELOG.md](./CHANGELOG.md)
 
-Next implementation step: Signal 9 product development. Do not proceed to Phase 3 without a separately approved plan.
+Next implementation step: independent application development on top of the Platform. Do not proceed to Phase 3 without a separately approved plan.

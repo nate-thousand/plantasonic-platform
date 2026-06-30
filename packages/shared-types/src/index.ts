@@ -18,6 +18,11 @@ export type {
   VisualEngineAdapter,
   VisualEngineStatus,
   VisualEngineMountTarget,
+  VisualEngineVideoInput,
+  VisualEngineVideoStatus,
+  VisualEngineFrameCaptureStatus,
+  VisualEngineGifExportOptions,
+  VisualEngineExportResult,
   EngineAdapterRegistry,
 } from './engines.js';
 

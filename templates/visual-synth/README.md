@@ -1,17 +1,25 @@
 # visual-synth Template
 
-Prototype template placeholder for **visual-synth** applications.
+Prototype template for **audio-reactive visual synth** applications.
 
 ## Status
 
-Not yet implemented. Extends `instrument` template with visual-synth-specific defaults.
+**Active** — generated via `pnpm plantasonic create visual-synth <slug>`.
 
-## Intended use
+## Source
 
-See `docs/GENERATOR_GUIDE.md` and `templates/instrument/` for the current working template.
+```
+packages/create-plantasonic-app/templates/visual-synth/
+```
 
-## Generate (future)
+## Generate
 
 ```bash
-pnpm plantasonic create visual-synth my-app
+pnpm plantasonic create visual-synth signal-9-live --name "Signal 9 Live"
 ```
+
+## Includes
+
+- Visual-first preset bundles with strong audio→visual mappings
+- Creative Workspace instrument preset (via `mountInstrumentApp`)
+- Default port: 5178

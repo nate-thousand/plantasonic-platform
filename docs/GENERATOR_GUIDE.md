@@ -2,27 +2,53 @@
 
 How to scaffold new platform consumer applications.
 
+Generated applications are thin consumers of the Plantasonic Platform. Product applications should be developed, versioned, and deployed as independent repositories.
+
 ## Unified CLI
 
 ```bash
-pnpm plantasonic create <prototype-type> <app-slug> [options]
+pnpm plantasonic create <prototype-type> <app-slug> --concept <blueprint-or-concept-id> [options]
 ```
 
 Examples:
 
 ```bash
-pnpm plantasonic create instrument flora-lab
-pnpm plantasonic create audio-reactive pulse-field --name "Pulse Field"
-pnpm plantasonic create audio-reactive reactive-lab --port 5180 --force
+pnpm plantasonic create audio-reactive signal-9-live --concept signal-9
+pnpm plantasonic create audio-reactive flowers --concept flowers
+pnpm plantasonic create audio-reactive plantasonic-v2 --concept plantasonic
 ```
+
+**Prototype type** controls technical setup. **Application blueprint** or **concept template** controls app identity and startup experience.
+
+### Application blueprints
+
+Full startup experiences (identity, workspace, presets, scenes, HUD, theme, assets):
+
+| Blueprint | Identity |
+|-----------|----------|
+| `signal-9` | Signal 9 Live — cyberpunk broadcast instrument |
+
+See `packages/create-plantasonic-app/blueprints/`.
+
+### Concept templates
+
+Identity-only overlays (branding, presets, copy):
+
+| Concept | Identity |
+|---------|----------|
+| `plantasonic` | Plantasonic flora presets and copy |
+| `flowers` | Botanical audio-reactive instrument |
+
+See `packages/create-plantasonic-app/concepts/`.
 
 Options:
 
 | Flag | Description |
 |------|-------------|
-| `--name` | Display name (default: title-cased slug) |
+| `--concept` | Blueprint or concept id (`signal-9`, `plantasonic`, `flowers`) |
+| `--name` | Display name (default: concept name or title-cased slug) |
 | `--port` | Dev server port (default: per prototype type) |
-| `--output` | Output directory (default: `apps/<slug>` in monorepo) |
+| `--output` | Output directory (monorepo defaults are for local scaffolding only; product apps should live in independent repositories) |
 | `--force` | Overwrite existing directory |
 
 Implementation: `packages/create-plantasonic-app/lib/create-app.mjs`

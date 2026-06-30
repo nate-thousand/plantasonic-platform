@@ -10,11 +10,11 @@ Platform-owned catalog for reusable Plantasonic themes.
 
 ## Current themes
 
-| Theme | Status | Runtime behavior |
-|-------|--------|------------------|
-| `default` | Active mirror | Mirrors Design System dark/light semantic token files exactly. |
-| `plantasia` | Planned | Placeholder for a reusable Plantasia brand theme package. |
-| `signal9` | Planned | Placeholder for a reusable Signal 9 theme package; app-owned Signal 9 values remain untouched. |
+| Theme     | Status        | Runtime behavior                                                   |
+|-----------|---------------|--------------------------------------------------------------------|
+| `default` | Active mirror | Mirrors Design System dark/light semantic token files exactly.     |
+
+Product-specific theme placeholders previously staged here were archived during the workspace cleanup. Product themes now belong in their product repos unless a future platform-level theme contract is approved.
 
 ## Runtime contract
 

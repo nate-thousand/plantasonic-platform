@@ -64,11 +64,10 @@ Each package in the Plantasonic ecosystem has exactly one responsibility. This d
 **Owns:** AI First Application Platform foundation — application lifecycle, event bus, workspace layout contract, preset registry, engine adapter orchestration, integration types, Design System workspace package, Theme System catalog, generator, AI workflow, and documentation
 
 **Must never:**
-- Implement UI components (delegates to Design System)
-- Implement audio logic (delegates to Sound Engine)
-- Implement rendering logic (delegates to Visual Engine)
+- Own product applications such as Signal 9, Plantasia, `plantasonic-xyz`, or future apps
+- Own application deployment, version history, or product roadmaps
+- Implement app-specific creative direction
 - Import engine packages directly into the SDK
-- Make creative decisions (delegates to applications)
 
 **Integrates via:** SDK exports consumed by applications. Types consumed by all packages.
 
@@ -82,9 +81,9 @@ Each package in the Plantasonic ecosystem has exactly one responsibility. This d
 
 ---
 
-## Plantasonic Applications
+## Independent Plantasonic Applications
 
-**Owns:** Creative direction, user experience, composition of all packages, adapter implementations
+**Owns:** Creative direction, user experience, composition of all packages, adapter wiring, deployment, versioning, and product roadmap
 
 **Must never:**
 - Duplicate engine code
@@ -93,6 +92,8 @@ Each package in the Plantasonic ecosystem has exactly one responsibility. This d
 - Hardcode engine internals
 
 **Integrates via:** `createApplication()` from the platform SDK. Wires Design System, engine adapters, and presets together.
+
+Applications are developed, versioned, and deployed independently from the Platform repository.
 
 ---
 

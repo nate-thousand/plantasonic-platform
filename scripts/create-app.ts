@@ -4,29 +4,17 @@
  * Implementation: packages/create-plantasonic-app/lib/create-app.mjs
  *
  * CLI:
- *   pnpm plantasonic create <prototype-type> <app-slug>
- *   pnpm create:app <app-slug> [--type instrument]
+ *   pnpm plantasonic create <prototype-type> <app-slug> --concept <blueprint-or-concept-id>
  */
 
 export interface CreateAppOptions {
-  /** kebab-case app slug */
   slug: string;
-  /** Prototype type from templates/ */
-  prototypeType:
-    | 'instrument'
-    | 'audio-reactive'
-    | 'generative-art'
-    | 'installation'
-    | 'visual-synth'
-    | 'portfolio-demo'
-    | 'research';
-  /** Display name */
+  prototypeType: 'instrument' | 'audio-reactive' | 'visual-synth' | 'generative-art' | 'installation' | 'portfolio-demo' | 'research';
+  /** Blueprint or concept template id — controls app identity and startup experience */
+  concept?: 'signal-9' | 'plantasonic' | 'flowers';
   name?: string;
-  /** Vite dev port */
   port?: number;
-  /** Output directory (default: apps/<slug>) */
   output?: string;
-  /** Overwrite existing directory */
   force?: boolean;
 }
 
@@ -35,21 +23,18 @@ export interface CreateAppResult {
   outputPath: string;
   packageName: string;
   prototypeType: string;
+  conceptId?: string;
+  blueprintId?: string;
   warnings: string[];
 }
 
-/** Implemented types available today */
-export const ACTIVE_PROTOTYPE_TYPES = ['instrument', 'audio-reactive'] as const;
+export const ACTIVE_PROTOTYPE_TYPES = ['instrument', 'audio-reactive', 'visual-synth'] as const;
+export const ACTIVE_BLUEPRINTS = ['signal-9'] as const;
+export const ACTIVE_CONCEPT_TEMPLATES = ['plantasonic', 'flowers'] as const;
 
-/**
- * Delegates to the Node generator. Run via CLI rather than importing at runtime.
- *
- * @example
- * pnpm plantasonic create audio-reactive my-app
- */
 export async function createApp(_options: CreateAppOptions): Promise<CreateAppResult> {
   throw new Error(
-    'Use the CLI: pnpm plantasonic create <prototype-type> <app-slug>\n' +
-      'Legacy: pnpm create:app <slug> [--type instrument]',
+    'Use the CLI: pnpm plantasonic create <prototype-type> <app-slug> --concept <id>\n' +
+      'Legacy: pnpm create:app <slug> [--type instrument] [--concept plantasonic]',
   );
 }

@@ -6,7 +6,9 @@ Official development workflow for building Plantasonic applications with AI-assi
 
 Plantasonic is designed as the standard foundation for AI first applications. The workflow connects design, UI generation, implementation, version control, and deployment into a single pipeline where each tool has a clear role and handoff point.
 
-`v0.12.0` marks **Foundation Complete**: the Platform owns reusable orchestration, engines, Design System, Theme System, templates, AI workflow, and documentation. `plantasonic-xyz` is the reference application; Signal 9 is the first product application.
+`v0.12.0` marks **Foundation Complete**: the Platform owns reusable orchestration, engines, Design System, Theme System, templates, AI workflow, and documentation. `plantasonic-xyz` is the independent reference application; Signal 9 is the independent first product application.
+
+Permanent rule: the Plantasonic Platform is completely application agnostic. Applications consume the Platform and are developed, versioned, and deployed independently.
 
 ```
 Figma
@@ -81,7 +83,7 @@ pnpm plantasonic create audio-reactive my-app --concept plantasonic
 pnpm --filter @plantasonic/my-app dev
 ```
 
-Customize the creative layer only. Mount via platform SDK; import Design System via package paths; choose reusable themes from the platform theme catalog where applicable.
+Customize the creative layer only in an independent application repository. Mount via platform SDK; import Design System via package paths; choose reusable themes from the platform theme catalog where applicable.
 
 **Handoff:** working application branch with validation passing.
 

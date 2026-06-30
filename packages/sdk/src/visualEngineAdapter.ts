@@ -9,8 +9,13 @@ import type {
   PlatformEventBus,
   Preset,
   VisualEngineAdapter,
+  VisualEngineExportResult,
+  VisualEngineFrameCaptureStatus,
+  VisualEngineGifExportOptions,
   VisualEngineMountTarget,
   VisualEngineStatus,
+  VisualEngineVideoInput,
+  VisualEngineVideoStatus,
 } from '@plantasonic/platform-types';
 
 /** Options for creating a visual engine adapter */
@@ -39,6 +44,76 @@ const SOUND_TO_VISUAL_PRESET: Record<string, PresetId> = {
 };
 
 const VISUAL_PRESET_IDS = new Set<string>(Object.keys(visualPresets));
+
+type GlyphCapableEngine = AsciiEngine & {
+  setGlyphSet?: (glyphs: string[]) => void;
+  setBassGlyphScale?: (level: number) => void;
+};
+
+/** Works with current source and older prebuilt engine bundles missing public helpers. */
+function applyEngineGlyphSet(eng: AsciiEngine, glyphs: string[]): void {
+  if (glyphs.length === 0) return;
+
+  const engine = eng as GlyphCapableEngine;
+  if (typeof engine.setGlyphSet === 'function') {
+    engine.setGlyphSet(glyphs);
+    return;
+  }
+
+  const registry = eng.getGlyphRegistry();
+  registry.disable();
+  registry.setResolvedGlyphSet(glyphs);
+  eng.getRendererManager().setGlyphSet(glyphs);
+}
+
+function applyEngineBassGlyphScale(eng: AsciiEngine, level: number): void {
+  const engine = eng as GlyphCapableEngine;
+  if (typeof engine.setBassGlyphScale === 'function') {
+    engine.setBassGlyphScale(level);
+  }
+}
+
+/** Strip procedural layers that overwrite external source sampling. */
+function applyVideoSamplingPipeline(eng: AsciiEngine): void {
+  for (const plugin of eng.getPluginManager().getAll()) {
+    if (plugin.type === 'pattern') {
+      eng.disablePlugin(plugin.id);
+      continue;
+    }
+    if (plugin.type === 'effect') {
+      const phase = (plugin as { phase?: string }).phase;
+      // Keep glitch for video post; disable motion generators and trails/feedback plugins.
+      if (phase === 'motion' || (phase === 'post' && plugin.id !== 'glitch')) {
+        eng.disablePlugin(plugin.id);
+      }
+    }
+  }
+  for (const motion of eng.getMotionManager().getAll()) {
+    eng.disableMotion(motion.id);
+  }
+  for (const simulation of eng.getSimulationManager().getAll()) {
+    eng.disableSimulation(simulation.id);
+  }
+  enableVideoPostPasses(eng);
+  eng.enablePlugin('glitch');
+}
+
+function enableVideoPostPasses(eng: AsciiEngine): void {
+  const post = eng.getPostProcessor();
+  post.enablePass('threshold');
+  post.enablePass('feedback');
+  post.enablePass('scanline');
+}
+
+/** Procedural motion when video source sampling is off. */
+function applyStandaloneVisualizerPipeline(eng: AsciiEngine): void {
+  eng.setSourceMode('procedural');
+  for (const id of ['noise', 'wave', 'trails'] as const) {
+    if (eng.getPluginManager().get(id)) {
+      eng.enablePlugin(id);
+    }
+  }
+}
 
 /**
  * Thin compatibility wrapper around ascii-visual-engine (Plantasia Visual Engine).
@@ -69,6 +144,8 @@ export function createVisualEngineAdapter(
   let width = 0;
   let height = 0;
   let lastError: string | null = null;
+  let lastVideoInput: VisualEngineVideoInput | null = null;
+  let lastAsciiColor: string | null = null;
   const parameterSnapshot: Record<string, number> = {
     density: 1,
     speed: 0.5,
@@ -91,6 +168,41 @@ export function createVisualEngineAdapter(
     emit('visual:error', { operation, message });
     console.warn(`[platform:visual] ${operation}:`, message);
   };
+
+  function reapplyAsciiColor(): void {
+    if (!lastAsciiColor) return;
+    const eng = engine;
+    if (!eng) return;
+    eng.setColor(lastAsciiColor);
+  }
+
+  function getVideoSourceHandle(): {
+    play(): Promise<void>;
+    pause(): Promise<void>;
+    isPlaying(): boolean;
+  } | null {
+    const eng = engine;
+    if (!eng) return null;
+    const source = eng.getSourceManager().getSource('video');
+    if (!source || source.type !== 'video') return null;
+    const candidate = source as unknown as {
+      play?(): void;
+      pause?(): void;
+      isPlaying?(): boolean;
+    };
+    if (
+      typeof candidate.play !== 'function' ||
+      typeof candidate.pause !== 'function' ||
+      typeof candidate.isPlaying !== 'function'
+    ) {
+      return null;
+    }
+    return candidate as {
+      play(): Promise<void>;
+      pause(): Promise<void>;
+      isPlaying(): boolean;
+    };
+  }
 
   const adapter: VisualEngineAdapter = {
     id: 'visual',
@@ -193,6 +305,7 @@ export function createVisualEngineAdapter(
         if (playing) {
           eng.start();
         }
+        reapplyAsciiColor();
       } catch (error) {
         reportError('setPreset', error);
         throw error;
@@ -209,6 +322,294 @@ export function createVisualEngineAdapter(
       } catch (error) {
         reportError('updateParameter', error);
         throw error;
+      }
+    },
+
+    async setControl(name: string, value: number): Promise<void> {
+      const eng = requireEngine();
+      try {
+        eng.setControl(name, value);
+        parameterSnapshot[name] = value;
+        emit('visual:parameter-change', { name, value });
+      } catch (error) {
+        reportError('setControl', error);
+        throw error;
+      }
+    },
+
+    setControlSync(name: string, value: number): void {
+      const eng = engine;
+      if (!eng) return;
+      try {
+        eng.setControl(name, value);
+        parameterSnapshot[name] = value;
+      } catch (error) {
+        reportError('setControlSync', error);
+      }
+    },
+
+    async setAsciiColor(color: string): Promise<void> {
+      const eng = requireEngine();
+      try {
+        lastAsciiColor = color;
+        eng.setColor(color);
+        emit('visual:color-change', { color });
+      } catch (error) {
+        reportError('setAsciiColor', error);
+        throw error;
+      }
+    },
+
+    async setGlyphSet(glyphs: string[]): Promise<void> {
+      const eng = requireEngine();
+      try {
+        applyEngineGlyphSet(eng, glyphs);
+        emit('visual:glyph-set', { count: glyphs.length });
+      } catch (error) {
+        reportError('setGlyphSet', error);
+        throw error;
+      }
+    },
+
+    async setBassGlyphScale(level: number): Promise<void> {
+      const eng = requireEngine();
+      try {
+        applyEngineBassGlyphScale(eng, level);
+      } catch (error) {
+        reportError('setBassGlyphScale', error);
+        throw error;
+      }
+    },
+
+    async setSourceMode(mode: 'procedural' | 'source'): Promise<void> {
+      const eng = requireEngine();
+      try {
+        eng.setSourceMode(mode);
+        emit('visual:source-mode', { mode });
+      } catch (error) {
+        reportError('setSourceMode', error);
+        throw error;
+      }
+    },
+
+    async prepareVideoAsciiPipeline(): Promise<void> {
+      const eng = requireEngine();
+      try {
+        // Do NOT call setPreset here — it resets source mode to procedural and
+        // clears the active video source. Only strip layers that overwrite sampling.
+        applyVideoSamplingPipeline(eng);
+
+        emit('visual:video-pipeline-ready', { presetId: currentPresetId });
+        reapplyAsciiColor();
+      } catch (error) {
+        reportError('prepareVideoAsciiPipeline', error);
+        throw error;
+      }
+    },
+
+    async setVideoBackgroundEnabled(enabled: boolean): Promise<void> {
+      const eng = requireEngine();
+      try {
+        if (enabled) {
+          applyVideoSamplingPipeline(eng);
+          eng.setSourceMode('source');
+          eng.setActiveSource('video');
+          const handle = getVideoSourceHandle();
+          if (handle) {
+            await handle.play();
+          }
+        } else {
+          applyStandaloneVisualizerPipeline(eng);
+        }
+        emit('visual:video-background', { enabled });
+        reapplyAsciiColor();
+      } catch (error) {
+        reportError('setVideoBackgroundEnabled', error);
+        throw error;
+      }
+    },
+
+    async loadVideoSource(input: VisualEngineVideoInput): Promise<void> {
+      const eng = requireEngine();
+      try {
+        lastVideoInput = input;
+        eng.setSourceMode('source');
+        eng.setActiveSource('video');
+
+        if (typeof input === 'object' && input.element instanceof HTMLVideoElement) {
+          await eng.loadSource('video', input.element);
+        } else {
+          const payload =
+            typeof input === 'string'
+              ? { src: input, loop: true, muted: true, autoplay: true }
+              : { loop: true, muted: true, autoplay: true, ...input };
+          await eng.loadSource('video', payload);
+        }
+
+        const debug = eng.getDebugState().source;
+        const srcLabel =
+          typeof input === 'string'
+            ? input
+            : input.element
+              ? 'video-element'
+              : (input.src ?? '');
+        emit('visual:source-loaded', {
+          type: 'video',
+          src: srcLabel,
+          ready: debug.ready,
+        });
+        if (debug.error) {
+          reportError('loadVideoSource', new Error(debug.error));
+        }
+        reapplyAsciiColor();
+      } catch (error) {
+        reportError('loadVideoSource', error);
+        throw error;
+      }
+    },
+
+    async playVideo(): Promise<void> {
+      const eng = requireEngine();
+      try {
+        eng.setSourceMode('source');
+        eng.setActiveSource('video');
+        const handle = getVideoSourceHandle();
+        if (!handle) {
+          throw new Error('No video source loaded');
+        }
+        await handle.play();
+        if (!playing) {
+          eng.start();
+          playing = true;
+        }
+        emit('visual:video-play', {});
+      } catch (error) {
+        reportError('playVideo', error);
+        throw error;
+      }
+    },
+
+    async pauseVideo(): Promise<void> {
+      try {
+        const handle = getVideoSourceHandle();
+        if (!handle) return;
+        await handle.pause();
+        emit('visual:video-pause', {});
+      } catch (error) {
+        reportError('pauseVideo', error);
+        throw error;
+      }
+    },
+
+    async restartVideo(): Promise<void> {
+      if (!lastVideoInput) return;
+      try {
+        await adapter.pauseVideo();
+        if (typeof lastVideoInput === 'object' && lastVideoInput.element instanceof HTMLVideoElement) {
+          lastVideoInput.element.currentTime = 0;
+          await adapter.playVideo();
+        } else {
+          await adapter.loadVideoSource(lastVideoInput);
+          await adapter.playVideo();
+        }
+        emit('visual:video-restart', {});
+      } catch (error) {
+        reportError('restartVideo', error);
+        throw error;
+      }
+    },
+
+    getVideoStatus(): VisualEngineVideoStatus {
+      const eng = engine;
+      if (!eng) {
+        return {
+          sourceMode: 'procedural',
+          activeSourceId: null,
+          ready: false,
+          playing: false,
+          error: lastError,
+          width: 0,
+          height: 0,
+        };
+      }
+      const debug = eng.getDebugState().source;
+      const video = getVideoSourceHandle();
+      return {
+        sourceMode: eng.getSourceMode(),
+        activeSourceId: debug.activeSourceId,
+        ready: debug.ready,
+        playing: video?.isPlaying() ?? false,
+        error: debug.error,
+        width: debug.width,
+        height: debug.height,
+      };
+    },
+
+    startFrameCapture(frameRate = 30): { ok: boolean; error?: string } {
+      try {
+        const eng = requireEngine();
+        return eng.startRecording(frameRate);
+      } catch (error) {
+        reportError('startFrameCapture', error);
+        return {
+          ok: false,
+          error: error instanceof Error ? error.message : String(error),
+        };
+      }
+    },
+
+    async stopFrameCapture(): Promise<void> {
+      try {
+        requireEngine().stopRecording();
+      } catch (error) {
+        reportError('stopFrameCapture', error);
+        throw error;
+      }
+    },
+
+    cancelFrameCapture(): void {
+      try {
+        requireEngine().cancelRecording();
+      } catch (error) {
+        reportError('cancelFrameCapture', error);
+      }
+    },
+
+    getFrameCaptureStatus(): VisualEngineFrameCaptureStatus {
+      const eng = engine;
+      if (!eng) {
+        return { state: 'idle', frameCount: 0, duration: 0, frameRate: 30 };
+      }
+      return eng.getExportManager().getDebugState().recording;
+    },
+
+    async exportCapturedGif(
+      options: VisualEngineGifExportOptions = {},
+    ): Promise<VisualEngineExportResult> {
+      try {
+        const result = await requireEngine().exportGIF(options);
+        return {
+          ok: result.ok,
+          format: result.format,
+          blob: result.blob,
+          filename: result.filename,
+          error: result.error,
+        };
+      } catch (error) {
+        reportError('exportCapturedGif', error);
+        return {
+          ok: false,
+          format: 'gif',
+          error: error instanceof Error ? error.message : String(error),
+        };
+      }
+    },
+
+    getCaptureCanvas(): HTMLCanvasElement | null {
+      try {
+        return requireEngine().getCanvas() ?? null;
+      } catch {
+        return canvas;
       }
     },
 
@@ -248,6 +649,30 @@ export function createVisualEngineAdapter(
 
     getParameterSnapshot(): Readonly<Record<string, number>> {
       return { ...parameterSnapshot };
+    },
+
+    getTransmissionDiagnostics(): {
+      cols: number;
+      rows: number;
+      glyphCount: number;
+      renderTimeMs: number;
+      rendererId: string;
+    } | null {
+      const eng = engine;
+      if (!eng) return null;
+      try {
+        const dims = eng.getRendererManager().getDimensions();
+        const perf = eng.getDebugState().performance;
+        return {
+          cols: dims.cols,
+          rows: dims.rows,
+          glyphCount: dims.cols * dims.rows,
+          renderTimeMs: perf.renderTimeMs,
+          rendererId: eng.getActiveRendererId() ?? 'canvas',
+        };
+      } catch {
+        return null;
+      }
     },
 
     async dispose(): Promise<void> {

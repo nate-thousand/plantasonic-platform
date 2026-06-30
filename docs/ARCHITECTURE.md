@@ -4,16 +4,17 @@
 
 ## Layer model
 
-1. **Applications** — concept, copy, assets, presets, mappings, config
-2. **Platform SDK** — lifecycle, event bus, adapters, bridge, presets, performance, plugins, persistence
-3. **Design System** — UI shell, components, tokens, layout
-4. **Engines** — sound synthesis, visual rendering
+1. **Plantasonic Platform** — application-agnostic reusable foundation
+2. **Reusable Packages** — SDK, Design System, Theme System, engines, templates, AI workflow, documentation
+3. **Independent Applications** — reference app, Signal 9, Plantasia, future apps
+
+Permanent rule: applications consume the Platform. Applications are developed, versioned, and deployed independently.
 
 ## Package dependency rules
 
 - `@plantasonic/platform-types` → zero runtime deps
 - `@plantasonic/platform` → types only (+ engines inside adapters)
-- Apps → platform + DS + engines
+- Independent apps → platform + DS + engines
 - Engines → no platform imports
 - DS → no engine imports
 
