@@ -155,12 +155,13 @@ Milestones for `plantasonic-platform`, in order.
 
 ## 13. Plantasonic App Migration
 
-**Status: Complete (production cutover v0.3.0)**
+**Status: Complete (reference host v0.4.0)**
 
 - Migration guide: [docs/PLANTASONIC_APP_MIGRATION.md](./docs/PLANTASONIC_APP_MIGRATION.md)
-- Reference app: `apps/plantasonic-reference/` — thin platform consumer
+- Reference app scaffold: `apps/plantasonic-reference/` — thin platform consumer
 - Parameterized mount: `mountInstrumentApp()` exports app-owned content injection
-- Production repo cutover: `plantasonic-xyz` v0.3.0
+- **plantasonic-xyz v0.4.0** — established as the official reference host for the AI First Application Platform
+- Reference guide: [docs/REFERENCE_APP.md](./docs/REFERENCE_APP.md)
 - Skill: `application-migration`
 
 ## 14. Development Environment
@@ -220,3 +221,29 @@ Official support for AI first application development from design through deploy
 - [x] **GitHub Pull Request workflow** — PR checklist and review requirements for AI-generated code
 - [x] Platform principles: source of truth, token alignment, integration over blind copy, review before merge, prefer reusable components
 - [x] Docs: [docs/AI_WORKFLOW.md](./docs/AI_WORKFLOW.md), [docs/TOOLCHAIN.md](./docs/TOOLCHAIN.md)
+
+## 19. Design System Consolidation
+
+**Status: Planned**
+
+Make Plantasonic Platform the single source of truth for the Design System, themes, and reference host — without changing token values, engine behavior, or app runtime.
+
+- [ ] Audit complete — [docs/DESIGN_SYSTEM_CONSOLIDATION_PLAN.md](./docs/DESIGN_SYSTEM_CONSOLIDATION_PLAN.md)
+- [ ] Phase 1: Vendor `plantasonic-design-system` into `packages/design-system/` (workspace deps, preserve exports)
+- [ ] Phase 2: Extract `themes/` (default, plantasia, signal9) from DS tokens and blueprint apps
+- [ ] Phase 3: Shared Vite/tsconfig helpers — eliminate duplicated DS alias blocks
+- [ ] Phase 4: Engine naming alignment (audio-engine, ascii-engine placeholders — no engine refactors)
+- [ ] Phase 5: AI context and template catalog consolidation
+- [ ] Phase 6: Absorb `plantasonic-xyz` reference host into `apps/plantasonic-xyz/`
+- [ ] Remove sibling path dependency (`../plantasonic-xyz/plantasonic-design-system`)
+- [ ] Update Vercel roots for showcase and reference host
+
+## 20. Reference Application (plantasonic-xyz v0.4.0)
+
+**Status: Complete**
+
+- [x] **plantasonic-xyz v0.4.0** established as the official reference application for the AI First Application Platform
+- [x] Reference host demonstrates: Platform Overview, Design System, Theme System, Components, Templates, Audio Engine, ASCII Engine, Visual Engine, Video Engine slot, MIDI, AI Workflow, Developer Tools, Settings, Documentation, Live Instrument
+- [x] **Signal 9 Live** documented as the first real product app built on the platform
+- [x] Platform hierarchy documented: Platform → reference host → product apps → future apps
+- [x] Docs: [docs/REFERENCE_APP.md](./docs/REFERENCE_APP.md)

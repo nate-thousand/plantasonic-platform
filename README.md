@@ -1,11 +1,12 @@
 # Plantasonic Platform
 
-The **home of Plantasonic Platform development** — orchestration layer, SDK, generator, templates, skills, and documentation for the entire ecosystem.
+The **home of Plantasonic Platform development** — the AI First Application Platform for creative, audio-reactive, and instrument-style applications.
 
-Every future application, engine integration, and prototype follows the same workflow defined here.
+This repository is the source of truth for orchestration, SDK, generator, templates, skills, and documentation. Every future application, engine integration, and prototype follows the workflow defined here.
 
 ## What this is
 
+- **AI First Application Platform** — orchestration layer for the entire ecosystem
 - **Orchestration SDK** — `@plantasonic/platform`
 - **Shared types** — `@plantasonic/platform-types`
 - **Prototype generator** — `@plantasonic/create-app`
@@ -43,20 +44,26 @@ plantasonic-platform/
 ## Ecosystem relationships
 
 ```
-Applications (plantasonic-xyz, generated apps)
+Plantasonic Platform              ← source of truth (this repo)
     ↓
-@plantasonic/platform (this repo)
+plantasonic-xyz v0.4.0            ← official reference host
     ↓
-Design System · Sound Engine · Visual Engine
+Signal 9 Live                     ← first real product app
+    ↓
+Future apps                       ← inherit platform; customize themes, tokens, assets, app logic
 ```
 
-| Repository | Role |
-|------------|------|
-| **plantasonic-platform** | SDK, generator, orchestration |
+| Repository / app | Role |
+|------------------|------|
+| **plantasonic-platform** | SDK, generator, orchestration, engines, templates, docs |
 | **plantasonic-design-system** | UI, tokens, shell, Creative Workspace layouts |
-| **plantasia-sound-engine** | Audio |
-| **ascii-visual-engine** | Visuals |
-| **plantasonic-xyz** | Production application |
+| **plantasonic-xyz** v0.4.0 | Official reference host — demonstrates all platform capabilities |
+| **Signal 9 Live** (`apps/signal-9-live/`) | First real product app — blueprint `signal-9` |
+| **plantasia-sound-engine** | Audio (vendored in `packages/sound-engine/`) |
+| **ascii-visual-engine** | Visuals (vendored in `packages/visual-engine/`) |
+| **Future apps** | Generated via `pnpm create:app`; own creative layer only |
+
+See [docs/REFERENCE_APP.md](./docs/REFERENCE_APP.md) for the reference application guide.
 
 ## Requirements
 
@@ -176,6 +183,7 @@ See [templates/README.md](./templates/README.md).
 
 | Document | Description |
 |----------|-------------|
+| [docs/REFERENCE_APP.md](./docs/REFERENCE_APP.md) | plantasonic-xyz v0.4.0 reference application |
 | [docs/AI_WORKFLOW.md](./docs/AI_WORKFLOW.md) | AI first development workflow |
 | [docs/TOOLCHAIN.md](./docs/TOOLCHAIN.md) | Official toolchain reference |
 | [docs/PLATFORM_OVERVIEW.md](./docs/PLATFORM_OVERVIEW.md) | Ecosystem home |
