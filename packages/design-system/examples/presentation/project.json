@@ -1,0 +1,64 @@
+{
+  "specVersion": "1.0.0",
+  "id": "keynote-demo",
+  "name": "Keynote Demo",
+  "description": "Presentation prototype for demo day",
+  "category": "presentation-prototype",
+  "version": "0.1.0",
+  "brief": "Presentation prototype for demo day",
+  "engines": [
+    "engine.visual"
+  ],
+  "layouts": [
+    "layout.presentation"
+  ],
+  "components": [
+    {
+      "id": "notes",
+      "title": "Presenter Notes",
+      "description": "Hidden notes for the presenter."
+    }
+  ],
+  "plugins": [],
+  "assets": [],
+  "aiCapabilities": [
+    "compliance",
+    "documentation"
+  ],
+  "deploymentTargets": [
+    "local",
+    "preview",
+    "production"
+  ],
+  "documentation": [
+    "README.md",
+    "ROADMAP.md",
+    "CHANGELOG.md",
+    "project.json",
+    "docs/VALIDATION_CHECKLIST.md"
+  ],
+  "qualityRequirements": [
+    "tokens",
+    "layout",
+    "components",
+    "accessibility",
+    "documentation",
+    "build",
+    "dependencies"
+  ],
+  "services": [
+    "logging",
+    "settings",
+    "autosave",
+    "notifications"
+  ],
+  "workflows": [
+    "workflow.import-assets",
+    "workflow.generate-documentation"
+  ],
+  "pipeline": {
+    "concept": "2026-06-29T22:25:58.599Z"
+  },
+  "createdAt": "2026-06-29T22:25:58.599Z",
+  "updatedAt": "2026-06-29T22:25:58.599Z"
+}

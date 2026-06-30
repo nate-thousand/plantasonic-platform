@@ -18,7 +18,7 @@
     "ascii-visual-engine": "workspace:*",
     "bootstrap": "^5.0.2",
     "plantasia-sound-engine": "workspace:*",
-    "plantasonic-design-system": "file:../../../plantasonic-xyz/plantasonic-design-system"
+    "plantasonic-design-system": "workspace:*"
   },
   "devDependencies": {
     "sass": "^1.89.2",

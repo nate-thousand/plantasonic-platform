@@ -1,0 +1,485 @@
+{
+  "generatedAt": "2026-06-30T19:13:02.605Z",
+  "sdkVersion": "1.5.0",
+  "metadataSpecVersion": "1.0.0",
+  "layouts": [
+    {
+      "id": "layout.dashboard",
+      "name": "Dashboard",
+      "kind": "layout",
+      "variant": "standard",
+      "version": "1.2.0",
+      "purpose": "Navigation-led overview layout with sidebar, header, workspace, and inspector.",
+      "category": "application",
+      "status": "stable",
+      "source": "plantasonic-design-system/shell",
+      "supportedThemes": [
+        "dark",
+        "light"
+      ],
+      "documentation": "docs/platform/APPLICATION_SHELL.md",
+      "regions": [
+        {
+          "name": "header",
+          "role": "banner",
+          "required": true,
+          "description": "Top bar with title, breadcrumbs, commands."
+        },
+        {
+          "name": "sidebar",
+          "role": "navigation",
+          "description": "Primary navigation groups."
+        },
+        {
+          "name": "workspace",
+          "role": "main",
+          "required": true,
+          "description": "Primary content area."
+        },
+        {
+          "name": "inspector",
+          "role": "complementary",
+          "description": "Contextual detail panel."
+        },
+        {
+          "name": "dock",
+          "role": "toolbar",
+          "description": "Tool dock."
+        },
+        {
+          "name": "overlay",
+          "description": "Modal / drawer / palette mount."
+        }
+      ],
+      "slots": [
+        {
+          "name": "workspace",
+          "required": true
+        },
+        {
+          "name": "sidebar"
+        },
+        {
+          "name": "inspector"
+        }
+      ],
+      "supportedComponents": [
+        "*"
+      ],
+      "recommendedPatterns": [
+        "pattern.search",
+        "pattern.command-palette",
+        "pattern.notification-center",
+        "pattern.settings"
+      ],
+      "recommendedWorkflows": [
+        "Browse → select → inspect",
+        "Global search via ⌘K"
+      ]
+    },
+    {
+      "id": "layout.instrument",
+      "name": "Instrument",
+      "kind": "layout",
+      "variant": "instrument",
+      "version": "1.4.0",
+      "purpose": "Canvas-first creative shell with stage, transport, inspector, status, and floating panels.",
+      "category": "creative",
+      "status": "stable",
+      "source": "plantasonic-design-system/instrument",
+      "supportedThemes": [
+        "dark",
+        "light"
+      ],
+      "documentation": "docs/platform/INSTRUMENT_SHELL_GUIDE.md",
+      "regions": [
+        {
+          "name": "stage",
+          "role": "main",
+          "required": true,
+          "description": "Canvas / viewport that fills the shell."
+        },
+        {
+          "name": "transport",
+          "role": "toolbar",
+          "description": "Playback + global transport controls."
+        },
+        {
+          "name": "inspector",
+          "role": "complementary",
+          "description": "Parameter / property panels."
+        },
+        {
+          "name": "rail",
+          "role": "toolbar",
+          "description": "Left tool rail."
+        },
+        {
+          "name": "status",
+          "role": "status",
+          "description": "Bottom metrics row (FPS/CPU/etc.)."
+        },
+        {
+          "name": "hud",
+          "description": "Non-interactive heads-up overlay."
+        },
+        {
+          "name": "timeline",
+          "role": "group",
+          "description": "Timeline region below the stage."
+        },
+        {
+          "name": "floating",
+          "description": "Draggable floating panels layer."
+        }
+      ],
+      "slots": [
+        {
+          "name": "stage",
+          "required": true
+        },
+        {
+          "name": "transport"
+        },
+        {
+          "name": "aside"
+        },
+        {
+          "name": "status"
+        }
+      ],
+      "supportedComponents": [
+        "*"
+      ],
+      "recommendedPatterns": [
+        "pattern.transport",
+        "pattern.inspector",
+        "pattern.timeline",
+        "pattern.command-palette"
+      ],
+      "recommendedWorkflows": [
+        "Perform on the stage",
+        "Edit ↔ Performance ↔ Presentation mode switching"
+      ]
+    },
+    {
+      "id": "layout.studio",
+      "name": "Studio",
+      "kind": "layout",
+      "variant": "instrument",
+      "version": "1.4.0",
+      "purpose": "Multi-panel authoring layout: dockable panels, inspector, timeline, and browser around a stage.",
+      "category": "creative",
+      "status": "beta",
+      "source": "plantasonic-design-system/instrument",
+      "supportedThemes": [
+        "dark",
+        "light"
+      ],
+      "documentation": "docs/platform/WORKSPACE_GUIDE.md",
+      "regions": [
+        {
+          "name": "stage",
+          "role": "main",
+          "required": true
+        },
+        {
+          "name": "dock",
+          "role": "toolbar"
+        },
+        {
+          "name": "inspector",
+          "role": "complementary"
+        },
+        {
+          "name": "browser",
+          "role": "navigation",
+          "description": "Asset / library browser."
+        },
+        {
+          "name": "timeline",
+          "role": "group"
+        },
+        {
+          "name": "transport",
+          "role": "toolbar"
+        }
+      ],
+      "supportedComponents": [
+        "*"
+      ],
+      "recommendedPatterns": [
+        "pattern.asset-browser",
+        "pattern.inspector",
+        "pattern.media-library",
+        "pattern.timeline"
+      ],
+      "recommendedWorkflows": [
+        "Arrange panels for a task",
+        "Save and recall workspace presets"
+      ]
+    },
+    {
+      "id": "layout.canvas",
+      "name": "Canvas",
+      "kind": "layout",
+      "variant": "instrument",
+      "version": "1.4.0",
+      "purpose": "Minimal full-bleed canvas with chrome reduced to a floating HUD and command palette.",
+      "category": "creative",
+      "status": "beta",
+      "source": "plantasonic-design-system/instrument",
+      "supportedThemes": [
+        "dark",
+        "light"
+      ],
+      "documentation": "docs/platform/CANVAS_GUIDE.md",
+      "regions": [
+        {
+          "name": "stage",
+          "role": "main",
+          "required": true
+        },
+        {
+          "name": "hud",
+          "description": "Floating non-interactive overlay."
+        },
+        {
+          "name": "palette",
+          "description": "Command palette mount."
+        }
+      ],
+      "supportedComponents": [
+        "component.iconButton",
+        "component.statusIndicator",
+        "component.badge",
+        "primitive.*"
+      ],
+      "recommendedPatterns": [
+        "pattern.command-palette"
+      ],
+      "recommendedWorkflows": [
+        "Distraction-free creation",
+        "Reveal chrome on demand"
+      ]
+    },
+    {
+      "id": "layout.presentation",
+      "name": "Presentation",
+      "kind": "layout",
+      "variant": "instrument",
+      "version": "1.4.0",
+      "purpose": "Audience-facing display mode: chrome hidden, branding shown, output maximized.",
+      "category": "creative",
+      "status": "beta",
+      "source": "plantasonic-design-system/instrument",
+      "supportedThemes": [
+        "dark",
+        "light"
+      ],
+      "documentation": "docs/platform/PRESENTATION_MODE_GUIDE.md",
+      "regions": [
+        {
+          "name": "stage",
+          "role": "main",
+          "required": true
+        },
+        {
+          "name": "brand",
+          "description": "Presenter branding."
+        },
+        {
+          "name": "hud",
+          "description": "Optional minimal status."
+        }
+      ],
+      "supportedComponents": [
+        "component.statusIndicator",
+        "primitive.cover",
+        "primitive.center"
+      ],
+      "recommendedWorkflows": [
+        "Enter presentation mode for performance / demo"
+      ]
+    },
+    {
+      "id": "layout.workspace",
+      "name": "Workspace",
+      "kind": "layout",
+      "variant": "standard",
+      "version": "1.2.0",
+      "purpose": "Split or focus working layout with resizable panels and persisted window state.",
+      "category": "application",
+      "status": "stable",
+      "source": "plantasonic-design-system/shell",
+      "supportedThemes": [
+        "dark",
+        "light"
+      ],
+      "documentation": "docs/platform/WORKSPACE_GUIDE.md",
+      "regions": [
+        {
+          "name": "workspace",
+          "role": "main",
+          "required": true
+        },
+        {
+          "name": "panels",
+          "description": "Dockable / floating panels."
+        },
+        {
+          "name": "inspector",
+          "role": "complementary"
+        }
+      ],
+      "supportedComponents": [
+        "*"
+      ],
+      "recommendedPatterns": [
+        "pattern.inspector",
+        "pattern.project-picker",
+        "pattern.workspace"
+      ],
+      "recommendedWorkflows": [
+        "Single / split / focus modes",
+        "Persist layout per user"
+      ]
+    },
+    {
+      "id": "layout.settings",
+      "name": "Settings",
+      "kind": "layout",
+      "variant": "standard",
+      "version": "1.2.0",
+      "purpose": "Sectioned settings layout with a navigable index and grouped controls.",
+      "category": "application",
+      "status": "beta",
+      "source": "plantasonic-design-system/shell",
+      "supportedThemes": [
+        "dark",
+        "light"
+      ],
+      "regions": [
+        {
+          "name": "sidebar",
+          "role": "navigation",
+          "description": "Settings categories."
+        },
+        {
+          "name": "workspace",
+          "role": "main",
+          "required": true,
+          "description": "Setting sections."
+        }
+      ],
+      "supportedComponents": [
+        "component.section",
+        "component.controlGroup",
+        "component.card",
+        "component.button"
+      ],
+      "recommendedPatterns": [
+        "pattern.settings",
+        "pattern.search"
+      ],
+      "recommendedWorkflows": [
+        "Browse categories → adjust → autosave"
+      ]
+    },
+    {
+      "id": "layout.documentation",
+      "name": "Documentation",
+      "kind": "layout",
+      "variant": "standard",
+      "version": "1.2.0",
+      "purpose": "Reading layout with a navigation sidebar, centered measure, and on-page table of contents.",
+      "category": "content",
+      "status": "beta",
+      "source": "plantasonic-design-system/shell",
+      "supportedThemes": [
+        "dark",
+        "light"
+      ],
+      "regions": [
+        {
+          "name": "sidebar",
+          "role": "navigation"
+        },
+        {
+          "name": "workspace",
+          "role": "main",
+          "required": true,
+          "description": "Article content (centered measure)."
+        },
+        {
+          "name": "inspector",
+          "role": "complementary",
+          "description": "On-page table of contents."
+        }
+      ],
+      "supportedComponents": [
+        "primitive.center",
+        "primitive.flow",
+        "component.section",
+        "component.card"
+      ],
+      "recommendedPatterns": [
+        "pattern.search"
+      ],
+      "recommendedWorkflows": [
+        "Browse docs → search → read"
+      ]
+    },
+    {
+      "id": "layout.landing",
+      "name": "Landing",
+      "kind": "layout",
+      "variant": "standard",
+      "version": "1.2.0",
+      "purpose": "Marketing / entry layout with hero, sections, and centered content blocks.",
+      "category": "marketing",
+      "status": "planned",
+      "source": "plantasonic-design-system/shell",
+      "supportedThemes": [
+        "dark",
+        "light"
+      ],
+      "regions": [
+        {
+          "name": "header",
+          "role": "banner"
+        },
+        {
+          "name": "hero",
+          "role": "main",
+          "required": true
+        },
+        {
+          "name": "sections",
+          "description": "Stacked content sections."
+        },
+        {
+          "name": "footer",
+          "role": "contentinfo"
+        }
+      ],
+      "supportedComponents": [
+        "primitive.cover",
+        "primitive.center",
+        "primitive.grid",
+        "component.card",
+        "component.button"
+      ],
+      "recommendedWorkflows": [
+        "Communicate value → call to action"
+      ],
+      "migration": [
+        {
+          "version": "1.5.0",
+          "type": "added",
+          "change": "Planned as part of Phase 11 Release C layout variants."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "specVersion": "1.0.0",
+  "id": "analytics-dashboard",
+  "name": "Analytics Dashboard",
+  "description": "Data visualization dashboard with charts",
+  "category": "data-visualization",
+  "version": "0.1.0",
+  "brief": "Data visualization dashboard with charts",
+  "engines": [
+    "engine.visual"
+  ],
+  "layouts": [
+    "layout.dashboard"
+  ],
+  "components": [
+    {
+      "id": "filters",
+      "title": "Filters",
+      "description": "Dataset filters and ranges."
+    }
+  ],
+  "plugins": [],
+  "assets": [],
+  "aiCapabilities": [
+    "compliance",
+    "documentation"
+  ],
+  "deploymentTargets": [
+    "local",
+    "preview",
+    "production"
+  ],
+  "documentation": [
+    "README.md",
+    "ROADMAP.md",
+    "CHANGELOG.md",
+    "project.json",
+    "docs/VALIDATION_CHECKLIST.md"
+  ],
+  "qualityRequirements": [
+    "tokens",
+    "layout",
+    "components",
+    "accessibility",
+    "documentation",
+    "build",
+    "dependencies"
+  ],
+  "services": [
+    "logging",
+    "settings",
+    "autosave",
+    "notifications"
+  ],
+  "workflows": [
+    "workflow.import-assets",
+    "workflow.generate-documentation",
+    "workflow.generate-visual-presets"
+  ],
+  "pipeline": {
+    "concept": "2026-06-29T22:25:58.585Z"
+  },
+  "createdAt": "2026-06-29T22:25:58.585Z",
+  "updatedAt": "2026-06-29T22:25:58.585Z"
+}

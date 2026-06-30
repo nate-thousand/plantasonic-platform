@@ -1,0 +1,71 @@
+{
+  "generatedAt": "2026-06-30T19:13:03.092Z",
+  "sdkVersion": "1.0.0",
+  "automations": [
+    {
+      "id": "automation.create-prototype",
+      "name": "Create New Prototype",
+      "purpose": "Concept → specification → generated project via full pipeline.",
+      "invoke": "studio.createProjectFromConcept",
+      "pipelineStages": [
+        "concept",
+        "specification",
+        "generation"
+      ]
+    },
+    {
+      "id": "automation.upgrade-design-system",
+      "name": "Upgrade Design System",
+      "purpose": "Plan DS upgrade with impact analysis and migration steps.",
+      "invoke": "studio.planDependencyUpgrade"
+    },
+    {
+      "id": "automation.update-dependencies",
+      "name": "Update Dependencies",
+      "purpose": "Analyze and plan dependency upgrades across portfolio.",
+      "invoke": "studio.analyzeRefactoringNeeds"
+    },
+    {
+      "id": "automation.generate-documentation",
+      "name": "Generate Documentation",
+      "purpose": "Run documentation pipeline stage for a project.",
+      "invoke": "studio.runPipeline",
+      "pipelineStages": [
+        "documentation"
+      ]
+    },
+    {
+      "id": "automation.publish-packages",
+      "name": "Publish Packages",
+      "purpose": "Prepare release notes and changelog for package publish.",
+      "invoke": "studio.planDocumentationUpdate"
+    },
+    {
+      "id": "automation.deploy-applications",
+      "name": "Deploy Applications",
+      "purpose": "Run deployment pipeline stage.",
+      "invoke": "studio.runPipeline",
+      "pipelineStages": [
+        "deployment"
+      ]
+    },
+    {
+      "id": "automation.generate-release-notes",
+      "name": "Generate Release Notes",
+      "purpose": "Documentation update plan for releases.",
+      "invoke": "studio.planDocumentationUpdate"
+    },
+    {
+      "id": "automation.create-migration-guide",
+      "name": "Create Migration Guide",
+      "purpose": "Generate migration documentation from refactoring plan.",
+      "invoke": "studio.planTokenMigration"
+    },
+    {
+      "id": "automation.quality-audit",
+      "name": "Run Quality Audit",
+      "purpose": "Validate workspace or project against all quality gates.",
+      "invoke": "studio.validateWorkspace"
+    }
+  ]
+}

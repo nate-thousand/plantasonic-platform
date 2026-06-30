@@ -1,0 +1,868 @@
+/**
+ * Plantasonic Bootstrap — runtime component styling
+ * Binds Bootstrap components to CSS custom properties for theme switching.
+ * Import AFTER bootstrap/scss/bootstrap with css/variables.css loaded.
+ */
+
+@import 'tokens.generated';
+
+// ── Base ────────────────────────────────────────────────────────────────────
+
+body {
+  background-color: $ds-color-surface-app !important;
+  color: $ds-color-text-primary !important;
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  color: $ds-color-text-primary;
+}
+
+a {
+  color: $ds-color-text-link;
+
+  &:hover {
+    color: $ds-color-text-accent;
+  }
+}
+
+// ── Buttons ─────────────────────────────────────────────────────────────────
+
+@mixin ds-btn-states($bg, $bg-hover, $bg-active, $bg-disabled, $color, $border: null) {
+  $b: if($border, $border, $bg);
+  background-color: $bg;
+  border-color: $b;
+  color: $color;
+
+  &:hover {
+    background-color: $bg-hover;
+    border-color: if($border, $border, $bg-hover);
+    color: $color;
+  }
+
+  &:focus,
+  &:focus-visible {
+    background-color: $bg-hover;
+    border-color: $ds-color-border-focus;
+    box-shadow: $ds-shadow-focus;
+    color: $color;
+  }
+
+  &:active,
+  &.active {
+    background-color: $bg-active;
+    border-color: if($border, $border, $bg-active);
+    color: $color;
+  }
+
+  &:disabled,
+  &.disabled {
+    background-color: $bg-disabled;
+    border-color: if($border, $ds-color-border-subtle, $bg-disabled);
+    color: $color;
+    opacity: 0.45;
+  }
+}
+
+.btn-primary {
+  @include ds-btn-states(
+    $ds-color-primary-default,
+    $ds-color-primary-hover,
+    $ds-color-primary-pressed,
+    $ds-color-primary-disabled,
+    $ds-color-text-on-primary
+  );
+}
+
+.btn-secondary {
+  @include ds-btn-states(
+    $ds-color-surface-card,
+    $ds-color-surface-raised-hover,
+    $ds-color-surface-overlay,
+    $ds-color-surface-sunken,
+    $ds-color-text-secondary,
+    $ds-color-border-default
+  );
+}
+
+.btn-success {
+  @include ds-btn-states($ds-color-status-success, $ds-color-status-success, $ds-color-primary-pressed, $ds-color-primary-disabled, $ds-color-text-on-primary);
+}
+
+.btn-info {
+  @include ds-btn-states($ds-color-status-info, $ds-color-text-accent, $ds-color-primary-pressed, $ds-color-primary-disabled, $ds-color-text-on-primary);
+}
+
+.btn-warning {
+  @include ds-btn-states($ds-color-status-warning, $ds-color-status-warning, $ds-color-primary-pressed, $ds-color-primary-disabled, $ds-color-text-on-primary);
+}
+
+.btn-danger {
+  @include ds-btn-states($ds-color-status-error, $ds-color-status-error, $ds-color-status-error, $ds-color-surface-sunken, $ds-color-text-primary);
+}
+
+.btn-outline-primary {
+  color: $ds-color-primary-default;
+  border-color: $ds-color-primary-default;
+  background-color: transparent;
+
+  &:hover,
+  &:focus,
+  &:focus-visible {
+    background-color: $ds-color-primary-default;
+    border-color: $ds-color-primary-default;
+    color: $ds-color-text-on-primary;
+    box-shadow: $ds-shadow-focus;
+  }
+
+  &:active,
+  &.active {
+    background-color: $ds-color-primary-pressed;
+    border-color: $ds-color-primary-pressed;
+    color: $ds-color-text-on-primary;
+  }
+
+  &:disabled,
+  &.disabled {
+    color: $ds-color-text-muted;
+    border-color: $ds-color-border-subtle;
+  }
+}
+
+.btn-outline-secondary {
+  color: $ds-color-text-secondary;
+  border-color: $ds-color-border-strong;
+  background-color: transparent;
+
+  &:hover,
+  &:focus,
+  &:focus-visible {
+    background-color: $ds-color-surface-overlay;
+    border-color: $ds-color-border-default;
+    color: $ds-color-text-primary;
+    box-shadow: $ds-shadow-focus;
+  }
+
+  &:active,
+  &.active {
+    background-color: $ds-color-surface-raised;
+    border-color: $ds-color-border-default;
+    color: $ds-color-text-primary;
+  }
+
+  &:disabled,
+  &.disabled {
+    color: $ds-color-text-muted;
+    border-color: $ds-color-border-subtle;
+  }
+}
+
+.btn-outline-danger {
+  color: $ds-color-status-error;
+  border-color: $ds-color-status-error;
+  background-color: transparent;
+
+  &:hover,
+  &:focus,
+  &:focus-visible {
+    background-color: $ds-color-status-error;
+    border-color: $ds-color-status-error;
+    color: $ds-color-text-primary;
+    box-shadow: $ds-shadow-focus;
+  }
+}
+
+.btn-ghost {
+  background-color: transparent;
+  border-color: $ds-color-border-subtle;
+  color: $ds-color-text-secondary;
+
+  &:hover,
+  &:focus,
+  &:focus-visible {
+    background-color: $ds-color-surface-overlay;
+    border-color: $ds-color-border-default;
+    color: $ds-color-text-primary;
+    box-shadow: $ds-shadow-focus;
+  }
+
+  &:active,
+  &.active {
+    background-color: $ds-color-surface-raised;
+    color: $ds-color-text-primary;
+  }
+}
+
+.btn-link {
+  color: $ds-color-text-secondary;
+  text-decoration: none;
+
+  &:hover {
+    color: $ds-color-text-accent;
+  }
+
+  &:focus-visible {
+    box-shadow: $ds-shadow-focus;
+  }
+
+  &:disabled,
+  &.disabled {
+    color: $ds-color-text-muted;
+  }
+}
+
+.btn-group > .btn-check:checked + .btn,
+.btn-group > .btn.active {
+  z-index: 1;
+}
+
+// ── Forms ───────────────────────────────────────────────────────────────────
+
+.form-control,
+.form-select {
+  background-color: $ds-color-surface-input;
+  border-color: $ds-color-border-default;
+  color: $ds-color-text-primary;
+
+  &:hover:not(:disabled):not([readonly]) {
+    border-color: $ds-color-border-interactive;
+  }
+
+  &:focus,
+  &:focus-visible {
+    background-color: $ds-color-surface-input;
+    border-color: $ds-color-border-focus;
+    color: $ds-color-text-primary;
+    box-shadow: $ds-shadow-focus;
+  }
+
+  &:disabled,
+  &[readonly] {
+    background-color: $ds-color-surface-sunken;
+    border-color: $ds-color-border-subtle;
+    color: $ds-color-text-muted;
+    opacity: 1;
+  }
+
+  &::placeholder {
+    color: $ds-color-text-muted;
+  }
+}
+
+.form-label {
+  color: $ds-color-text-secondary;
+}
+
+.form-text {
+  color: $ds-color-text-muted;
+}
+
+.input-group-text {
+  background-color: $ds-color-surface-sunken;
+  border-color: $ds-color-border-default;
+  color: $ds-color-text-secondary;
+}
+
+.form-check-input {
+  background-color: $ds-color-surface-input;
+  border-color: $ds-color-border-default;
+
+  &:hover:not(:disabled) {
+    border-color: $ds-color-border-interactive;
+  }
+
+  &:checked {
+    background-color: $ds-color-primary-default;
+    border-color: $ds-color-primary-default;
+  }
+
+  &:focus,
+  &:focus-visible {
+    border-color: $ds-color-border-focus;
+    box-shadow: $ds-shadow-focus;
+  }
+
+  &:disabled {
+    opacity: 0.45;
+    background-color: $ds-color-surface-sunken;
+  }
+}
+
+.form-check-label {
+  color: $ds-color-text-primary;
+}
+
+.form-switch .form-check-input {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba(255,255,255,0.35)'/%3e%3c/svg%3e");
+  background-color: $ds-color-surface-input;
+  border-color: $ds-color-border-default;
+
+  &:checked {
+    background-color: $ds-color-primary-default;
+    border-color: $ds-color-primary-default;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23070f0a'/%3e%3c/svg%3e");
+  }
+
+  &:focus {
+    box-shadow: $ds-shadow-focus;
+  }
+}
+
+.form-range {
+  &::-webkit-slider-runnable-track {
+    background-color: $ds-product-slider-track;
+  }
+
+  &::-webkit-slider-thumb {
+    background-color: $ds-product-slider-thumb;
+
+    &:active {
+      background-color: $ds-color-primary-pressed;
+    }
+  }
+
+  &::-moz-range-track {
+    background-color: $ds-product-slider-track;
+  }
+
+  &::-moz-range-thumb {
+    background-color: $ds-product-slider-thumb;
+    border: 0;
+  }
+
+  &:focus::-webkit-slider-thumb {
+    box-shadow: $ds-shadow-focus;
+  }
+}
+
+.form-control.is-valid,
+.form-select.is-valid {
+  border-color: $ds-color-status-success;
+}
+
+.form-control.is-invalid,
+.form-select.is-invalid {
+  border-color: $ds-color-status-error;
+}
+
+.valid-feedback {
+  color: $ds-color-status-success;
+}
+
+.invalid-feedback {
+  color: $ds-color-status-error;
+}
+
+// ── Cards ───────────────────────────────────────────────────────────────────
+
+.card {
+  background-color: $ds-color-surface-card;
+  border-color: $ds-color-border-default;
+  color: $ds-color-text-primary;
+}
+
+.card-header,
+.card-footer {
+  background-color: transparent;
+  border-color: $ds-color-border-subtle;
+  color: $ds-color-text-muted;
+}
+
+// ── Navigation ────────────────────────────────────────────────────────────────
+
+.navbar,
+.navbar-dark,
+.bg-dark {
+  background-color: $ds-color-surface-nav !important;
+}
+
+.navbar-dark .navbar-brand {
+  color: $ds-color-text-primary;
+
+  &:hover,
+  &:focus {
+    color: $ds-color-text-accent;
+  }
+}
+
+.navbar-dark .nav-link {
+  color: $ds-color-text-secondary;
+
+  &:hover,
+  &:focus {
+    color: $ds-color-text-primary;
+  }
+
+  &.active,
+  &[aria-current='page'] {
+    color: $ds-color-text-accent;
+  }
+
+  &.disabled {
+    color: $ds-color-text-muted;
+  }
+}
+
+.navbar-dark .navbar-toggler {
+  border-color: $ds-color-border-subtle;
+  color: $ds-color-text-secondary;
+}
+
+.nav-tabs {
+  border-color: $ds-color-border-subtle;
+
+  .nav-link {
+    color: $ds-color-text-secondary;
+    border-color: transparent;
+
+    &:hover,
+    &:focus {
+      border-color: $ds-color-border-subtle;
+      color: $ds-color-text-primary;
+    }
+
+    &.active {
+      background-color: $ds-color-surface-overlay;
+      border-color: $ds-color-border-subtle;
+      color: $ds-color-text-primary;
+    }
+
+    &.disabled {
+      color: $ds-color-text-muted;
+    }
+  }
+}
+
+.nav-pills {
+  .nav-link {
+    color: $ds-color-text-secondary;
+
+    &:hover {
+      color: $ds-color-text-primary;
+    }
+
+    &.active {
+      background-color: $ds-color-primary-default;
+      color: $ds-color-text-on-primary;
+    }
+
+    &.disabled {
+      color: $ds-color-text-muted;
+    }
+  }
+}
+
+.breadcrumb-item,
+.breadcrumb-item a {
+  color: $ds-color-text-secondary;
+
+  a:hover {
+    color: $ds-color-text-accent;
+  }
+}
+
+.breadcrumb-item.active {
+  color: $ds-color-text-primary;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+  color: $ds-color-text-muted;
+}
+
+.page-link {
+  background-color: $ds-color-surface-raised;
+  border-color: $ds-color-border-default;
+  color: $ds-color-text-secondary;
+
+  &:hover {
+    background-color: $ds-color-surface-overlay;
+    border-color: $ds-color-border-default;
+    color: $ds-color-text-primary;
+  }
+
+  &:focus {
+    box-shadow: $ds-shadow-focus;
+    color: $ds-color-text-primary;
+  }
+}
+
+.page-item.active .page-link {
+  background-color: $ds-color-primary-default;
+  border-color: $ds-color-primary-default;
+  color: $ds-color-text-on-primary;
+}
+
+.page-item.disabled .page-link {
+  background-color: $ds-color-surface-sunken;
+  border-color: $ds-color-border-subtle;
+  color: $ds-color-text-muted;
+}
+
+// ── Overlays ────────────────────────────────────────────────────────────────
+
+.dropdown-menu {
+  background-color: $ds-color-surface-raised;
+  border-color: $ds-color-border-subtle;
+  box-shadow: $ds-shadow-lg;
+}
+
+.dropdown-item {
+  color: $ds-color-text-secondary;
+
+  &:hover,
+  &:focus {
+    background-color: $ds-color-surface-overlay;
+    color: $ds-color-text-primary;
+  }
+
+  &.active,
+  &:active {
+    background-color: $ds-color-surface-overlay;
+    color: $ds-color-text-primary;
+  }
+
+  &.disabled,
+  &:disabled {
+    color: $ds-color-text-muted;
+  }
+}
+
+.dropdown-header {
+  color: $ds-color-text-muted;
+}
+
+.dropdown-divider {
+  border-color: $ds-color-border-subtle;
+}
+
+.modal-content {
+  background-color: $ds-color-surface-raised;
+  border-color: $ds-color-border-subtle;
+  color: $ds-color-text-primary;
+}
+
+.modal-header,
+.modal-footer {
+  border-color: $ds-color-border-subtle;
+}
+
+.modal-backdrop.show {
+  opacity: 1;
+  background-color: $ds-color-overlay-backdrop;
+}
+
+.offcanvas {
+  background-color: $ds-color-surface-raised;
+  border-color: $ds-color-border-subtle;
+  color: $ds-color-text-primary;
+  box-shadow: $ds-product-shadow-sidebar;
+}
+
+.offcanvas-header {
+  border-color: $ds-color-border-subtle;
+}
+
+.tooltip {
+  --bs-tooltip-bg: var(--ds-color-surface-overlay);
+  --bs-tooltip-color: var(--ds-color-text-primary);
+}
+
+.popover {
+  background-color: $ds-color-surface-raised;
+  border-color: $ds-color-border-subtle;
+  color: $ds-color-text-primary;
+  box-shadow: $ds-shadow-lg;
+}
+
+.popover-header {
+  background-color: $ds-color-surface-overlay;
+  border-color: $ds-color-border-subtle;
+  color: $ds-color-text-primary;
+}
+
+.popover-body {
+  color: $ds-color-text-primary;
+}
+
+// ── Tables ──────────────────────────────────────────────────────────────────
+
+.table {
+  color: $ds-color-text-primary;
+  border-color: $ds-color-border-subtle;
+
+  > :not(caption) > * > * {
+    border-color: $ds-color-border-subtle;
+    color: $ds-color-text-primary;
+  }
+
+  thead th {
+    color: $ds-color-text-muted;
+    border-color: $ds-color-border-subtle;
+  }
+}
+
+.table-hover > tbody > tr:hover > * {
+  background-color: $ds-color-overlay-scrim-strong;
+  color: $ds-color-text-primary;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) > * {
+  background-color: $ds-color-overlay-scrim-light;
+  color: $ds-color-text-primary;
+}
+
+// ── Lists & disclosure ────────────────────────────────────────────────────────
+
+.list-group-item {
+  background-color: $ds-color-surface-raised;
+  border-color: $ds-color-border-subtle;
+  color: $ds-color-text-secondary;
+
+  &.active {
+    background-color: $ds-color-surface-overlay;
+    border-color: $ds-color-border-subtle;
+    color: $ds-color-text-primary;
+  }
+
+  &.disabled,
+  &:disabled {
+    color: $ds-color-text-muted;
+    background-color: $ds-color-surface-sunken;
+  }
+}
+
+.list-group-item-action {
+  &:hover,
+  &:focus {
+    background-color: $ds-color-surface-overlay;
+    color: $ds-color-text-primary;
+  }
+
+  &:active {
+    background-color: $ds-color-surface-raised-hover;
+    color: $ds-color-text-primary;
+  }
+}
+
+.accordion-item {
+  background-color: $ds-color-surface-card;
+  border-color: $ds-color-border-subtle;
+  color: $ds-color-text-primary;
+}
+
+.accordion-button {
+  background-color: $ds-color-surface-raised;
+  color: $ds-color-text-primary;
+
+  &:not(.collapsed) {
+    background-color: $ds-color-surface-overlay;
+    color: $ds-color-text-primary;
+    box-shadow: inset 0 calc(-1 * 1px) 0 $ds-color-border-subtle;
+  }
+
+  &:focus {
+    border-color: $ds-color-border-focus;
+    box-shadow: $ds-shadow-focus;
+  }
+
+  &::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23999999'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+  }
+}
+
+// ── Feedback ─────────────────────────────────────────────────────────────────
+
+.alert-success {
+  background-color: $ds-color-overlay-scrim-light;
+  border-color: $ds-color-status-success;
+  color: $ds-color-text-primary;
+}
+
+.alert-info {
+  background-color: $ds-color-overlay-scrim-light;
+  border-color: $ds-color-status-info;
+  color: $ds-color-text-primary;
+}
+
+.alert-warning {
+  background-color: $ds-color-overlay-scrim-light;
+  border-color: $ds-color-status-warning;
+  color: $ds-color-text-primary;
+}
+
+.alert-danger {
+  background-color: $ds-color-status-error-surface;
+  border-color: $ds-color-status-error-border;
+  color: $ds-color-text-primary;
+}
+
+.badge.bg-primary {
+  background-color: $ds-color-primary-default !important;
+  color: $ds-color-text-on-primary !important;
+}
+
+.badge.bg-secondary {
+  background-color: $ds-color-surface-overlay !important;
+  color: $ds-color-text-secondary !important;
+}
+
+.badge.bg-success {
+  background-color: $ds-color-status-success !important;
+  color: $ds-color-text-on-primary !important;
+}
+
+.badge.bg-warning {
+  background-color: $ds-color-status-warning !important;
+  color: $ds-color-text-on-primary !important;
+}
+
+.badge.bg-danger {
+  background-color: $ds-color-status-error !important;
+  color: $ds-color-text-primary !important;
+}
+
+.badge.bg-info {
+  background-color: $ds-color-status-info !important;
+  color: $ds-color-text-on-primary !important;
+}
+
+.progress {
+  background-color: $ds-color-surface-sunken;
+}
+
+.progress-bar {
+  background-color: $ds-color-primary-default;
+
+  &.bg-success {
+    background-color: $ds-color-status-success !important;
+  }
+}
+
+.toast {
+  background-color: $ds-color-surface-raised;
+  border-color: $ds-color-border-subtle;
+  color: $ds-color-text-primary;
+}
+
+.toast-header {
+  background-color: $ds-color-surface-overlay;
+  border-color: $ds-color-border-subtle;
+  color: $ds-color-text-secondary;
+}
+
+.spinner-border,
+.spinner-grow {
+  &.text-primary { color: $ds-color-primary-default !important; }
+  &.text-success { color: $ds-color-status-success !important; }
+  &.text-warning { color: $ds-color-status-warning !important; }
+  &.text-danger { color: $ds-color-status-error !important; }
+}
+
+// ── Close button (theme-aware) ──────────────────────────────────────────────
+
+.btn-close {
+  background-image: none !important;
+  background-color: $ds-color-text-secondary;
+  mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='black'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e");
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  opacity: 0.75;
+
+  &:hover,
+  &:focus {
+    opacity: 1;
+    box-shadow: $ds-shadow-focus;
+  }
+}
+
+.placeholder {
+  background-color: $ds-color-surface-input;
+}
+
+// ── Bootstrap edge components (not in showcase, token cleanup) ────────────────
+
+.blockquote-footer,
+.figure-caption {
+  color: $ds-color-text-muted;
+}
+
+.img-thumbnail {
+  background-color: $ds-color-surface-app;
+  border-color: $ds-color-border-default;
+  box-shadow: $ds-shadow-sm;
+}
+
+kbd {
+  color: $ds-color-text-primary;
+  background-color: $ds-color-surface-overlay;
+}
+
+.dropdown-menu-dark {
+  color: $ds-color-text-secondary;
+  background-color: $ds-color-surface-raised;
+  border-color: $ds-color-border-subtle;
+
+  .dropdown-item {
+    color: $ds-color-text-secondary;
+
+    &:hover,
+    &:focus {
+      color: $ds-color-text-primary;
+      background-color: $ds-color-surface-overlay;
+    }
+  }
+
+  .dropdown-item-text,
+  .dropdown-header {
+    color: $ds-color-text-muted;
+  }
+
+  .dropdown-divider {
+    border-color: $ds-color-border-subtle;
+  }
+}
+
+.btn-link:disabled,
+.btn-link.disabled {
+  color: $ds-color-text-muted;
+}
+
+.page-item.disabled .page-link {
+  color: $ds-color-text-muted;
+}
+
+.popover .popover-arrow::before {
+  border-color: transparent;
+}
+
+.bs-popover-top > .popover-arrow::before,
+.bs-popover-auto[data-popper-placement^='top'] > .popover-arrow::before {
+  border-top-color: $ds-color-border-subtle;
+}
+
+.bs-popover-end > .popover-arrow::before,
+.bs-popover-auto[data-popper-placement^='right'] > .popover-arrow::before {
+  border-right-color: $ds-color-border-subtle;
+}
+
+.bs-popover-bottom > .popover-arrow::before,
+.bs-popover-auto[data-popper-placement^='bottom'] > .popover-arrow::before {
+  border-bottom-color: $ds-color-border-subtle;
+}
+
+.bs-popover-start > .popover-arrow::before,
+.bs-popover-auto[data-popper-placement^='left'] > .popover-arrow::before {
+  border-left-color: $ds-color-border-subtle;
+}
+
+.text-white-50 {
+  color: $ds-color-text-muted !important;
+}
+
+// ── Focus ─────────────────────────────────────────────────────────────────────
+
+:focus-visible {
+  outline: 2px solid $ds-color-border-focus;
+  outline-offset: 2px;
+}

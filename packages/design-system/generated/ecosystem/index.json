@@ -1,0 +1,17 @@
+{
+  "generatedAt": "2026-06-30T19:13:02.919Z",
+  "sdkVersion": "1.0.0",
+  "description": "Plantasonic Creative Ecosystem — AI context manifest",
+  "files": [
+    "architecture.json",
+    "engines.json",
+    "workflows.json",
+    "services.json",
+    "ecosystem.json"
+  ],
+  "counts": {
+    "engines": 10,
+    "workflows": 8,
+    "services": 12
+  }
+}

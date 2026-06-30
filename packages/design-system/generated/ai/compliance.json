@@ -1,0 +1,37 @@
+{
+  "generatedAt": "2026-06-30T19:13:02.605Z",
+  "sdkVersion": "1.5.0",
+  "metadataSpecVersion": "1.0.0",
+  "rules": [
+    {
+      "id": "no-hardcoded-color",
+      "severity": "error",
+      "description": "No hardcoded hex colors — use design tokens."
+    },
+    {
+      "id": "no-raw-color-function",
+      "severity": "warning",
+      "description": "Avoid raw rgb()/hsl() colors; prefer tokens."
+    },
+    {
+      "id": "unknown-design-token",
+      "severity": "warning",
+      "description": "Referenced --ds-*/--ps-* variable not in the token registry."
+    },
+    {
+      "id": "deprecated-token",
+      "severity": "error",
+      "description": "Use of a deprecated token."
+    },
+    {
+      "id": "deprecated-api",
+      "severity": "error",
+      "description": "Use of a deprecated component API."
+    },
+    {
+      "id": "duplicate-component",
+      "severity": "warning",
+      "description": "Local component duplicates a Design System component."
+    }
+  ]
+}

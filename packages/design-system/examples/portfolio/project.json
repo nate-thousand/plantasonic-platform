@@ -1,0 +1,58 @@
+{
+  "specVersion": "1.0.0",
+  "id": "case-studies",
+  "name": "Case Studies",
+  "description": "Portfolio showcase demo",
+  "category": "portfolio-demo",
+  "version": "0.1.0",
+  "brief": "Portfolio showcase demo",
+  "engines": [
+    "engine.visual"
+  ],
+  "layouts": [
+    "layout.landing"
+  ],
+  "components": [],
+  "plugins": [],
+  "assets": [],
+  "aiCapabilities": [
+    "compliance",
+    "documentation"
+  ],
+  "deploymentTargets": [
+    "local",
+    "preview",
+    "production"
+  ],
+  "documentation": [
+    "README.md",
+    "ROADMAP.md",
+    "CHANGELOG.md",
+    "project.json",
+    "docs/VALIDATION_CHECKLIST.md"
+  ],
+  "qualityRequirements": [
+    "tokens",
+    "layout",
+    "components",
+    "accessibility",
+    "documentation",
+    "build",
+    "dependencies"
+  ],
+  "services": [
+    "logging",
+    "settings",
+    "autosave",
+    "notifications"
+  ],
+  "workflows": [
+    "workflow.import-assets",
+    "workflow.generate-documentation"
+  ],
+  "pipeline": {
+    "concept": "2026-06-29T22:25:58.600Z"
+  },
+  "createdAt": "2026-06-29T22:25:58.600Z",
+  "updatedAt": "2026-06-29T22:25:58.600Z"
+}

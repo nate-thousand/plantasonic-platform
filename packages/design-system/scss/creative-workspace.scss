@@ -1,0 +1,217 @@
+/**
+ * Plantasonic Design System — Creative Workspace layer.
+ *
+ * Overlay-first layout presets between the Application Shell and application
+ * content. The stage fills the viewport; transport, inspector, browser, HUD,
+ * and command palette float above it.
+ *
+ * Import after instrument.scss (reuses .ps-stage, .ps-floating-panel, HUD).
+ */
+
+@import 'tokens.generated';
+
+// ── Workspace root ───────────────────────────────────────────────────────────
+
+.ps-creative-workspace {
+  position: relative;
+  inline-size: 100%;
+  block-size: 100%;
+  min-block-size: 100dvh;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr;
+  background: var(--ps-creative-instrument-background);
+  color: var(--ds-color-text-primary);
+  overflow: hidden;
+  padding: env(safe-area-inset-top, 0) env(safe-area-inset-right, 0)
+    env(safe-area-inset-bottom, 0) env(safe-area-inset-left, 0);
+
+  &__stage {
+    grid-row: 1;
+    grid-column: 1;
+    position: relative;
+    min-block-size: 0;
+    min-inline-size: 0;
+    z-index: 1;
+  }
+
+  &__overlays {
+    grid-row: 1;
+    grid-column: 1;
+    position: relative;
+    z-index: 5;
+    pointer-events: none;
+    min-block-size: 0;
+    min-inline-size: 0;
+  }
+}
+
+// Stage always fills the workspace frame.
+.ps-cw-stage,
+.ps-creative-workspace .ps-region--stage {
+  position: absolute;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+// ── Floating surfaces ──────────────────────────────────────────────────────────
+
+.ps-cw-surface {
+  position: absolute;
+  pointer-events: none;
+  max-inline-size: min(24rem, calc(100% - 2 * var(--ps-creative-instrument-gutter)));
+  z-index: 6;
+
+  > .ps-floating-panel,
+  > .ps-cw-hud {
+    pointer-events: auto;
+    box-shadow: var(--ps-creative-overlay-shadow);
+    background: var(--ps-creative-glass-background);
+    border: 1px solid var(--ps-creative-inspector-border);
+    border-radius: var(--ps-creative-overlay-radius);
+    backdrop-filter: blur(var(--ps-creative-glass-blur));
+  }
+
+  > .ps-floating-panel {
+    padding: var(--ds-space-2);
+    max-block-size: min(70vh, 32rem);
+    overflow: auto;
+  }
+
+  &--top-left { inset-block-start: var(--ps-creative-instrument-gutter); inset-inline-start: var(--ps-creative-instrument-gutter); }
+  &--top-center {
+    inset-block-start: var(--ps-creative-instrument-gutter);
+    inset-inline-start: 50%;
+    transform: translateX(-50%);
+    max-inline-size: min(36rem, calc(100% - 2 * var(--ps-creative-instrument-gutter)));
+  }
+  &--top-right { inset-block-start: var(--ps-creative-instrument-gutter); inset-inline-end: var(--ps-creative-instrument-gutter); }
+  &--center-left {
+    inset-block-start: 50%;
+    inset-inline-start: var(--ps-creative-instrument-gutter);
+    transform: translateY(-50%);
+  }
+  &--center-right {
+    inset-block-start: 50%;
+    inset-inline-end: var(--ps-creative-instrument-gutter);
+    transform: translateY(-50%);
+  }
+  &--bottom-left { inset-block-end: var(--ps-creative-instrument-gutter); inset-inline-start: var(--ps-creative-instrument-gutter); }
+  &--bottom-center {
+    inset-block-end: var(--ps-creative-instrument-gutter);
+    inset-inline-start: 50%;
+    transform: translateX(-50%);
+    max-inline-size: min(48rem, calc(100% - 2 * var(--ps-creative-instrument-gutter)));
+  }
+  &--bottom-right { inset-block-end: var(--ps-creative-instrument-gutter); inset-inline-end: var(--ps-creative-instrument-gutter); }
+
+  &--transport > .ps-floating-panel {
+    padding: var(--ds-space-1) var(--ds-space-2);
+    background: var(--ps-creative-transport-background);
+    border-color: var(--ps-creative-transport-border);
+    box-shadow: var(--ps-creative-transport-shadow);
+  }
+  &--inspector > .ps-floating-panel {
+    max-inline-size: min(20rem, calc(100% - 2 * var(--ps-creative-instrument-gutter)));
+    background: var(--ps-creative-inspector-background);
+    border-color: var(--ps-creative-inspector-border);
+    box-shadow: var(--ps-creative-inspector-shadow);
+  }
+  &--browser > .ps-floating-panel {
+    max-inline-size: min(18rem, calc(100% - 2 * var(--ps-creative-instrument-gutter)));
+    background: var(--ps-creative-preset-browser-background);
+    border-color: var(--ps-creative-preset-browser-border);
+    border-radius: var(--ps-creative-preset-browser-radius);
+  }
+}
+
+.ps-cw-hud {
+  padding: var(--ds-space-1) var(--ds-space-2);
+  font-family: var(--ds-font-family-mono);
+  font-size: var(--ds-font-size-caption);
+  color: var(--ps-creative-hud-text);
+  opacity: var(--ps-creative-hud-opacity);
+  pointer-events: none;
+}
+
+// ── Preset modifiers ─────────────────────────────────────────────────────────
+
+.ps-creative-workspace--visualizer {
+  .ps-cw-surface--transport { opacity: 0.85; }
+}
+
+.ps-creative-workspace--installation {
+  .ps-cw-surface--hud { opacity: 0.6; }
+}
+
+.ps-creative-workspace--presentation {
+  .ps-cw-surface--transport {
+    opacity: 0;
+    transition: opacity var(--ds-motion-duration-base) var(--ds-motion-easing-standard);
+  }
+
+  &:hover .ps-cw-surface--transport,
+  &:focus-within .ps-cw-surface--transport { opacity: 1; }
+
+  .ps-presenter-brand {
+    position: absolute;
+    inset-block-start: var(--ps-creative-instrument-gutter);
+    inset-inline-start: var(--ps-creative-instrument-gutter);
+    z-index: 8;
+    pointer-events: none;
+  }
+}
+
+.ps-creative-workspace--studio {
+  .ps-cw-surface--browser > .ps-floating-panel { max-block-size: min(80vh, 40rem); }
+  .ps-cw-surface--inspector > .ps-floating-panel { max-block-size: min(80vh, 40rem); }
+}
+
+// ── Display modes (compose with instrument mode classes) ─────────────────────
+
+.ps-creative-workspace--performance {
+  .ps-cw-surface--inspector,
+  .ps-cw-surface--browser,
+  .ps-cw-surface--palette { display: none !important; }
+}
+
+.ps-creative-workspace--presentation {
+  .ps-cw-surface--inspector,
+  .ps-cw-surface--browser { display: none !important; }
+}
+
+// ── Host inside application shell ────────────────────────────────────────────
+
+.ps-app-shell .ps-creative-workspace,
+.ps-instrument .ps-creative-workspace {
+  min-block-size: 100%;
+  block-size: 100%;
+}
+
+// When nested inside the instrument grid shell, let the workspace fill the stage cell.
+.ps-instrument__stage > .ps-creative-workspace {
+  position: absolute;
+  inset: 0;
+}
+
+// ── Responsive ───────────────────────────────────────────────────────────────
+
+@media (max-width: 768px) {
+  .ps-cw-surface {
+    max-inline-size: calc(100% - 2 * var(--ps-creative-instrument-gutter));
+
+    &--center-left,
+    &--center-right {
+      inset-block-start: auto;
+      inset-block-end: calc(var(--ps-creative-instrument-gutter) + 4rem);
+      transform: none;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ps-creative-workspace--presentation .ps-cw-surface--transport {
+    transition-duration: 0.01ms !important;
+  }
+}

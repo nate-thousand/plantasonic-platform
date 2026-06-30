@@ -1,0 +1,362 @@
+/**
+ * Plantasonic Application Shell — Milestone 4
+ * Extends navigation-framework with docks, overlays, notifications, and app shell grid.
+ */
+
+// ── Application Shell root ────────────────────────────────────────────────────
+
+.ps-app-shell {
+  position: relative;
+  height: 100%;
+  min-height: 20rem;
+  display: grid;
+  grid-template-areas: 'ldock frame rdock';
+  grid-template-columns: auto 1fr auto;
+
+  &--fullscreen,
+  &--focus {
+    .ps-shell__topbar,
+    .ps-shell__sidebar,
+    .ps-shell__dock,
+    .ps-app-dock { display: none; }
+  }
+
+  &--focus .ps-shell__inspector { opacity: 0.3; pointer-events: none; }
+}
+
+// ── Dock Framework ────────────────────────────────────────────────────────────
+
+.ps-app-dock {
+  display: flex;
+  gap: var(--ds-space-1);
+  background: var(--ds-color-surface-dock);
+  border: 1px solid var(--ds-color-border-subtle);
+  padding: var(--ds-space-1);
+  z-index: 5;
+
+  &--bottom {
+    grid-area: unset;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: var(--ps-dock-height);
+    border-radius: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 0;
+  }
+
+  &--left {
+    grid-area: ldock;
+    flex-direction: column;
+    width: 3.5rem;
+    align-items: center;
+    border-radius: var(--ds-radius-lg) 0 0 var(--ds-radius-lg);
+    min-height: 12rem;
+  }
+
+  &--right {
+    grid-area: rdock;
+    flex-direction: column;
+    width: 3.5rem;
+    align-items: center;
+    border-radius: 0 var(--ds-radius-lg) var(--ds-radius-lg) 0;
+  }
+
+  &--floating {
+    position: absolute;
+    bottom: calc(var(--ps-dock-height) + var(--ds-space-3));
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: var(--ds-radius-pill);
+    box-shadow: var(--ps-shadow-overlay);
+    padding: var(--ds-space-1) var(--ds-space-2);
+  }
+
+  &--hidden { display: none; }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: var(--ps-touch-target);
+    min-height: var(--ps-touch-target);
+    border: 0;
+    border-radius: var(--ds-radius-sm);
+    background: transparent;
+    color: var(--ds-color-text-secondary);
+    cursor: pointer;
+    position: relative;
+    font-size: var(--ds-font-size-body-sm);
+    transition: background var(--ds-transition-fast);
+
+    &:hover,
+    &--active {
+      background: var(--ds-color-surface-overlay);
+      color: var(--ds-color-text-accent);
+    }
+
+    &:focus-visible { box-shadow: var(--ds-shadow-focus); outline: none; }
+  }
+
+  &__badge {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    font-size: 0.65rem;
+    padding: 0 0.3em;
+    border-radius: var(--ds-radius-pill);
+    background: var(--ds-color-primary);
+    color: var(--ds-color-text-inverse);
+  }
+}
+
+.ps-app-shell .ps-shell {
+  grid-area: frame;
+  min-height: 20rem;
+  border-radius: var(--ds-radius-lg);
+  overflow: hidden;
+  box-shadow: inset 0 0 0 1px var(--ds-color-border-subtle);
+}
+
+// ── Panel extensions ──────────────────────────────────────────────────────────
+
+.ps-app-panel-stack { max-width: 28rem; }
+
+.ps-app-panel--pinned .ps-panel__header {
+  border-left: 2px solid var(--ds-color-primary);
+}
+
+.ps-app-panel--hidden { display: none; }
+
+.ps-app-panel__actions {
+  display: flex;
+  gap: var(--ds-space-1);
+  margin-left: auto;
+}
+
+.ps-app-panel__action {
+  border: 0;
+  background: transparent;
+  color: var(--ds-color-text-muted);
+  cursor: pointer;
+  padding: 0 var(--ds-space-1);
+  border-radius: var(--ds-radius-xs);
+  font-size: var(--ds-font-size-caption);
+
+  &:hover { color: var(--ds-color-text-primary); background: var(--ds-color-surface-overlay); }
+}
+
+.ps-app-workspace--focus {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 10rem;
+}
+
+// ── Overlay Manager ───────────────────────────────────────────────────────────
+
+.ps-app-overlay-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+}
+
+.ps-app-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--ds-transition-base);
+
+  &--open {
+    pointer-events: auto;
+    opacity: 1;
+  }
+
+  &__backdrop {
+    position: absolute;
+    inset: 0;
+    background: var(--ds-color-overlay-backdrop);
+  }
+
+  &__dialog {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.96);
+    width: min(24rem, 90%);
+    background: var(--ds-color-surface-raised);
+    border: 1px solid var(--ds-color-border-subtle);
+    border-radius: var(--ds-radius-lg);
+    padding: var(--ds-space-4);
+    box-shadow: var(--ps-shadow-overlay);
+    transition: transform var(--ds-transition-base) var(--ds-ease-out);
+  }
+
+  &--open &__dialog { transform: translate(-50%, -50%) scale(1); }
+
+  &__title {
+    font-size: var(--ds-font-size-body);
+    font-weight: var(--ds-font-weight-label);
+    margin: 0 0 var(--ds-space-2);
+  }
+
+  &__message {
+    font-size: var(--ds-font-size-body-sm);
+    color: var(--ds-color-text-secondary);
+    margin: 0 0 var(--ds-space-3);
+  }
+
+  &__actions { display: flex; gap: var(--ds-space-2); justify-content: flex-end; }
+
+  &__drawer {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: min(20rem, 85%);
+    background: var(--ds-color-surface-raised);
+    border: 1px solid var(--ds-color-border-subtle);
+    padding: var(--ds-space-4);
+    box-shadow: var(--ps-shadow-sidebar);
+    transform: translateX(100%);
+    transition: transform var(--ds-transition-base) var(--ds-ease-out);
+  }
+
+  &--drawer.ps-app-overlay--right &__drawer { right: 0; }
+  &--drawer.ps-app-overlay--left &__drawer { left: 0; transform: translateX(-100%); }
+  &--open.ps-app-overlay--drawer &__drawer { transform: translateX(0); }
+
+  &__popover,
+  &__menu {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--ds-color-surface-raised);
+    border: 1px solid var(--ds-color-border-subtle);
+    border-radius: var(--ds-radius-default);
+    padding: var(--ds-space-2);
+    box-shadow: var(--ps-shadow-overlay);
+    font-size: var(--ds-font-size-body-sm);
+  }
+
+  &__menu-item {
+    display: block;
+    width: 100%;
+    padding: var(--ds-space-2) var(--ds-space-3);
+    border: 0;
+    background: transparent;
+    text-align: left;
+    color: var(--ds-color-text-secondary);
+    border-radius: var(--ds-radius-sm);
+    cursor: pointer;
+    min-height: var(--ps-touch-target);
+
+    &:hover { background: var(--ds-color-surface-overlay); color: var(--ds-color-text-primary); }
+  }
+
+  &--loading .ps-loading-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--ds-space-2);
+    background: var(--ds-color-overlay-backdrop);
+    color: var(--ds-color-text-primary);
+  }
+}
+
+// ── Notification System ───────────────────────────────────────────────────────
+
+.ps-app-notification-host {
+  position: absolute;
+  top: var(--ds-space-3);
+  right: var(--ds-space-3);
+  z-index: 110;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-2);
+  max-width: min(22rem, 90%);
+  pointer-events: none;
+}
+
+.ps-app-notification {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--ds-space-2);
+  padding: var(--ds-space-3);
+  background: var(--ds-color-surface-raised);
+  border: 1px solid var(--ds-color-border-default);
+  border-radius: var(--ds-radius-default);
+  border-left: 3px solid var(--ds-color-primary);
+  box-shadow: var(--ps-shadow-overlay);
+  pointer-events: auto;
+  animation: ps-app-notify-in var(--ds-transition-base) var(--ds-ease-out);
+
+  &--success { border-left-color: var(--ds-color-success); }
+  &--warning { border-left-color: var(--ds-color-warning); }
+  &--error { border-left-color: var(--ds-color-error); }
+  &--banner { width: 100%; border-radius: var(--ds-radius-sm); }
+  &--background { opacity: 0.92; }
+
+  &__title { display: block; font-size: var(--ds-font-size-body-sm); font-weight: var(--ds-font-weight-label); }
+  &__message { display: block; font-size: var(--ds-font-size-caption); color: var(--ds-color-text-muted); }
+  &__progress {
+    height: 4px;
+    background: var(--ds-color-surface-input);
+    border-radius: var(--ds-radius-pill);
+    margin-top: var(--ds-space-1);
+    overflow: hidden;
+    > div { height: 100%; background: var(--ds-color-primary); transition: width var(--ds-transition-base); }
+  }
+
+  &__dismiss {
+    border: 0;
+    background: transparent;
+    color: var(--ds-color-text-muted);
+    cursor: pointer;
+    font-size: 1.1rem;
+    line-height: 1;
+    padding: 0 var(--ds-space-1);
+    margin-left: auto;
+    &:hover { color: var(--ds-color-text-primary); }
+  }
+}
+
+@keyframes ps-app-notify-in {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+// ── Responsive layout engine ──────────────────────────────────────────────────
+
+@media (max-width: 992px) {
+  .ps-app-shell {
+    grid-template-columns: 0 1fr 0;
+    .ps-app-dock--left,
+    .ps-app-dock--right { display: none; }
+  }
+}
+
+@media (min-width: 1600px) {
+  .ps-app-shell .ps-shell {
+    --ps-shell-inspector-width: 320px;
+  }
+}
+
+html[data-ds-reduced-motion] {
+  .ps-app-overlay,
+  .ps-app-overlay__dialog,
+  .ps-app-overlay__drawer,
+  .ps-app-notification {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+  }
+}

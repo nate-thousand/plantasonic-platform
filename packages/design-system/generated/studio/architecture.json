@@ -1,0 +1,25 @@
+{
+  "generatedAt": "2026-06-30T19:13:03.092Z",
+  "sdkVersion": "1.0.0",
+  "name": "plantasonic-creative-studio",
+  "pipeline": [
+    "concept",
+    "specification",
+    "architecture",
+    "roadmap",
+    "generation",
+    "implementation",
+    "testing",
+    "documentation",
+    "deployment",
+    "iteration"
+  ],
+  "authoritativeSpec": "project.json",
+  "principles": [
+    "Automate engineering — not human creativity",
+    "Every stage produces structured artifacts",
+    "Projects reproducible from specification",
+    "Continuous validation throughout development",
+    "Shared knowledge across portfolio"
+  ]
+}

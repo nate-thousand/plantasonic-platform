@@ -1,0 +1,26 @@
+{
+  "generatedAt": "2026-06-30T19:13:03.092Z",
+  "sdkVersion": "1.0.0",
+  "description": "Plantasonic Creative Studio — AI context manifest",
+  "pipelineStages": [
+    "concept",
+    "specification",
+    "architecture",
+    "roadmap",
+    "generation",
+    "implementation",
+    "testing",
+    "documentation",
+    "deployment",
+    "iteration"
+  ],
+  "files": [
+    "architecture.json",
+    "automations.json",
+    "knowledge.json"
+  ],
+  "counts": {
+    "automations": 9,
+    "pipelineStages": 10
+  }
+}

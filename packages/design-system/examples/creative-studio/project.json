@@ -1,0 +1,69 @@
+{
+  "specVersion": "1.0.0",
+  "id": "creative-studio",
+  "name": "Creative Studio",
+  "description": "Creative authoring studio tool",
+  "category": "creative-tool",
+  "version": "0.1.0",
+  "brief": "Creative authoring studio tool",
+  "engines": [
+    "engine.visual"
+  ],
+  "layouts": [
+    "layout.studio"
+  ],
+  "components": [
+    {
+      "id": "library",
+      "title": "Library",
+      "description": "Assets and presets."
+    },
+    {
+      "id": "properties",
+      "title": "Properties",
+      "description": "Selection properties."
+    }
+  ],
+  "plugins": [],
+  "assets": [],
+  "aiCapabilities": [
+    "compliance",
+    "documentation"
+  ],
+  "deploymentTargets": [
+    "local",
+    "preview",
+    "production"
+  ],
+  "documentation": [
+    "README.md",
+    "ROADMAP.md",
+    "CHANGELOG.md",
+    "project.json",
+    "docs/VALIDATION_CHECKLIST.md"
+  ],
+  "qualityRequirements": [
+    "tokens",
+    "layout",
+    "components",
+    "accessibility",
+    "documentation",
+    "build",
+    "dependencies"
+  ],
+  "services": [
+    "logging",
+    "settings",
+    "autosave",
+    "notifications"
+  ],
+  "workflows": [
+    "workflow.import-assets",
+    "workflow.generate-documentation"
+  ],
+  "pipeline": {
+    "concept": "2026-06-29T22:25:58.597Z"
+  },
+  "createdAt": "2026-06-29T22:25:58.597Z",
+  "updatedAt": "2026-06-29T22:25:58.597Z"
+}

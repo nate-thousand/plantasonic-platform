@@ -1,0 +1,30 @@
+{
+  "generatedAt": "2026-06-30T19:13:02.919Z",
+  "sdkVersion": "1.0.0",
+  "name": "plantasonic-creative-ecosystem",
+  "layers": [
+    {
+      "id": "design-system",
+      "purpose": "Tokens, components, layouts, motion, shell."
+    },
+    {
+      "id": "ai",
+      "purpose": "Registry, validation, documentation, knowledge graph."
+    },
+    {
+      "id": "prototype",
+      "purpose": "Prototype generation and scaffolding."
+    },
+    {
+      "id": "platform",
+      "purpose": "Engines, assets, presets, workflows, projects, services, deployment, quality."
+    }
+  ],
+  "principles": [
+    "Applications are lightweight clients",
+    "Install engines — never embed",
+    "Reference shared assets — never duplicate",
+    "Invoke workflows — never reimplement",
+    "Use platform services — never rebuild locally"
+  ]
+}

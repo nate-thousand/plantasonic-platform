@@ -1,0 +1,6 @@
+/**
+ * Backward-compatible entry — imports the full Plantasonic Bootstrap runtime layer.
+ * Prefer importing bootstrap-components + bootstrap-utilities directly.
+ */
+@import 'bootstrap-components';
+@import 'bootstrap-utilities';

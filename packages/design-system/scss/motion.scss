@@ -1,0 +1,129 @@
+/**
+ * Plantasonic Design System — Motion utilities (Layer 3).
+ *
+ * Declarative animation utility classes driven entirely by motion tokens.
+ * Pair with src/motion (Web Animations API) for imperative control.
+ * Import after css/variables.css so the --ds-motion-* custom properties resolve.
+ */
+
+@import 'tokens.generated';
+
+// ── Keyframes ─────────────────────────────────────────────────────────────────
+
+@keyframes ds-motion-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes ds-motion-fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes ds-motion-slide-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes ds-motion-slide-down {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes ds-motion-slide-left {
+  from { opacity: 0; transform: translateX(8px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes ds-motion-slide-right {
+  from { opacity: 0; transform: translateX(-8px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes ds-motion-scale-in {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes ds-motion-expand {
+  from { opacity: 0; transform: scaleY(0.85); transform-origin: top; }
+  to { opacity: 1; transform: scaleY(1); transform-origin: top; }
+}
+
+@keyframes ds-motion-collapse {
+  from { opacity: 1; transform: scaleY(1); transform-origin: top; }
+  to { opacity: 0; transform: scaleY(0.85); transform-origin: top; }
+}
+
+@keyframes ds-motion-pulse {
+  0% { opacity: 0.45; }
+  50% { opacity: 1; }
+  100% { opacity: 0.45; }
+}
+
+// ── Utility classes ─────────────────────────────────────────────────────────
+
+.ds-animate {
+  animation-duration: var(--ds-motion-duration-base);
+  animation-timing-function: var(--ds-motion-easing-standard);
+  animation-fill-mode: both;
+}
+
+.ds-animate--fade-in { animation-name: ds-motion-fade-in; animation-timing-function: var(--ds-motion-easing-entrance); }
+.ds-animate--fade-out { animation-name: ds-motion-fade-out; animation-duration: var(--ds-motion-duration-fast); animation-timing-function: var(--ds-motion-easing-exit); }
+.ds-animate--slide-up { animation-name: ds-motion-slide-up; animation-timing-function: var(--ds-motion-easing-emphasized); }
+.ds-animate--slide-down { animation-name: ds-motion-slide-down; animation-timing-function: var(--ds-motion-easing-emphasized); }
+.ds-animate--slide-left { animation-name: ds-motion-slide-left; animation-timing-function: var(--ds-motion-easing-emphasized); }
+.ds-animate--slide-right { animation-name: ds-motion-slide-right; animation-timing-function: var(--ds-motion-easing-emphasized); }
+.ds-animate--scale-in { animation-name: ds-motion-scale-in; animation-duration: var(--ds-motion-duration-fast); animation-timing-function: var(--ds-motion-easing-spring); }
+.ds-animate--expand { animation-name: ds-motion-expand; }
+.ds-animate--collapse { animation-name: ds-motion-collapse; animation-duration: var(--ds-motion-duration-fast); animation-timing-function: var(--ds-motion-easing-exit); }
+.ds-animate--pulse { animation-name: ds-motion-pulse; animation-duration: var(--ds-motion-duration-slower); animation-iteration-count: infinite; }
+
+// Duration + easing modifiers
+.ds-animate--micro { animation-duration: var(--ds-motion-duration-micro); }
+.ds-animate--fast { animation-duration: var(--ds-motion-duration-fast); }
+.ds-animate--base { animation-duration: var(--ds-motion-duration-base); }
+.ds-animate--slow { animation-duration: var(--ds-motion-duration-slow); }
+.ds-animate--slower { animation-duration: var(--ds-motion-duration-slower); }
+
+.ds-ease--standard { animation-timing-function: var(--ds-motion-easing-standard); }
+.ds-ease--emphasized { animation-timing-function: var(--ds-motion-easing-emphasized); }
+.ds-ease--entrance { animation-timing-function: var(--ds-motion-easing-entrance); }
+.ds-ease--exit { animation-timing-function: var(--ds-motion-easing-exit); }
+.ds-ease--spring { animation-timing-function: var(--ds-motion-easing-spring); }
+
+// Token-driven transition helper for interactive elements
+.ds-transition {
+  transition:
+    background var(--ds-motion-duration-base) var(--ds-motion-easing-standard),
+    border-color var(--ds-motion-duration-base) var(--ds-motion-easing-standard),
+    color var(--ds-motion-duration-base) var(--ds-motion-easing-standard),
+    box-shadow var(--ds-motion-duration-base) var(--ds-motion-easing-standard),
+    opacity var(--ds-motion-duration-fast) var(--ds-motion-easing-standard),
+    transform var(--ds-motion-duration-fast) var(--ds-motion-easing-standard);
+}
+
+// ── Reduced motion ────────────────────────────────────────────────────────────
+
+@mixin ds-reduced-motion {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ds-animate,
+  [class*='ds-animate--'],
+  .ds-transition {
+    @include ds-reduced-motion;
+  }
+}
+
+html[data-ds-reduced-motion] {
+  .ds-animate,
+  [class*='ds-animate--'],
+  .ds-transition {
+    @include ds-reduced-motion;
+  }
+}

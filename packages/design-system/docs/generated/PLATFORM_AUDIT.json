@@ -1,0 +1,21 @@
+{
+  "generatedAt": "2026-06-29T22:30:07.134Z",
+  "version": "1.0.0",
+  "status": "1.0-ready",
+  "summary": {
+    "exports": 41,
+    "stableExports": 40,
+    "testFiles": 21,
+    "findings": 1,
+    "errors": 0,
+    "warnings": 0
+  },
+  "findings": [
+    {
+      "severity": "info",
+      "category": "technical-debt",
+      "message": "7 local escapeHtml copies — consolidate in v1.1",
+      "path": "src/"
+    }
+  ]
+}

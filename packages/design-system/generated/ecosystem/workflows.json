@@ -1,0 +1,143 @@
+{
+  "generatedAt": "2026-06-30T19:13:02.919Z",
+  "sdkVersion": "1.0.0",
+  "workflows": [
+    {
+      "id": "workflow.import-assets",
+      "name": "Import Assets",
+      "purpose": "Import images, audio, video, and models into the shared asset registry.",
+      "invoke": "platform.importAssets",
+      "inputs": [
+        "files"
+      ],
+      "outputs": [
+        "assetIds"
+      ],
+      "tags": [
+        "assets",
+        "import"
+      ]
+    },
+    {
+      "id": "workflow.generate-textures",
+      "name": "Generate Textures",
+      "purpose": "AI/procedural texture generation into asset registry.",
+      "invoke": "platform.generateTextures",
+      "inputs": [
+        "prompt",
+        "count"
+      ],
+      "outputs": [
+        "assetIds"
+      ],
+      "tags": [
+        "assets",
+        "ai",
+        "generate"
+      ]
+    },
+    {
+      "id": "workflow.generate-sound-worlds",
+      "name": "Generate Sound Worlds",
+      "purpose": "Generate ambient sound presets via sound engine.",
+      "invoke": "platform.generateSoundWorlds",
+      "inputs": [
+        "mood",
+        "duration"
+      ],
+      "outputs": [
+        "presetIds"
+      ],
+      "tags": [
+        "sound",
+        "ai",
+        "generate"
+      ]
+    },
+    {
+      "id": "workflow.generate-midi-mappings",
+      "name": "Generate MIDI Mappings",
+      "purpose": "Auto-map MIDI CC to parameters.",
+      "invoke": "platform.generateMidiMappings",
+      "inputs": [
+        "deviceId",
+        "parameters"
+      ],
+      "outputs": [
+        "mappingPreset"
+      ],
+      "tags": [
+        "midi",
+        "ai"
+      ]
+    },
+    {
+      "id": "workflow.generate-visual-presets",
+      "name": "Generate Visual Presets",
+      "purpose": "AI-generated visual parameter presets.",
+      "invoke": "platform.generateVisualPresets",
+      "inputs": [
+        "brief",
+        "count"
+      ],
+      "outputs": [
+        "presetIds"
+      ],
+      "tags": [
+        "visual",
+        "ai",
+        "generate"
+      ]
+    },
+    {
+      "id": "workflow.generate-documentation",
+      "name": "Generate Documentation",
+      "purpose": "Generate README, API docs, and validation checklist from project manifest.",
+      "invoke": "platform.generateDocumentation",
+      "inputs": [
+        "projectId"
+      ],
+      "outputs": [
+        "docs"
+      ],
+      "tags": [
+        "docs",
+        "ai"
+      ]
+    },
+    {
+      "id": "workflow.generate-marketing-assets",
+      "name": "Generate Marketing Assets",
+      "purpose": "Screenshots, social cards, and demo copy from project state.",
+      "invoke": "platform.generateMarketingAssets",
+      "inputs": [
+        "projectId",
+        "formats"
+      ],
+      "outputs": [
+        "assetIds"
+      ],
+      "tags": [
+        "marketing",
+        "ai"
+      ]
+    },
+    {
+      "id": "workflow.generate-demo",
+      "name": "Generate Demo",
+      "purpose": "Record or build a shareable demo from current project.",
+      "invoke": "platform.generateDemo",
+      "inputs": [
+        "projectId",
+        "duration"
+      ],
+      "outputs": [
+        "url"
+      ],
+      "tags": [
+        "demo",
+        "deploy"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "generatedAt": "2026-06-30T19:13:03.092Z",
+  "sdkVersion": "1.0.0",
+  "entries": [
+    {
+      "id": "principle.token-first",
+      "type": "principle",
+      "title": "Token-first styling",
+      "body": "All colors, spacing, and motion must use design-system tokens — never hardcoded values.",
+      "tags": [
+        "tokens",
+        "design-system"
+      ],
+      "createdAt": "2026-06-30T19:13:03.085Z"
+    },
+    {
+      "id": "principle.lightweight-client",
+      "type": "principle",
+      "title": "Lightweight platform clients",
+      "body": "Applications install engines and consume platform services — they never embed or duplicate infrastructure.",
+      "tags": [
+        "platform",
+        "architecture"
+      ],
+      "createdAt": "2026-06-30T19:13:03.091Z"
+    },
+    {
+      "id": "practice.spec-authoritative",
+      "type": "practice",
+      "title": "project.json is authoritative",
+      "body": "Every project must be reproducible from project.json via orchestrateProject().",
+      "tags": [
+        "studio",
+        "specification"
+      ],
+      "createdAt": "2026-06-30T19:13:03.091Z"
+    }
+  ]
+}

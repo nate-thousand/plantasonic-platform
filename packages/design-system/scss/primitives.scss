@@ -1,0 +1,208 @@
+/**
+ * Plantasonic Design System — Layout primitives (Layer 9).
+ *
+ * Token-driven, composable layout building blocks. Each primitive reads its
+ * configuration from `--ds-l-*` custom properties set by src/primitives.
+ * No color or typography is applied here beyond inheritance.
+ */
+
+@import 'tokens.generated';
+
+// Alignment + justification are resolved to valid CSS values in src/primitives
+// and applied via the --ds-l-align / --ds-l-justify custom properties.
+
+// ── Stack ───────────────────────────────────────────────────────────────────
+
+.ds-l-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-l-gap, var(--ds-space-4));
+  align-items: var(--ds-l-align, stretch);
+  justify-content: var(--ds-l-justify, flex-start);
+}
+
+// ── Inline ────────────────────────────────────────────────────────────────
+
+.ds-l-inline {
+  display: flex;
+  flex-direction: row;
+  gap: var(--ds-l-gap, var(--ds-space-2));
+  align-items: var(--ds-l-align, center);
+  justify-content: var(--ds-l-justify, flex-start);
+
+  &--wrap { flex-wrap: wrap; }
+}
+
+// ── Cluster ─────────────────────────────────────────────────────────────────
+
+.ds-l-cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ds-l-gap, var(--ds-space-2));
+  align-items: var(--ds-l-align, center);
+  justify-content: var(--ds-l-justify, flex-start);
+}
+
+// ── Grid ──────────────────────────────────────────────────────────────────
+
+.ds-l-grid {
+  display: grid;
+  gap: var(--ds-l-gap, var(--ds-space-4));
+  grid-template-columns: var(--ds-l-grid-template, repeat(auto-fill, minmax(min(14rem, 100%), 1fr)));
+}
+
+// ── Sidebar ─────────────────────────────────────────────────────────────────
+
+.ds-l-sidebar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ds-l-gap, var(--ds-space-4));
+
+  > .ds-l-sidebar__side {
+    flex-basis: var(--ds-l-side-width, 18rem);
+    flex-grow: 1;
+  }
+
+  > .ds-l-sidebar__main {
+    flex-basis: 0;
+    flex-grow: 999;
+    min-inline-size: var(--ds-l-content-min, 50%);
+  }
+}
+
+// ── Split ───────────────────────────────────────────────────────────────────
+
+.ds-l-split {
+  display: grid;
+  gap: var(--ds-l-gap, var(--ds-space-4));
+  grid-template-columns: var(--ds-l-split-a, 1fr) var(--ds-l-split-b, 1fr);
+
+  &--vertical {
+    grid-template-columns: 1fr;
+    grid-template-rows: var(--ds-l-split-a, 1fr) var(--ds-l-split-b, 1fr);
+  }
+}
+
+// ── Frame ───────────────────────────────────────────────────────────────────
+
+.ds-l-frame {
+  display: block;
+  aspect-ratio: var(--ds-l-ratio, 16 / 9);
+  overflow: hidden;
+
+  > img,
+  > video,
+  > canvas,
+  > * {
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+  }
+}
+
+// ── Center ──────────────────────────────────────────────────────────────────
+
+.ds-l-center {
+  box-sizing: content-box;
+  margin-inline: auto;
+  max-inline-size: var(--ds-l-measure, 70ch);
+  padding-inline: var(--ds-l-gutter, var(--ds-space-4));
+
+  &--intrinsic {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+// ── Cover ───────────────────────────────────────────────────────────────────
+
+.ds-l-cover {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-l-gap, var(--ds-space-4));
+  min-block-size: var(--ds-l-min-height, 100vh);
+
+  > .ds-l-cover__main {
+    margin-block: auto;
+  }
+}
+
+// ── Container ─────────────────────────────────────────────────────────────────
+
+.ds-l-container {
+  inline-size: 100%;
+  max-inline-size: var(--ds-l-max-width, 80rem);
+  margin-inline: auto;
+  padding-inline: var(--ds-l-gutter, var(--ds-space-5));
+}
+
+// ── Surface ───────────────────────────────────────────────────────────────────
+
+.ds-l-surface {
+  background: var(--ds-l-surface-bg, var(--ds-color-surface-default));
+  padding: var(--ds-l-pad, var(--ds-space-4));
+  border-radius: var(--ds-l-radius, var(--ds-radius-default));
+  color: var(--ds-color-text-primary);
+
+  &--bordered {
+    border: 1px solid var(--ds-color-border-subtle);
+  }
+}
+
+// ── Section ─────────────────────────────────────────────────────────────────
+
+.ds-l-section {
+  display: block;
+  padding-block: var(--ds-l-spacing, var(--ds-space-6));
+}
+
+// ── Region ──────────────────────────────────────────────────────────────────
+
+.ds-l-region {
+  display: block;
+}
+
+// ── Viewport ──────────────────────────────────────────────────────────────────
+
+.ds-l-viewport {
+  min-block-size: 100dvh;
+  display: flex;
+  flex-direction: column;
+  padding-block-start: env(safe-area-inset-top, 0);
+  padding-block-end: env(safe-area-inset-bottom, 0);
+  padding-inline-start: env(safe-area-inset-left, 0);
+  padding-inline-end: env(safe-area-inset-right, 0);
+}
+
+// ── Spacer ──────────────────────────────────────────────────────────────────
+
+.ds-l-spacer {
+  display: block;
+
+  &--flex { flex: 1 1 auto; }
+
+  &--fixed {
+    flex: 0 0 auto;
+    block-size: var(--ds-l-spacer-size, var(--ds-space-4));
+    inline-size: 100%;
+  }
+
+  &--fixed.ds-l-spacer--inline {
+    display: inline-block;
+    inline-size: var(--ds-l-spacer-size, var(--ds-space-4));
+    block-size: auto;
+  }
+}
+
+// ── Inset ───────────────────────────────────────────────────────────────────
+
+.ds-l-inset {
+  padding: var(--ds-l-pad, var(--ds-space-4));
+}
+
+// ── Flow ────────────────────────────────────────────────────────────────────
+
+.ds-l-flow > * + * {
+  margin-block-start: var(--ds-l-flow-gap, var(--ds-space-3));
+}

@@ -1,0 +1,346 @@
+/**
+ * Plantasonic Design System — Instrument Shell + Creative Application Framework.
+ *
+ * Edge-to-edge, canvas-first shell variant and standardized creative regions
+ * for immersive applications (music, visual, video, VJ, lighting, generative,
+ * creative coding, installation, simulation, performance).
+ *
+ * Token-driven. Reuses existing instrument surfaces in plantasonic-components.scss
+ * (.ps-stage-container, .ps-transport*, .ps-hud-overlay, .ps-performance-overlay,
+ * .ps-floating-panel, .ps-dock, .ps-inspector, .ps-meter, .ps-status-dot).
+ * Import after plantasonic-components.scss and application-shell.scss.
+ */
+
+@import 'tokens.generated';
+
+// ── Instrument shell frame ───────────────────────────────────────────────────
+
+// When the instrument frame is hosted inside the standard app-shell wrapper,
+// drop the navigation grid so the instrument frame fills edge to edge.
+.ps-app-shell:has(> .ps-instrument) {
+  display: block;
+  grid-template-areas: none;
+  grid-template-columns: none;
+}
+
+.ps-instrument {
+  position: relative;
+  inline-size: 100%;
+  block-size: 100%;
+  min-block-size: 100dvh;
+  display: grid;
+  grid-template-areas:
+    'rail stage aside'
+    'rail transport aside';
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: 1fr auto;
+  background: var(--ds-color-surface-app);
+  color: var(--ds-color-text-primary);
+  overflow: hidden;
+  // safe areas for fullscreen / notched devices
+  padding: env(safe-area-inset-top, 0) env(safe-area-inset-right, 0)
+    env(safe-area-inset-bottom, 0) env(safe-area-inset-left, 0);
+
+  &__rail { grid-area: rail; z-index: 4; }
+  &__aside { grid-area: aside; z-index: 4; }
+  &__transport { grid-area: transport; z-index: 6; }
+
+  &__stage {
+    grid-area: stage;
+    position: relative;
+    min-block-size: 0;
+    min-inline-size: 0;
+    overflow: hidden;
+  }
+}
+
+// ── Stage region — fills available space, hosts the canvas ───────────────────
+
+.ps-region--stage,
+.ps-stage {
+  position: relative;
+  inline-size: 100%;
+  block-size: 100%;
+  display: flex;
+  background: var(--ds-color-surface-stage);
+  overflow: hidden;
+
+  // Canvas mount slot — any renderer fills it without changing layout.
+  .ps-canvas-mount {
+    position: absolute;
+    inset: 0;
+    inline-size: 100%;
+    block-size: 100%;
+
+    > canvas,
+    > svg,
+    > video,
+    > img,
+    > .ps-canvas-mount__layer {
+      inline-size: 100%;
+      block-size: 100%;
+      display: block;
+      object-fit: contain;
+    }
+  }
+}
+
+// ── Floating controls layer ──────────────────────────────────────────────────
+
+.ps-floating-layer {
+  position: absolute;
+  inset: var(--ps-instrument-gutter);
+  pointer-events: none;
+  z-index: 7;
+
+  > * { pointer-events: auto; }
+}
+
+// Floating panel behaviors (drag/snap/collapse/pin) layered on .ps-floating-panel
+.ps-floating-panel {
+  position: absolute;
+  min-inline-size: var(--ps-floating-panel-min);
+  transition:
+    box-shadow var(--ds-motion-duration-fast) var(--ds-motion-easing-standard),
+    transform var(--ds-motion-duration-fast) var(--ds-motion-easing-standard);
+
+  &__handle {
+    cursor: grab;
+    user-select: none;
+    touch-action: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--ds-space-2);
+    padding-block-end: var(--ds-space-2);
+    margin-block-end: var(--ds-space-2);
+    border-block-end: 1px solid var(--ds-color-border-subtle);
+  }
+
+  &.ps-is-dragging {
+    cursor: grabbing;
+    box-shadow: var(--ps-shadow-overlay);
+    opacity: 0.96;
+  }
+
+  &.ps-is-pinned { box-shadow: var(--ds-shadow-glow-accent); }
+
+  &.ps-is-collapsed .ps-floating-panel__body { display: none; }
+
+  &.ps-is-snapped { border-color: var(--ds-color-border-focus); }
+}
+
+// ── HUD + status overlays ──────────────────────────────────────────────────
+
+.ps-region--hud,
+.ps-region--status {
+  pointer-events: none;
+}
+
+.ps-status-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-space-3);
+  padding: var(--ds-space-1) var(--ds-space-3);
+  background: var(--ds-color-surface-dock);
+  border-top: 1px solid var(--ds-color-border-subtle);
+  font-family: var(--ds-font-family-mono);
+  font-size: var(--ds-font-size-caption);
+  color: var(--ds-color-text-secondary);
+
+  &__metric { display: inline-flex; align-items: center; gap: var(--ds-space-1); }
+  &__value { color: var(--ds-color-text-primary); font-variant-numeric: tabular-nums; }
+  &__spacer { flex: 1 1 auto; }
+}
+
+.ps-hud {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-1);
+  opacity: var(--ps-hud-opacity);
+
+  &__row { display: flex; gap: var(--ds-space-2); justify-content: flex-end; }
+}
+
+// ── Inspector panels ─────────────────────────────────────────────────────────
+
+.ps-inspector {
+  &__group {
+    font-size: var(--ds-font-size-caption);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ds-color-text-secondary);
+    margin: var(--ds-space-2) 0 var(--ds-space-1);
+  }
+
+  &__panel + &__panel { margin-top: var(--ds-space-2); }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    inline-size: 100%;
+    gap: var(--ds-space-2);
+    padding: var(--ds-space-2);
+    background: var(--ds-color-surface-card);
+    border: 1px solid var(--ds-color-border-subtle);
+    border-radius: var(--ds-radius-sm);
+    color: var(--ds-color-text-primary);
+    cursor: pointer;
+    font-size: var(--ds-font-size-body-sm);
+    text-align: start;
+  }
+
+  &__chevron { transition: transform var(--ds-motion-duration-fast) var(--ds-motion-easing-standard); }
+
+  &__panel.ps-is-collapsed &__chevron { transform: rotate(-90deg); }
+
+  &__body {
+    padding: var(--ds-space-2);
+    border: 1px solid var(--ds-color-border-subtle);
+    border-top: 0;
+    border-radius: 0 0 var(--ds-radius-sm) var(--ds-radius-sm);
+  }
+}
+
+.ps-hud__metric {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-space-2);
+  font-variant-numeric: tabular-nums;
+
+  .ps-meter { inline-size: 4rem; height: var(--ds-space-6); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ps-inspector__chevron { transition-duration: 0.01ms !important; }
+}
+
+// ── Region wrapper ───────────────────────────────────────────────────────────
+
+.ps-region {
+  position: relative;
+
+  &--floating { position: absolute; }
+  &--timeline {
+    overflow-x: auto;
+    background: var(--ds-color-surface-card);
+    border-top: 1px solid var(--ds-color-border-subtle);
+    padding: var(--ds-space-2);
+  }
+  &--browser {
+    background: var(--ds-color-surface-card);
+    border-inline-end: 1px solid var(--ds-color-border-subtle);
+    overflow-y: auto;
+  }
+}
+
+// ── Display modes ────────────────────────────────────────────────────────────
+
+// Performance mode — distraction free: only stage, transport, essential controls, perf overlays.
+.ps-instrument--performance {
+  .ps-instrument__rail,
+  .ps-instrument__aside,
+  .ps-region--sidebar,
+  .ps-region--browser,
+  .ps-region--toolbar,
+  .ps-region--timeline,
+  [data-ps-dev],
+  .ps-debug-overlay { display: none !important; }
+
+  .ps-region--hud,
+  .ps-performance-overlay { display: block; }
+}
+
+// Presentation mode — demo: hide editing controls; branding + minimal chrome.
+.ps-instrument--presentation {
+  .ps-instrument__rail,
+  .ps-instrument__aside,
+  .ps-region--inspector,
+  .ps-region--sidebar,
+  .ps-region--toolbar,
+  .ps-region--timeline,
+  [data-ps-editing],
+  [data-ps-dev] { display: none !important; }
+
+  .ps-instrument__transport { opacity: 0; transition: opacity var(--ds-motion-duration-base) var(--ds-motion-easing-standard); }
+  &:hover .ps-instrument__transport,
+  &:focus-within .ps-instrument__transport { opacity: 1; }
+
+  .ps-presenter-brand {
+    position: absolute;
+    inset-block-start: var(--ps-instrument-gutter);
+    inset-inline-start: var(--ps-instrument-gutter);
+    z-index: 8;
+    pointer-events: none;
+  }
+
+  .ps-presenter-pointer {
+    position: fixed;
+    inline-size: var(--ds-space-8);
+    block-size: var(--ds-space-8);
+    margin: calc(var(--ds-space-8) * -0.5) 0 0 calc(var(--ds-space-8) * -0.5);
+    border-radius: var(--ds-radius-pill);
+    background: var(--ds-color-overlay-focus-outline);
+    box-shadow: var(--ds-shadow-glow-accent);
+    pointer-events: none;
+    z-index: 9;
+  }
+}
+
+// Touch mode — enlarge hit targets, adaptive spacing, thumb zones.
+.ps-instrument--touch {
+  --ps-touch-target: var(--ps-touch-target-large);
+
+  .ps-transport-btn,
+  .ps-dock .ps-app-dock__item,
+  .ps-region--toolbar .btn,
+  .ps-region--toolbar .ds-c-btn {
+    min-inline-size: var(--ps-touch-target-large);
+    min-block-size: var(--ps-touch-target-large);
+  }
+
+  .ps-instrument__transport { padding-block: var(--ds-space-2); }
+
+  // Thumb zone — keep primary transport reachable near the bottom edge.
+  .ps-thumb-zone {
+    position: absolute;
+    inset-inline: 0;
+    inset-block-end: 0;
+    display: flex;
+    justify-content: center;
+    padding-block-end: var(--ds-space-3);
+  }
+}
+
+// Edit mode (default) — everything visible.
+.ps-instrument--edit { /* default visibility */ }
+
+// ── Responsive / orientation ─────────────────────────────────────────────────
+
+@media (max-width: 768px) {
+  .ps-instrument {
+    grid-template-areas:
+      'stage'
+      'transport';
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto;
+  }
+
+  .ps-instrument__rail,
+  .ps-instrument__aside { position: absolute; inset-block: 0; z-index: 8; }
+  .ps-instrument__aside { inset-inline-end: 0; }
+  .ps-instrument__rail { inset-inline-start: 0; }
+}
+
+// ── Reduced motion ───────────────────────────────────────────────────────────
+
+@media (prefers-reduced-motion: reduce) {
+  .ps-floating-panel,
+  .ps-instrument--presentation .ps-instrument__transport { transition-duration: 0.01ms !important; }
+}
+
+html[data-ds-reduced-motion] {
+  .ps-floating-panel,
+  .ps-instrument--presentation .ps-instrument__transport { transition-duration: 0.01ms !important; }
+}

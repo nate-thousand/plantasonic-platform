@@ -2,7 +2,7 @@
 
 Audit and migration plan for making **Plantasonic Design System** part of **Plantasonic Platform** as the single source of truth for engines, design system, themes, templates, AI workflow, and app generation.
 
-**Status:** Planning only — no files have been moved, deleted, or modified as part of this document.
+**Status:** Phase 1 executed — `plantasonic-design-system` has been copied into `packages/design-system/` without changing package name, exports, token values, or component behavior.
 
 ---
 
@@ -12,7 +12,7 @@ Audit and migration plan for making **Plantasonic Design System** part of **Plan
 
 | Area | Present | Location | Notes |
 |------|---------|----------|-------|
-| `packages/` | Yes | `packages/*` | sdk, shared-types, create-plantasonic-app, sound-engine, visual-engine |
+| `packages/` | Yes | `packages/*` | sdk, shared-types, create-plantasonic-app, design-system, sound-engine, visual-engine |
 | `apps/` | Yes | `apps/*` | demo, plantasonic-reference, plantasonic-v2, signal-9-live |
 | `templates/` | Yes | `templates/` | Catalog stubs (instrument active; 6 placeholder types) |
 | `themes/` | **No** | — | Blueprint semantic themes live in app `src/config/theme.ts` |
@@ -41,7 +41,9 @@ Audit and migration plan for making **Plantasonic Design System** part of **Plan
 
 ### plantasonic-design-system (current canonical location)
 
-**Physical path:** `../plantasonic-xyz/plantasonic-design-system/`
+**Physical path:** `packages/design-system/`
+
+**Temporary mirror:** `../plantasonic-xyz/plantasonic-design-system/` remains in place until Phase 6.
 
 **Package name:** `plantasonic-design-system` v1.0.1
 
@@ -84,24 +86,25 @@ See full `exports` map in `plantasonic-design-system/package.json`.
 
 ### Current dependency wiring
 
-All platform apps resolve the Design System via a **fragile sibling file link**:
+Phase 1 consumers resolve the Design System via the workspace package:
 
 ```json
-"plantasonic-design-system": "file:../../../plantasonic-xyz/plantasonic-design-system"
+"plantasonic-design-system": "workspace:*"
 ```
 
-**Affected consumers (9 package.json files):**
+**Affected consumers:**
 
 | Consumer | Path |
 |----------|------|
 | `apps/demo` | Platform demo |
 | `apps/plantasonic-reference` | Reference thin app |
 | `apps/plantasonic-v2` | Production cutover app |
-| `apps/signal-9-live` | Signal 9 blueprint app |
 | `templates/instrument` | Template catalog |
 | `create-plantasonic-app/templates/instrument` | Generator template |
 | `create-plantasonic-app/templates/audio-reactive` | Generator template |
 | `create-plantasonic-app/templates/visual-synth` | Generator template |
+
+`apps/signal-9-live` is intentionally left untouched in this pass because Phase 1 was constrained not to touch Signal 9.
 
 **Vite alias duplication (6 vite.config.ts files):** Each app manually resolves `plantasonic-design-system/shell`, `/instrument`, `/creative-workspace` to `node_modules/plantasonic-design-system/src/...`.
 
@@ -146,7 +149,7 @@ plantasonic-platform/
 
 | Target | Current state | Migration phase |
 |--------|---------------|-----------------|
-| `packages/design-system/` | External sibling at `plantasonic-xyz/plantasonic-design-system` | **Phase 1** |
+| `packages/design-system/` | Workspace package copied from `plantasonic-xyz/plantasonic-design-system` | **Phase 1 complete** |
 | `packages/audio-engine/` | `packages/sound-engine` (`plantasia-sound-engine`) | Phase 3 (rename only) |
 | `packages/ascii-engine/` | Not separate — `ascii-visual-engine` is one package | Phase 4 (evaluate split) |
 | `packages/visual-engine/` | `packages/visual-engine` | Keep; clarify naming |

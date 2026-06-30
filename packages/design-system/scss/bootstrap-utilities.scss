@@ -1,0 +1,66 @@
+/**
+ * Plantasonic Bootstrap — utility overrides
+ * Replaces default Bootstrap utility colors with design tokens.
+ */
+
+@import 'tokens.generated';
+
+.text-muted {
+  color: $ds-color-text-muted !important;
+}
+
+.text-primary { color: $ds-color-primary-default !important; }
+.text-secondary { color: $ds-color-text-secondary !important; }
+.text-success { color: $ds-color-status-success !important; }
+.text-warning { color: $ds-color-status-warning !important; }
+.text-danger { color: $ds-color-status-error !important; }
+.text-info { color: $ds-color-status-info !important; }
+.text-body { color: $ds-color-text-primary !important; }
+.text-dark { color: $ds-color-text-primary !important; }
+.text-light { color: $ds-color-text-secondary !important; }
+
+.bg-primary { background-color: $ds-color-primary-default !important; color: $ds-color-text-on-primary !important; }
+.bg-secondary { background-color: $ds-color-surface-overlay !important; color: $ds-color-text-secondary !important; }
+.bg-success { background-color: $ds-color-status-success !important; color: $ds-color-text-on-primary !important; }
+.bg-warning { background-color: $ds-color-status-warning !important; color: $ds-color-text-on-primary !important; }
+.bg-danger { background-color: $ds-color-status-error !important; color: $ds-color-text-primary !important; }
+.bg-info { background-color: $ds-color-status-info !important; color: $ds-color-text-on-primary !important; }
+.bg-light { background-color: $ds-color-surface-overlay !important; color: $ds-color-text-primary !important; }
+.bg-dark { background-color: $ds-color-surface-nav !important; color: $ds-color-text-primary !important; }
+.bg-body { background-color: $ds-color-surface-app !important; }
+
+.border,
+.border-top,
+.border-bottom,
+.border-start,
+.border-end {
+  border-color: $ds-color-border-default !important;
+}
+
+.border-primary { border-color: $ds-color-primary-default !important; }
+.border-secondary { border-color: $ds-color-border-default !important; }
+.border-success { border-color: $ds-color-status-success !important; }
+.border-warning { border-color: $ds-color-status-warning !important; }
+.border-danger { border-color: $ds-color-status-error !important; }
+.border-info { border-color: $ds-color-status-info !important; }
+
+.shadow-sm { box-shadow: $ds-shadow-sm !important; }
+.shadow { box-shadow: $ds-shadow-md !important; }
+.shadow-lg { box-shadow: $ds-shadow-lg !important; }
+
+.font-monospace {
+  font-family: $ds-font-family-mono !important;
+}
+
+// Showcase state labels
+.bs-state-label {
+  display: inline-block;
+  padding: 0.1em 0.45em;
+  border-radius: $ds-radius-sm;
+  background: $ds-color-surface-overlay;
+  border: 1px solid $ds-color-border-subtle;
+  color: $ds-color-text-muted;
+  font-size: $ds-font-size-caption;
+  font-family: $ds-font-family-mono;
+  letter-spacing: 0.02em;
+}

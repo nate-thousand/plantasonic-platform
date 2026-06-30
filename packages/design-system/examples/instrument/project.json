@@ -1,0 +1,78 @@
+{
+  "specVersion": "1.0.0",
+  "id": "pad-lab",
+  "name": "Pad Lab",
+  "description": "Music instrument with MIDI and sound",
+  "category": "music-instrument",
+  "version": "0.1.0",
+  "brief": "Music instrument with MIDI and sound",
+  "engines": [
+    "engine.visual",
+    "engine.sound",
+    "engine.midi"
+  ],
+  "layouts": [
+    "layout.instrument"
+  ],
+  "components": [
+    {
+      "id": "voice",
+      "title": "Voice",
+      "description": "Timbre and voice parameters."
+    },
+    {
+      "id": "performance",
+      "title": "Performance",
+      "description": "Macros and performance controls."
+    },
+    {
+      "id": "midi",
+      "title": "MIDI",
+      "description": "Device input and learn mapping."
+    }
+  ],
+  "plugins": [],
+  "assets": [],
+  "aiCapabilities": [
+    "compliance",
+    "documentation",
+    "midi-mapping"
+  ],
+  "deploymentTargets": [
+    "local",
+    "preview",
+    "production"
+  ],
+  "documentation": [
+    "README.md",
+    "ROADMAP.md",
+    "CHANGELOG.md",
+    "project.json",
+    "docs/VALIDATION_CHECKLIST.md"
+  ],
+  "qualityRequirements": [
+    "tokens",
+    "layout",
+    "components",
+    "accessibility",
+    "documentation",
+    "build",
+    "dependencies"
+  ],
+  "services": [
+    "logging",
+    "settings",
+    "autosave",
+    "notifications"
+  ],
+  "workflows": [
+    "workflow.import-assets",
+    "workflow.generate-documentation",
+    "workflow.generate-visual-presets"
+  ],
+  "pipeline": {
+    "concept": "2026-06-29T22:25:58.596Z"
+  },
+  "createdAt": "2026-06-29T22:25:58.596Z",
+  "updatedAt": "2026-06-29T22:25:58.596Z"
+}

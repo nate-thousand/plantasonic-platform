@@ -12,7 +12,7 @@
     "@plantasonic/platform": "workspace:*",
     "@plantasonic/platform-demo": "workspace:*",
     "@plantasonic/platform-types": "workspace:*",
-    "plantasonic-design-system": "file:../../../plantasonic-xyz/plantasonic-design-system",
+    "plantasonic-design-system": "workspace:*",
     "plantasia-sound-engine": "workspace:*",
     "ascii-visual-engine": "workspace:*"
   }

@@ -224,12 +224,12 @@ Official support for AI first application development from design through deploy
 
 ## 19. Design System Consolidation
 
-**Status: Planned**
+**Status: In progress**
 
 Make Plantasonic Platform the single source of truth for the Design System, themes, and reference host — without changing token values, engine behavior, or app runtime.
 
-- [ ] Audit complete — [docs/DESIGN_SYSTEM_CONSOLIDATION_PLAN.md](./docs/DESIGN_SYSTEM_CONSOLIDATION_PLAN.md)
-- [ ] Phase 1: Vendor `plantasonic-design-system` into `packages/design-system/` (workspace deps, preserve exports)
+- [x] Audit complete — [docs/DESIGN_SYSTEM_CONSOLIDATION_PLAN.md](./docs/DESIGN_SYSTEM_CONSOLIDATION_PLAN.md)
+- [x] Phase 1: Vendor `plantasonic-design-system` into `packages/design-system/` (workspace deps, preserve exports)
 - [ ] Phase 2: Extract `themes/` (default, plantasia, signal9) from DS tokens and blueprint apps
 - [ ] Phase 3: Shared Vite/tsconfig helpers — eliminate duplicated DS alias blocks
 - [ ] Phase 4: Engine naming alignment (audio-engine, ascii-engine placeholders — no engine refactors)

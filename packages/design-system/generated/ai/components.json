@@ -1,0 +1,1261 @@
+{
+  "generatedAt": "2026-06-30T19:13:02.605Z",
+  "sdkVersion": "1.5.0",
+  "metadataSpecVersion": "1.0.0",
+  "components": [
+    {
+      "id": "component.button",
+      "name": "Button",
+      "kind": "component",
+      "export": "button",
+      "version": "1.3.0",
+      "purpose": "Token-driven action trigger with variants, sizes, loading, and toggle states.",
+      "category": "controls",
+      "status": "stable",
+      "tags": [
+        "action",
+        "form",
+        "interactive"
+      ],
+      "source": "plantasonic-design-system/components",
+      "supportedThemes": [
+        "dark",
+        "light"
+      ],
+      "variants": [
+        "primary",
+        "secondary",
+        "ghost",
+        "subtle",
+        "danger"
+      ],
+      "props": [
+        {
+          "name": "label",
+          "type": "string",
+          "required": true,
+          "description": "Visible button text."
+        },
+        {
+          "name": "variant",
+          "type": "ButtonVariant",
+          "default": "primary"
+        },
+        {
+          "name": "size",
+          "type": "'sm' | 'md' | 'lg'",
+          "default": "md"
+        },
+        {
+          "name": "icon",
+          "type": "string",
+          "description": "Leading icon glyph or inline SVG."
+        },
+        {
+          "name": "iconEnd",
+          "type": "string",
+          "description": "Trailing icon glyph or inline SVG."
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "loading",
+          "type": "boolean",
+          "default": "false",
+          "description": "Shows a spinner and sets aria-busy."
+        },
+        {
+          "name": "pressed",
+          "type": "boolean",
+          "description": "Toggle state — sets aria-pressed."
+        },
+        {
+          "name": "fullWidth",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "type",
+          "type": "'button' | 'submit' | 'reset'",
+          "default": "button"
+        },
+        {
+          "name": "ariaLabel",
+          "type": "string",
+          "description": "Overrides the accessible name."
+        }
+      ],
+      "slots": [
+        {
+          "name": "label",
+          "description": "Provided via the label prop."
+        }
+      ],
+      "accessibility": {
+        "role": "button",
+        "keyboard": [
+          "Enter / Space activates"
+        ],
+        "aria": [
+          "aria-pressed (toggle)",
+          "aria-busy (loading)",
+          "aria-label (optional)"
+        ],
+        "wcag": [
+          "2.1.1",
+          "4.1.2"
+        ]
+      },
+      "motion": {
+        "tokens": [
+          "--ds-motion-duration-fast"
+        ],
+        "reducedMotion": "Spinner and hover transitions respect prefers-reduced-motion."
+      },
+      "responsive": {
+        "behavior": "Inline-flex; fullWidth stretches to container. Size driven by spacing tokens."
+      },
+      "supportedLayouts": [
+        "*"
+      ],
+      "examples": [
+        {
+          "title": "Primary action",
+          "code": "button({ label: 'Play', variant: 'primary' })"
+        },
+        {
+          "title": "Loading",
+          "code": "button({ label: 'Save', loading: true })"
+        }
+      ],
+      "migration": [
+        {
+          "version": "1.3.0",
+          "type": "added",
+          "change": "Introduced in component library slice 1."
+        }
+      ]
+    },
+    {
+      "id": "component.iconButton",
+      "name": "Icon Button",
+      "kind": "component",
+      "export": "iconButton",
+      "version": "1.3.0",
+      "purpose": "Compact icon-only control with a required accessible name.",
+      "category": "controls",
+      "status": "stable",
+      "tags": [
+        "action",
+        "icon",
+        "interactive"
+      ],
+      "source": "plantasonic-design-system/components",
+      "supportedThemes": [
+        "dark",
+        "light"
+      ],
+      "variants": [
+        "primary",
+        "secondary",
+        "ghost",
+        "subtle",
+        "danger"
+      ],
+      "props": [
+        {
+          "name": "icon",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "ariaLabel",
+          "type": "string",
+          "required": true,
+          "description": "Required accessible name."
+        },
+        {
+          "name": "variant",
+          "type": "ButtonVariant",
+          "default": "ghost"
+        },
+        {
+          "name": "size",
+          "type": "'sm' | 'md' | 'lg'",
+          "default": "md"
+        },
+        {
+          "name": "pressed",
+          "type": "boolean"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "description": "Tooltip text."
+        }
+      ],
+      "accessibility": {
+        "role": "button",
+        "aria": [
+          "aria-label (required)",
+          "aria-pressed (toggle)"
+        ],
+        "wcag": [
+          "4.1.2"
+        ]
+      },
+      "dependencies": [
+        "component.button"
+      ],
+      "supportedLayouts": [
+        "*"
+      ],
+      "examples": [
+        {
+          "title": "Play toggle",
+          "code": "iconButton({ icon: '▶', ariaLabel: 'Play' })"
+        }
+      ]
+    },
+    {
+      "id": "component.toolbar",
+      "name": "Toolbar",
+      "kind": "component",
+      "export": "toolbar",
+      "version": "1.3.0",
+      "purpose": "Accessible toolbar landmark that groups controls with arrow-key orientation.",
+      "category": "navigation",
+      "status": "stable",
+      "source": "plantasonic-design-system/components",
+      "supportedThemes": [
+        "dark",
+        "light"
+      ],
+      "props": [
+        {
+          "name": "label",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "content",
+          "type": "string",
+          "description": "Pre-rendered group/control HTML."
+        },
+        {
+          "name": "orientation",
+          "type": "'horizontal' | 'vertical'",
+          "default": "horizontal"
+        }
+      ],
+      "slots": [
+        {
+          "name": "content",
+          "description": "Toolbar groups and controls."
+        }
+      ],
+      "accessibility": {
+        "role": "toolbar",
+        "aria": [
+          "aria-orientation",
+          "aria-label"
+        ],
+        "keyboard": [
+          "Arrow keys move between controls"
+        ]
+      },
+      "supportedLayouts": [
+        "*"
+      ]
+    },
+    {
+      "id": "component.toolbarGroup",
+      "name": "Toolbar Group",
+      "kind": "component",
+      "export": "toolbarGroup",
+      "version": "1.3.0",
+      "purpose": "Semantic grouping of related toolbar controls with optional divider.",
+      "category": "navigation",
+      "status": "stable",
+      "source": "plantasonic-design-system/components",
+      "supportedThemes": [
+        "dark",
+        "light"
+      ],
+      "props": [
+        {
+          "name": "content",
+          "type": "string"
+        },
+        {
+          "name": "label",
+          "type": "string"
+        },
+        {
+          "name": "divider",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "accessibility": {
+        "role": "group",
+        "aria": [
+          "aria-label (optional)"
+        ]
+      },
+      "dependencies": [
+        "component.toolbar"
+      ],
+      "supportedLayouts": [
+        "*"
+      ]
+    },
+    {
+      "id": "component.panel",
+      "name": "Panel",
+      "kind": "component",
+      "export": "panel",
+      "version": "1.3.0",
+      "purpose": "Labelled, optionally collapsible content surface matching the shell panel chrome.",
+      "category": "containers",
+      "status": "stable",
+      "source": "plantasonic-design-system/components",
+      "supportedThemes": [
+        "dark",
+        "light"
+      ],
+      "props": [
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "content",
+          "type": "string"
+        },
+        {
+          "name": "actions",
+          "type": "string",
+          "description": "Header action HTML."
+        },
+        {
+          "name": "collapsible",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "collapsed",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "ariaLabel",
+          "type": "string"
+        }
+      ],
+      "slots": [
+        {
+          "name": "content",
+          "description": "Panel body."
+        },
+        {
+          "name": "actions",
+          "description": "Header-end action controls."
+        }
+      ],
+      "events": [
+        {
+          "name": "toggle",
+          "description": "Fired via [data-ds-panel-toggle] when collapsible."
+        }
+      ],
+      "accessibility": {
+        "role": "region",
+        "aria": [
+          "aria-label",
+          "aria-expanded (collapsible)"
+        ],
+        "keyboard": [
+          "Enter / Space toggles when collapsible"
+        ]
+      },
+      "dependencies": [
+        "component.panelHeader"
+      ],
+      "supportedLayouts": [
+        "layout.instrument",
+        "layout.studio",
+        "layout.dashboard",
+        "layout.workspace"
+      ]
+    },
+    {
+      "id": "component.panelHeader",
+      "name": "Panel Header",
+      "kind": "component",
+      "export": "panelHeader",
+      "version": "1.3.0",
+      "purpose": "Panel title row with optional collapse toggle and actions.",
+      "category": "containers",
+      "status": "stable",
+      "source": "plantasonic-design-system/components",
+      "supportedThemes": [
+        "dark",
+        "light"
+      ],
+      "props": [
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "actions",
+          "type": "string"
+        },
+        {
+          "name": "collapsible",
+          "type": "boolean"
+        },
+        {
+          "name": "collapsed",
+          "type": "boolean"
+        }
+      ],
+      "accessibility": {
+        "role": "button",
+        "aria": [
+          "aria-expanded (collapsible)"
+        ]
+      },
+      "supportedLayouts": [
+        "*"
+      ]
+    },
+    {
+      "id": "component.surface",
+      "name": "Surface",
+      "kind": "component",
+      "export": "surface",
+      "version": "1.3.0",
+      "purpose": "Token-driven box with surface level, padding, radius, and optional border.",
+      "category": "containers",
+      "status": "stable",
+      "source": "plantasonic-design-system/components",
+      "supportedThemes": [
+        "dark",
+        "light"
+      ],
+      "variants": [
+        "sunken",
+        "default",
+        "raised",
+        "overlay"
+      ],
+      "props": [
+        {
+          "name": "level",
+          "type": "SurfaceLevel",
+          "default": "default"
+        },
+        {
+          "name": "padding",
+          "type": "SpaceToken",
+          "default": "4"
+        },
+        {
+          "name": "radius",
+          "type": "'sm' | 'default' | 'lg' | 'xl'",
+          "default": "default"
+        },
+        {
+          "name": "border",
+          "type": "boolean",
+          "default": "true"
+        }
+      ],
+      "accessibility": {
+        "notes": "Presentational container; apply roles via content."
+      },
+      "tags": [
+        "re-export",
+        "primitive"
+      ],
+      "dependencies": [
+        "primitive.surface"
+      ],
+      "supportedLayouts": [
+        "*"
+      ]
+    },
+    {
+      "id": "component.card",
+      "name": "Card",
+      "kind": "component",
+      "export": "card",
+      "version": "1.3.0",
+      "purpose": "Composition surface with header, body, footer, actions, and interactive affordance.",
+      "category": "containers",
+      "status": "stable",
+      "source": "plantasonic-design-system/components",
+      "supportedThemes": [
+        "dark",
+        "light"
+      ],
+      "props": [
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "subtitle",
+          "type": "string"
+        },
+        {
+          "name": "content",
+          "type": "string"
+        },
+        {
+          "name": "footer",
+          "type": "string"
+        },
+        {
+          "name": "actions",
+          "type": "string"
+        },
+        {
+          "name": "interactive",
+          "type": "boolean",
+          "default": "false",
+          "description": "Adds focus ring + tabindex."
+        },
+        {
+          "name": "ariaLabel",
+          "type": "string"
+        }
+      ],
+      "slots": [
+        {
+          "name": "content",
+          "description": "Card body."
+        },
+        {
+          "name": "footer"
+        },
+        {
+          "name": "actions"
+        }
+      ],
+      "accessibility": {
+        "keyboard": [
+          "Focusable when interactive"
+        ],
+        "wcag": [
+          "2.4.7"
+        ]
+      },
+      "supportedLayouts": [
+        "*"
+      ]
+    },
+    {
+      "id": "component.section",
+      "name": "Section",
+      "kind": "component",
+      "export": "section",
+      "version": "1.3.0",
+      "purpose": "Titled content section with description and heading-row actions.",
+      "category": "containers",
+      "status": "stable",
+      "source": "plantasonic-design-system/components",
+      "supportedThemes": [
+        "dark",
+        "light"
+      ],
+      "props": [
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "name": "content",
+          "type": "string"
+        },
+        {
+          "name": "actions",
+          "type": "string"
+        }
+      ],
+      "accessibility": {
+        "role": "region",
+        "aria": [
+          "aria-labelledby / aria-label"
+        ]
+      },
+      "supportedLayouts": [
+        "*"
+      ]
+    },
+    {
+      "id": "component.controlGroup",
+      "name": "Control Group",
+      "kind": "component",
+      "export": "controlGroup",
+      "version": "1.3.0",
+      "purpose": "Labelled group of related controls with row/column layout.",
+      "category": "controls",
+      "status": "stable",
+      "source": "plantasonic-design-system/components",
+      "supportedThemes": [
+        "dark",
+        "light"
+      ],
+      "props": [
+        {
+          "name": "label",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "content",
+          "type": "string"
+        },
+        {
+          "name": "direction",
+          "type": "'row' | 'column'",
+          "default": "column"
+        },
+        {
+          "name": "hideLabel",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "accessibility": {
+        "role": "group",
+        "aria": [
+          "aria-label"
+        ]
+      },
+      "supportedLayouts": [
+        "layout.instrument",
+        "layout.settings",
+        "layout.studio"
+      ]
+    },
+    {
+      "id": "component.badge",
+      "name": "Badge",
+      "kind": "component",
+      "export": "badge",
+      "version": "1.3.0",
+      "purpose": "Compact status / count label mapped to semantic color tokens.",
+      "category": "feedback",
+      "status": "stable",
+      "source": "plantasonic-design-system/components",
+      "supportedThemes": [
+        "dark",
+        "light"
+      ],
+      "variants": [
+        "default",
+        "accent",
+        "success",
+        "warning",
+        "error",
+        "info"
+      ],
+      "props": [
+        {
+          "name": "label",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "variant",
+          "type": "BadgeVariant",
+          "default": "default"
+        },
+        {
+          "name": "pill",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "dot",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "accessibility": {
+        "notes": "Decorative; convey meaning in text, not color alone.",
+        "wcag": [
+          "1.4.1"
+        ]
+      },
+      "supportedLayouts": [
+        "*"
+      ]
+    },
+    {
+      "id": "component.statusIndicator",
+      "name": "Status Indicator",
+      "kind": "component",
+      "export": "statusIndicator",
+      "version": "1.3.0",
+      "purpose": "Live status dot + label with optional pulse animation.",
+      "category": "feedback",
+      "status": "stable",
+      "source": "plantasonic-design-system/components",
+      "supportedThemes": [
+        "dark",
+        "light"
+      ],
+      "variants": [
+        "online",
+        "active",
+        "idle",
+        "busy",
+        "error",
+        "offline"
+      ],
+      "props": [
+        {
+          "name": "status",
+          "type": "StatusKind",
+          "required": true
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "hideLabel",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "pulse",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "accessibility": {
+        "role": "status",
+        "wcag": [
+          "1.4.1",
+          "4.1.3"
+        ]
+      },
+      "motion": {
+        "reducedMotion": "Pulse animation suppressed under prefers-reduced-motion."
+      },
+      "supportedLayouts": [
+        "*"
+      ]
+    },
+    {
+      "id": "primitive.stack",
+      "name": "Stack",
+      "kind": "primitive",
+      "export": "stack",
+      "version": "1.3.0",
+      "purpose": "Vertical rhythm container with token gap and alignment.",
+      "category": "layout",
+      "status": "stable",
+      "tags": [
+        "layout",
+        "primitive"
+      ],
+      "source": "plantasonic-design-system/primitives",
+      "supportedThemes": [
+        "dark",
+        "light"
+      ],
+      "responsive": {
+        "behavior": "Token-driven spacing/sizing; adapts via CSS without breakpoints where possible.",
+        "containerQueries": true
+      },
+      "accessibility": {
+        "notes": "Structural; carries no implicit role unless configured (see region)."
+      },
+      "supportedLayouts": [
+        "*"
+      ]
+    },
+    {
+      "id": "primitive.inline",
+      "name": "Inline",
+      "kind": "primitive",
+      "export": "inline",
+      "version": "1.3.0",
+      "purpose": "Horizontal row with token gap, alignment, and wrap.",
+      "category": "layout",
+      "status": "stable",
+      "tags": [
+        "layout",
+        "primitive"
+      ],
+      "source": "plantasonic-design-system/primitives",
+      "supportedThemes": [
+        "dark",
+        "light"
+      ],
+      "responsive": {
+        "behavior": "Token-driven spacing/sizing; adapts via CSS without breakpoints where possible.",
+        "containerQueries": true
+      },
+      "accessibility": {
+        "notes": "Structural; carries no implicit role unless configured (see region)."
+      },
+      "supportedLayouts": [
+        "*"
+      ]
+    },
+    {
+      "id": "primitive.cluster",
+      "name": "Cluster",
+      "kind": "primitive",
+      "export": "cluster",
+      "version": "1.3.0",
+      "purpose": "Wrapping group of items with consistent gaps.",
+      "category": "layout",
+      "status": "stable",
+      "tags": [
+        "layout",
+        "primitive"
+      ],
+      "source": "plantasonic-design-system/primitives",
+      "supportedThemes": [
+        "dark",
+        "light"
+      ],
+      "responsive": {
+        "behavior": "Token-driven spacing/sizing; adapts via CSS without breakpoints where possible.",
+        "containerQueries": true
+      },
+      "accessibility": {
+        "notes": "Structural; carries no implicit role unless configured (see region)."
+      },
+      "supportedLayouts": [
+        "*"
+      ]
+    },
+    {
+      "id": "primitive.grid",
+      "name": "Grid",
+      "kind": "primitive",
+      "export": "grid",
+      "version": "1.3.0",
+      "purpose": "Responsive auto-fill / fixed-column grid.",
+      "category": "layout",
+      "status": "stable",
+      "tags": [
+        "layout",
+        "primitive"
+      ],
+      "source": "plantasonic-design-system/primitives",
+      "supportedThemes": [
+        "dark",
+        "light"
+      ],
+      "responsive": {
+        "behavior": "Token-driven spacing/sizing; adapts via CSS without breakpoints where possible.",
+        "containerQueries": true
+      },
+      "accessibility": {
+        "notes": "Structural; carries no implicit role unless configured (see region)."
+      },
+      "supportedLayouts": [
+        "*"
+      ]
+    },
+    {
+      "id": "primitive.sidebar",
+      "name": "Sidebar",
+      "kind": "primitive",
+      "export": "sidebar",
+      "version": "1.3.0",
+      "purpose": "Sidebar + fluid main region that collapses responsively.",
+      "category": "layout",
+      "status": "stable",
+      "tags": [
+        "layout",
+        "primitive"
+      ],
+      "source": "plantasonic-design-system/primitives",
+      "supportedThemes": [
+        "dark",
+        "light"
+      ],
+      "responsive": {
+        "behavior": "Token-driven spacing/sizing; adapts via CSS without breakpoints where possible.",
+        "containerQueries": true
+      },
+      "accessibility": {
+        "notes": "Structural; carries no implicit role unless configured (see region)."
+      },
+      "supportedLayouts": [
+        "*"
+      ]
+    },
+    {
+      "id": "primitive.split",
+      "name": "Split",
+      "kind": "primitive",
+      "export": "split",
+      "version": "1.3.0",
+      "purpose": "Two regions divided by a ratio, horizontal or vertical.",
+      "category": "layout",
+      "status": "stable",
+      "tags": [
+        "layout",
+        "primitive"
+      ],
+      "source": "plantasonic-design-system/primitives",
+      "supportedThemes": [
+        "dark",
+        "light"
+      ],
+      "responsive": {
+        "behavior": "Token-driven spacing/sizing; adapts via CSS without breakpoints where possible.",
+        "containerQueries": true
+      },
+      "accessibility": {
+        "notes": "Structural; carries no implicit role unless configured (see region)."
+      },
+      "supportedLayouts": [
+        "*"
+      ]
+    },
+    {
+      "id": "primitive.frame",
+      "name": "Frame",
+      "kind": "primitive",
+      "export": "frame",
+      "version": "1.3.0",
+      "purpose": "Fixed aspect-ratio media container.",
+      "category": "layout",
+      "status": "stable",
+      "tags": [
+        "layout",
+        "primitive"
+      ],
+      "source": "plantasonic-design-system/primitives",
+      "supportedThemes": [
+        "dark",
+        "light"
+      ],
+      "responsive": {
+        "behavior": "Token-driven spacing/sizing; adapts via CSS without breakpoints where possible.",
+        "containerQueries": true
+      },
+      "accessibility": {
+        "notes": "Structural; carries no implicit role unless configured (see region)."
+      },
+      "supportedLayouts": [
+        "*"
+      ]
+    },
+    {
+      "id": "primitive.center",
+      "name": "Center",
+      "kind": "primitive",
+      "export": "center",
+      "version": "1.3.0",
+      "purpose": "Horizontally centered measure with optional intrinsic centering.",
+      "category": "layout",
+      "status": "stable",
+      "tags": [
+        "layout",
+        "primitive"
+      ],
+      "source": "plantasonic-design-system/primitives",
+      "supportedThemes": [
+        "dark",
+        "light"
+      ],
+      "responsive": {
+        "behavior": "Token-driven spacing/sizing; adapts via CSS without breakpoints where possible.",
+        "containerQueries": true
+      },
+      "accessibility": {
+        "notes": "Structural; carries no implicit role unless configured (see region)."
+      },
+      "supportedLayouts": [
+        "*"
+      ]
+    },
+    {
+      "id": "primitive.cover",
+      "name": "Cover",
+      "kind": "primitive",
+      "export": "cover",
+      "version": "1.3.0",
+      "purpose": "Header / centered main / footer full-height layout.",
+      "category": "layout",
+      "status": "stable",
+      "tags": [
+        "layout",
+        "primitive"
+      ],
+      "source": "plantasonic-design-system/primitives",
+      "supportedThemes": [
+        "dark",
+        "light"
+      ],
+      "responsive": {
+        "behavior": "Token-driven spacing/sizing; adapts via CSS without breakpoints where possible.",
+        "containerQueries": true
+      },
+      "accessibility": {
+        "notes": "Structural; carries no implicit role unless configured (see region)."
+      },
+      "supportedLayouts": [
+        "*"
+      ]
+    },
+    {
+      "id": "primitive.container",
+      "name": "Container",
+      "kind": "primitive",
+      "export": "container",
+      "version": "1.3.0",
+      "purpose": "Max-width wrapper with token gutters.",
+      "category": "layout",
+      "status": "stable",
+      "tags": [
+        "layout",
+        "primitive"
+      ],
+      "source": "plantasonic-design-system/primitives",
+      "supportedThemes": [
+        "dark",
+        "light"
+      ],
+      "responsive": {
+        "behavior": "Token-driven spacing/sizing; adapts via CSS without breakpoints where possible.",
+        "containerQueries": true
+      },
+      "accessibility": {
+        "notes": "Structural; carries no implicit role unless configured (see region)."
+      },
+      "supportedLayouts": [
+        "*"
+      ]
+    },
+    {
+      "id": "primitive.surface",
+      "name": "Surface",
+      "kind": "primitive",
+      "export": "surface",
+      "version": "1.3.0",
+      "purpose": "Token-driven box with surface level, padding, radius, border.",
+      "category": "layout",
+      "status": "stable",
+      "tags": [
+        "layout",
+        "primitive"
+      ],
+      "source": "plantasonic-design-system/primitives",
+      "supportedThemes": [
+        "dark",
+        "light"
+      ],
+      "responsive": {
+        "behavior": "Token-driven spacing/sizing; adapts via CSS without breakpoints where possible.",
+        "containerQueries": true
+      },
+      "accessibility": {
+        "notes": "Structural; carries no implicit role unless configured (see region)."
+      },
+      "supportedLayouts": [
+        "*"
+      ]
+    },
+    {
+      "id": "primitive.section",
+      "name": "Section",
+      "kind": "primitive",
+      "export": "section",
+      "version": "1.3.0",
+      "purpose": "Spaced semantic block.",
+      "category": "layout",
+      "status": "stable",
+      "tags": [
+        "layout",
+        "primitive"
+      ],
+      "source": "plantasonic-design-system/primitives",
+      "supportedThemes": [
+        "dark",
+        "light"
+      ],
+      "responsive": {
+        "behavior": "Token-driven spacing/sizing; adapts via CSS without breakpoints where possible.",
+        "containerQueries": true
+      },
+      "accessibility": {
+        "notes": "Structural; carries no implicit role unless configured (see region)."
+      },
+      "supportedLayouts": [
+        "*"
+      ]
+    },
+    {
+      "id": "primitive.region",
+      "name": "Region",
+      "kind": "primitive",
+      "export": "region",
+      "version": "1.3.0",
+      "purpose": "Labelled landmark with configurable role.",
+      "category": "layout",
+      "status": "stable",
+      "tags": [
+        "layout",
+        "primitive"
+      ],
+      "source": "plantasonic-design-system/primitives",
+      "supportedThemes": [
+        "dark",
+        "light"
+      ],
+      "responsive": {
+        "behavior": "Token-driven spacing/sizing; adapts via CSS without breakpoints where possible.",
+        "containerQueries": true
+      },
+      "accessibility": {
+        "notes": "Structural; carries no implicit role unless configured (see region)."
+      },
+      "supportedLayouts": [
+        "*"
+      ]
+    },
+    {
+      "id": "primitive.viewport",
+      "name": "Viewport",
+      "kind": "primitive",
+      "export": "viewport",
+      "version": "1.3.0",
+      "purpose": "Full-height, safe-area aware shell wrapper.",
+      "category": "layout",
+      "status": "stable",
+      "tags": [
+        "layout",
+        "primitive"
+      ],
+      "source": "plantasonic-design-system/primitives",
+      "supportedThemes": [
+        "dark",
+        "light"
+      ],
+      "responsive": {
+        "behavior": "Token-driven spacing/sizing; adapts via CSS without breakpoints where possible.",
+        "containerQueries": true
+      },
+      "accessibility": {
+        "notes": "Structural; carries no implicit role unless configured (see region)."
+      },
+      "supportedLayouts": [
+        "*"
+      ]
+    },
+    {
+      "id": "primitive.spacer",
+      "name": "Spacer",
+      "kind": "primitive",
+      "export": "spacer",
+      "version": "1.3.0",
+      "purpose": "Flexible or fixed gap.",
+      "category": "layout",
+      "status": "stable",
+      "tags": [
+        "layout",
+        "primitive"
+      ],
+      "source": "plantasonic-design-system/primitives",
+      "supportedThemes": [
+        "dark",
+        "light"
+      ],
+      "responsive": {
+        "behavior": "Token-driven spacing/sizing; adapts via CSS without breakpoints where possible.",
+        "containerQueries": true
+      },
+      "accessibility": {
+        "notes": "Structural; carries no implicit role unless configured (see region)."
+      },
+      "supportedLayouts": [
+        "*"
+      ]
+    },
+    {
+      "id": "primitive.inset",
+      "name": "Inset",
+      "kind": "primitive",
+      "export": "inset",
+      "version": "1.3.0",
+      "purpose": "Uniform padding box.",
+      "category": "layout",
+      "status": "stable",
+      "tags": [
+        "layout",
+        "primitive"
+      ],
+      "source": "plantasonic-design-system/primitives",
+      "supportedThemes": [
+        "dark",
+        "light"
+      ],
+      "responsive": {
+        "behavior": "Token-driven spacing/sizing; adapts via CSS without breakpoints where possible.",
+        "containerQueries": true
+      },
+      "accessibility": {
+        "notes": "Structural; carries no implicit role unless configured (see region)."
+      },
+      "supportedLayouts": [
+        "*"
+      ]
+    },
+    {
+      "id": "primitive.flow",
+      "name": "Flow",
+      "kind": "primitive",
+      "export": "flow",
+      "version": "1.3.0",
+      "purpose": "Vertical flow spacing (lobotomized owl).",
+      "category": "layout",
+      "status": "stable",
+      "tags": [
+        "layout",
+        "primitive"
+      ],
+      "source": "plantasonic-design-system/primitives",
+      "supportedThemes": [
+        "dark",
+        "light"
+      ],
+      "responsive": {
+        "behavior": "Token-driven spacing/sizing; adapts via CSS without breakpoints where possible.",
+        "containerQueries": true
+      },
+      "accessibility": {
+        "notes": "Structural; carries no implicit role unless configured (see region)."
+      },
+      "supportedLayouts": [
+        "*"
+      ]
+    }
+  ]
+}

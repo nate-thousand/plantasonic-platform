@@ -1,0 +1,106 @@
+# Design System Architecture (Generated)
+
+```json
+{
+  "name": "plantasonic-design-system",
+  "sdkVersion": "1.5.0",
+  "metadataSpecVersion": "1.0.0",
+  "generatedAt": "2026-06-30T19:13:02.751Z",
+  "summary": {
+    "component": 12,
+    "primitive": 17,
+    "layout": 9,
+    "pattern": 12,
+    "token": 260,
+    "theme": 2,
+    "total": 312
+  },
+  "categories": {
+    "component": [
+      "containers",
+      "controls",
+      "feedback",
+      "navigation"
+    ],
+    "primitive": [
+      "layout"
+    ],
+    "layout": [
+      "application",
+      "content",
+      "creative",
+      "marketing"
+    ],
+    "pattern": [
+      "application",
+      "creative",
+      "feedback",
+      "navigation"
+    ],
+    "token": [
+      "borders",
+      "brand",
+      "creative-surfaces",
+      "foundation-brand",
+      "foundation-effects",
+      "foundation-layout",
+      "foundation-spacing-(px-scale)",
+      "foundation-typography-scale",
+      "misc",
+      "motion",
+      "overlays",
+      "product-layout",
+      "radius",
+      "shadows",
+      "spacing",
+      "status",
+      "surfaces",
+      "text",
+      "typography"
+    ]
+  },
+  "layers": [
+    {
+      "id": "tokens",
+      "purpose": "W3C design tokens → CSS variables + SCSS."
+    },
+    {
+      "id": "primitives",
+      "purpose": "Composable layout building blocks (Layer 9)."
+    },
+    {
+      "id": "components",
+      "purpose": "Token-driven component library (Layer 1)."
+    },
+    {
+      "id": "motion",
+      "purpose": "Token-driven motion system (Layer 3)."
+    },
+    {
+      "id": "patterns",
+      "purpose": "Reusable product patterns (Layer 5)."
+    },
+    {
+      "id": "layouts",
+      "purpose": "Application + instrument shell layouts (Layer 2)."
+    },
+    {
+      "id": "shell",
+      "purpose": "Application Shell — chrome, navigation, commands."
+    },
+    {
+      "id": "instrument",
+      "purpose": "Creative application framework (regions, transport, canvas)."
+    },
+    {
+      "id": "app",
+      "purpose": "createApplication() SDK (Layer 10)."
+    },
+    {
+      "id": "ai",
+      "purpose": "Registry, SDK, validation, generators, knowledge graph."
+    }
+  ],
+  "deprecated": []
+}
+```

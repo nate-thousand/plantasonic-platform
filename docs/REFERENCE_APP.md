@@ -57,13 +57,13 @@ plantasonic-xyz v0.4.0 is the canonical example for each platform surface:
 | Artifact | Location today | Notes |
 |----------|----------------|-------|
 | Reference application | `../plantasonic-xyz/` (sibling repo) | v0.4.0 — production deploy at plantasonic.vercel.app |
-| Design System | `../plantasonic-xyz/plantasonic-design-system/` | Nested workspace package; moves to `packages/design-system/` in consolidation Phase 1 |
+| Design System | `packages/design-system/` | Platform-owned workspace package; sibling copy remains as a temporary mirror until Phase 6 |
 | Platform thin consumer | `../plantasonic-xyz/src/platform-consumer/` | Creative layer injection pattern |
 | Platform demo (in monorepo) | `apps/demo/` | Integration sandbox — not the reference host |
 | Thin consumer scaffold | `apps/plantasonic-reference/` | Minimal wiring example for migration |
 | First product app | `apps/signal-9-live/` | Blueprint `signal-9` — first real app on the platform |
 
-Future consolidation (Phase 6) will absorb the reference host into `apps/plantasonic-xyz/` within this monorepo. **Phase 1 has not started** — the Design System remains in the sibling repo until consolidation begins.
+Future consolidation (Phase 6) will absorb the reference host into `apps/plantasonic-xyz/` within this monorepo. Phase 1 has consolidated the Design System into `packages/design-system/`; the sibling copy remains as a read-only mirror until Phase 6.
 
 ---
 

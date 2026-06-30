@@ -1,0 +1,78 @@
+{
+  "generatedAt": "2026-06-30T19:13:02.919Z",
+  "sdkVersion": "1.0.0",
+  "services": [
+    {
+      "id": "logging",
+      "name": "Logging",
+      "purpose": "Structured console + remote log sink.",
+      "api": "platform.services.logging"
+    },
+    {
+      "id": "settings",
+      "name": "Settings",
+      "purpose": "Persisted user/project settings.",
+      "api": "platform.services.settings"
+    },
+    {
+      "id": "telemetry",
+      "name": "Telemetry",
+      "purpose": "Optional anonymized usage metrics.",
+      "api": "platform.services.telemetry"
+    },
+    {
+      "id": "storage",
+      "name": "Storage",
+      "purpose": "Key-value and blob storage abstraction.",
+      "api": "platform.services.storage"
+    },
+    {
+      "id": "undo-redo",
+      "name": "Undo / Redo",
+      "purpose": "Command-stack undo/redo.",
+      "api": "platform.services.undoRedo"
+    },
+    {
+      "id": "history",
+      "name": "History",
+      "purpose": "Session action history.",
+      "api": "platform.services.history"
+    },
+    {
+      "id": "autosave",
+      "name": "Autosave",
+      "purpose": "Debounced project state persistence.",
+      "api": "platform.services.autosave"
+    },
+    {
+      "id": "file-import",
+      "name": "File Import",
+      "purpose": "Drag-drop and file-picker import pipeline.",
+      "api": "platform.services.fileImport"
+    },
+    {
+      "id": "file-export",
+      "name": "File Export",
+      "purpose": "Export snapshots, presets, and recordings.",
+      "api": "platform.services.fileExport"
+    },
+    {
+      "id": "search",
+      "name": "Search",
+      "purpose": "Fuzzy search across project content.",
+      "api": "platform.services.search"
+    },
+    {
+      "id": "notifications",
+      "name": "Notifications",
+      "purpose": "Toast and banner notifications (shell integration).",
+      "api": "platform.services.notifications"
+    },
+    {
+      "id": "recent-projects",
+      "name": "Recent Projects",
+      "purpose": "Cross-project recent list.",
+      "api": "platform.services.recentProjects"
+    }
+  ]
+}

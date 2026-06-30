@@ -1,0 +1,78 @@
+{
+  "specVersion": "1.0.0",
+  "id": "bloom-room",
+  "name": "Bloom Room",
+  "description": "Audio reactive installation with MIDI and fullscreen visuals",
+  "category": "audio-reactive-installation",
+  "version": "0.1.0",
+  "brief": "Audio reactive installation with MIDI and fullscreen visuals",
+  "engines": [
+    "engine.visual",
+    "engine.sound",
+    "engine.midi"
+  ],
+  "layouts": [
+    "layout.canvas"
+  ],
+  "components": [
+    {
+      "id": "audio",
+      "title": "Audio Input",
+      "description": "Source, gain, and analysis settings."
+    },
+    {
+      "id": "visual",
+      "title": "Visual Response",
+      "description": "Mapping audio features to visuals."
+    },
+    {
+      "id": "midi",
+      "title": "MIDI",
+      "description": "Device input and learn mapping."
+    }
+  ],
+  "plugins": [],
+  "assets": [],
+  "aiCapabilities": [
+    "compliance",
+    "documentation",
+    "midi-mapping"
+  ],
+  "deploymentTargets": [
+    "local",
+    "preview",
+    "production"
+  ],
+  "documentation": [
+    "README.md",
+    "ROADMAP.md",
+    "CHANGELOG.md",
+    "project.json",
+    "docs/VALIDATION_CHECKLIST.md"
+  ],
+  "qualityRequirements": [
+    "tokens",
+    "layout",
+    "components",
+    "accessibility",
+    "documentation",
+    "build",
+    "dependencies"
+  ],
+  "services": [
+    "logging",
+    "settings",
+    "autosave",
+    "notifications"
+  ],
+  "workflows": [
+    "workflow.import-assets",
+    "workflow.generate-documentation",
+    "workflow.generate-visual-presets"
+  ],
+  "pipeline": {
+    "concept": "2026-06-29T22:25:58.599Z"
+  },
+  "createdAt": "2026-06-29T22:25:58.599Z",
+  "updatedAt": "2026-06-29T22:25:58.599Z"
+}

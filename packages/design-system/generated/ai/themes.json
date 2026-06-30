@@ -1,0 +1,35 @@
+{
+  "generatedAt": "2026-06-30T19:13:02.605Z",
+  "sdkVersion": "1.5.0",
+  "metadataSpecVersion": "1.0.0",
+  "themes": [
+    {
+      "id": "theme.dark",
+      "name": "Dark",
+      "kind": "theme",
+      "version": "1.0.0",
+      "purpose": "Default dark instrument theme.",
+      "category": "theme",
+      "status": "stable",
+      "selector": "[data-theme=\"dark\"]",
+      "tokenCount": 329,
+      "supportedThemes": [
+        "dark"
+      ]
+    },
+    {
+      "id": "theme.light",
+      "name": "Light",
+      "kind": "theme",
+      "version": "1.0.0",
+      "purpose": "Light variant theme.",
+      "category": "theme",
+      "status": "beta",
+      "selector": "[data-theme=\"light\"]",
+      "tokenCount": 329,
+      "supportedThemes": [
+        "light"
+      ]
+    }
+  ]
+}

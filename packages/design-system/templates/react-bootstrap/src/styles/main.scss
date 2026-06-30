@@ -1,0 +1,22 @@
+@import '@ds/scss/bootstrap-theme';
+@import 'bootstrap/scss/bootstrap';
+@import '@ds/scss/bootstrap-components';
+@import '@ds/scss/bootstrap-utilities';
+@import '@ds/scss/plantasonic-components';
+@import '@ds/scss/navigation-framework';
+@import '@ds/scss/application-shell';
+
+html, body, #root { height: 100%; margin: 0; }
+
+body {
+  background: var(--ds-color-surface-app);
+  color: var(--ds-color-text-primary);
+  font-family: var(--ds-font-family-sans);
+}
+
+.card-header {
+  font-weight: var(--ds-font-weight-label);
+  letter-spacing: var(--ds-letter-spacing-label);
+  text-transform: uppercase;
+  font-size: var(--ds-font-size-label);
+}

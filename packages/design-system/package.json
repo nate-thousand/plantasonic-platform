@@ -1,0 +1,211 @@
+{
+  "name": "plantasonic-design-system",
+  "version": "1.0.1",
+  "description": "Centralized design tokens, CSS variables, Bootstrap theme, CLI, and starter templates for the Plantasonic product ecosystem",
+  "author": "Nate Thousand",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "plantasonic": "./cli/index.mjs"
+  },
+  "scripts": {
+    "tokens:validate": "node scripts/validate-tokens.mjs",
+    "tokens:build-css": "node scripts/build-css.mjs",
+    "tokens:import-figma": "node scripts/import-figma-tokens.mjs",
+    "tokens:build-bootstrap": "node scripts/build-bootstrap.mjs",
+    "tokens:watch": "node --watch scripts/build-css.mjs",
+    "generate": "node scripts/generate-all.mjs",
+    "generate:bootstrap-compile": "node scripts/generate-bootstrap-compile.mjs",
+    "generate:scss": "node scripts/generate-scss.mjs",
+    "generate:token-docs": "node scripts/generate-token-docs.mjs",
+    "generate:component-docs": "node scripts/generate-component-docs.mjs",
+    "generate:ai-tokens": "node scripts/generate-ai-tokens.mjs",
+    "generate:ai-context": "node scripts/generate-ai-context.mjs",
+    "generate:ai-docs": "node scripts/generate-ai-docs.mjs",
+    "ai:context": "node scripts/generate-ai-tokens.mjs && node scripts/generate-ai-context.mjs && node scripts/generate-ai-docs.mjs",
+    "docs": "node scripts/build-docs.mjs",
+    "audit:bootstrap": "node scripts/audit-bootstrap.mjs",
+    "quality": "node scripts/quality-check.mjs",
+    "test": "node --experimental-strip-types --test tests/*.test.mjs",
+    "validate:templates": "node scripts/validate-template-builds.mjs",
+    "validate:prototypes": "node scripts/validate-prototypes.mjs",
+    "validate:examples": "node --experimental-strip-types scripts/validate-examples.mjs",
+    "generate:ecosystem-context": "node scripts/generate-ecosystem-context.mjs",
+    "generate:studio-context": "node scripts/generate-studio-context.mjs",
+    "generate:api-surface": "node scripts/generate-api-surface.mjs",
+    "audit:platform": "node scripts/generate-api-surface.mjs && node scripts/platform-audit.mjs",
+    "release": "node scripts/release.mjs",
+    "build": "npm run tokens:build-css && npm run generate && npm run tokens:validate",
+    "showcase:dev": "npm run dev --prefix showcase",
+    "showcase:build": "npm run build --prefix showcase",
+    "showcase:preview": "npm run preview --prefix showcase",
+    "showcase": "npm run showcase:dev",
+    "demo:dev": "npm run dev --prefix demo",
+    "demo:build": "npm run build --prefix demo",
+    "demo:preview": "npm run preview --prefix demo",
+    "demo": "npm run demo:dev",
+    "lint": "node scripts/quality-check.mjs",
+    "format": "node -e \"console.log('No formatter configured — use editor defaults')\""
+  },
+  "files": [
+    "tokens",
+    "css",
+    "scss",
+    "generated",
+    "docs",
+    "prompts",
+    "scripts",
+    "cli",
+    "templates",
+    "examples",
+    "src",
+    "LICENSE",
+    "README.md",
+    "CHANGELOG.md",
+    "AGENTS.md"
+  ],
+  "exports": {
+    "./css/variables.css": "./css/variables.css",
+    "./scss/bootstrap-theme.scss": {
+      "sass": "./scss/bootstrap-theme.scss",
+      "style": "./scss/bootstrap-theme.scss",
+      "default": "./scss/bootstrap-theme.scss"
+    },
+    "./scss/css-theme-bridge.scss": {
+      "sass": "./scss/css-theme-bridge.scss",
+      "style": "./scss/css-theme-bridge.scss",
+      "default": "./scss/css-theme-bridge.scss"
+    },
+    "./scss/bootstrap-components.scss": {
+      "sass": "./scss/bootstrap-components.scss",
+      "style": "./scss/bootstrap-components.scss",
+      "default": "./scss/bootstrap-components.scss"
+    },
+    "./scss/bootstrap-utilities.scss": {
+      "sass": "./scss/bootstrap-utilities.scss",
+      "style": "./scss/bootstrap-utilities.scss",
+      "default": "./scss/bootstrap-utilities.scss"
+    },
+    "./scss/plantasonic-components.scss": {
+      "sass": "./scss/plantasonic-components.scss",
+      "style": "./scss/plantasonic-components.scss",
+      "default": "./scss/plantasonic-components.scss"
+    },
+    "./scss/primitives.scss": {
+      "sass": "./scss/primitives.scss",
+      "style": "./scss/primitives.scss",
+      "default": "./scss/primitives.scss"
+    },
+    "./scss/components.scss": {
+      "sass": "./scss/components.scss",
+      "style": "./scss/components.scss",
+      "default": "./scss/components.scss"
+    },
+    "./scss/motion.scss": {
+      "sass": "./scss/motion.scss",
+      "style": "./scss/motion.scss",
+      "default": "./scss/motion.scss"
+    },
+    "./scss/instrument.scss": {
+      "sass": "./scss/instrument.scss",
+      "style": "./scss/instrument.scss",
+      "default": "./scss/instrument.scss"
+    },
+    "./scss/creative-workspace.scss": {
+      "sass": "./scss/creative-workspace.scss",
+      "style": "./scss/creative-workspace.scss",
+      "default": "./scss/creative-workspace.scss"
+    },
+    "./scss/navigation-framework.scss": {
+      "sass": "./scss/navigation-framework.scss",
+      "style": "./scss/navigation-framework.scss",
+      "default": "./scss/navigation-framework.scss"
+    },
+    "./scss/application-shell.scss": {
+      "sass": "./scss/application-shell.scss",
+      "style": "./scss/application-shell.scss",
+      "default": "./scss/application-shell.scss"
+    },
+    "./shell": {
+      "types": "./src/shell/index.ts",
+      "default": "./src/shell/index.ts"
+    },
+    "./components": {
+      "types": "./src/components/index.ts",
+      "default": "./src/components/index.ts"
+    },
+    "./primitives": {
+      "types": "./src/primitives/index.ts",
+      "default": "./src/primitives/index.ts"
+    },
+    "./motion": {
+      "types": "./src/motion/index.ts",
+      "default": "./src/motion/index.ts"
+    },
+    "./instrument": {
+      "types": "./src/instrument/index.ts",
+      "default": "./src/instrument/index.ts"
+    },
+    "./creative-workspace": {
+      "types": "./src/creative-workspace/index.ts",
+      "default": "./src/creative-workspace/index.ts"
+    },
+    "./app": {
+      "types": "./src/app/index.ts",
+      "default": "./src/app/index.ts"
+    },
+    "./ai": {
+      "types": "./src/ai/index.ts",
+      "default": "./src/ai/index.ts"
+    },
+    "./prototype": {
+      "types": "./src/prototype/index.ts",
+      "default": "./src/prototype/index.ts"
+    },
+    "./platform": {
+      "types": "./src/platform/index.ts",
+      "default": "./src/platform/index.ts"
+    },
+    "./studio": {
+      "types": "./src/studio/index.ts",
+      "default": "./src/studio/index.ts"
+    },
+    "./generated/studio/index.json": "./generated/studio/index.json",
+    "./generated/api-surface.json": "./generated/api-surface.json",
+    "./generated/ecosystem/ecosystem.json": "./generated/ecosystem/ecosystem.json",
+    "./generated/ecosystem/engines.json": "./generated/ecosystem/engines.json",
+    "./generated/ai/index.json": "./generated/ai/index.json",
+    "./generated/ai/components.json": "./generated/ai/components.json",
+    "./generated/ai/layouts.json": "./generated/ai/layouts.json",
+    "./generated/ai/patterns.json": "./generated/ai/patterns.json",
+    "./generated/ai/tokens.json": "./generated/ai/tokens.json",
+    "./generated/ai/themes.json": "./generated/ai/themes.json",
+    "./generated/ai/registry.json": "./generated/ai/registry.json",
+    "./generated/ai/knowledge-graph.json": "./generated/ai/knowledge-graph.json",
+    "./generated/ai/architecture.json": "./generated/ai/architecture.json",
+    "./generated/ai/compliance.json": "./generated/ai/compliance.json",
+    "./tokens/foundation.tokens.json": "./tokens/foundation.tokens.json",
+    "./tokens/theme.dark.tokens.json": "./tokens/theme.dark.tokens.json",
+    "./tokens/theme.light.tokens.json": "./tokens/theme.light.tokens.json",
+    "./generated/css-vars.d.ts": "./generated/css-vars.d.ts",
+    "./scss/_tokens.generated.scss": "./scss/_tokens.generated.scss"
+  },
+  "keywords": [
+    "design-system",
+    "design-tokens",
+    "css-variables",
+    "bootstrap",
+    "bootstrap-theme",
+    "plantasonic",
+    "dark-theme",
+    "w3c-design-tokens"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nate-thousand/plantasonic-design-system.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nate-thousand/plantasonic-design-system/issues"
+  },
+  "homepage": "https://github.com/nate-thousand/plantasonic-design-system#readme"
+}

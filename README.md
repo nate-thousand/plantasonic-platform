@@ -9,12 +9,12 @@ This repository is the source of truth for orchestration, SDK, generator, templa
 - **AI First Application Platform** — orchestration layer for the entire ecosystem
 - **Orchestration SDK** — `@plantasonic/platform`
 - **Shared types** — `@plantasonic/platform-types`
+- **Design System** — `plantasonic-design-system` in `packages/design-system`
 - **Prototype generator** — `@plantasonic/create-app`
 - **Development environment** — rules, skills, templates, docs, validation
 
 ## What this is not
 
-- Not the Design System (lives in `plantasonic-xyz`)
 - Not an application repository
 - Not published to npm yet
 
@@ -32,6 +32,7 @@ plantasonic-platform/
 │   ├── sdk/                # @plantasonic/platform
 │   ├── shared-types/       # @plantasonic/platform-types
 │   ├── create-plantasonic-app/
+│   ├── design-system/      # plantasonic-design-system
 │   ├── sound-engine/       # plantasia-sound-engine
 │   └── visual-engine/      # ascii-visual-engine
 ├── apps/
@@ -77,11 +78,7 @@ pnpm install
 pnpm build
 ```
 
-Sibling path required for demo/reference:
-
-- `../plantasonic-xyz/plantasonic-design-system`
-
-Sound and visual engines are workspace packages under `packages/sound-engine` and `packages/visual-engine`.
+Design System, sound, and visual engines are workspace packages under `packages/design-system`, `packages/sound-engine`, and `packages/visual-engine`.
 
 ## AI First Development Workflow
 

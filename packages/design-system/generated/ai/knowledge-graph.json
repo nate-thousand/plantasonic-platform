@@ -1,0 +1,4704 @@
+{
+  "generatedAt": "2026-06-30T19:13:02.605Z",
+  "sdkVersion": "1.5.0",
+  "metadataSpecVersion": "1.0.0",
+  "nodes": [
+    {
+      "id": "component.button",
+      "kind": "component",
+      "name": "Button"
+    },
+    {
+      "id": "component.iconButton",
+      "kind": "component",
+      "name": "Icon Button"
+    },
+    {
+      "id": "component.toolbar",
+      "kind": "component",
+      "name": "Toolbar"
+    },
+    {
+      "id": "component.toolbarGroup",
+      "kind": "component",
+      "name": "Toolbar Group"
+    },
+    {
+      "id": "component.panel",
+      "kind": "component",
+      "name": "Panel"
+    },
+    {
+      "id": "component.panelHeader",
+      "kind": "component",
+      "name": "Panel Header"
+    },
+    {
+      "id": "component.surface",
+      "kind": "component",
+      "name": "Surface"
+    },
+    {
+      "id": "component.card",
+      "kind": "component",
+      "name": "Card"
+    },
+    {
+      "id": "component.section",
+      "kind": "component",
+      "name": "Section"
+    },
+    {
+      "id": "component.controlGroup",
+      "kind": "component",
+      "name": "Control Group"
+    },
+    {
+      "id": "component.badge",
+      "kind": "component",
+      "name": "Badge"
+    },
+    {
+      "id": "component.statusIndicator",
+      "kind": "component",
+      "name": "Status Indicator"
+    },
+    {
+      "id": "primitive.stack",
+      "kind": "primitive",
+      "name": "Stack"
+    },
+    {
+      "id": "primitive.inline",
+      "kind": "primitive",
+      "name": "Inline"
+    },
+    {
+      "id": "primitive.cluster",
+      "kind": "primitive",
+      "name": "Cluster"
+    },
+    {
+      "id": "primitive.grid",
+      "kind": "primitive",
+      "name": "Grid"
+    },
+    {
+      "id": "primitive.sidebar",
+      "kind": "primitive",
+      "name": "Sidebar"
+    },
+    {
+      "id": "primitive.split",
+      "kind": "primitive",
+      "name": "Split"
+    },
+    {
+      "id": "primitive.frame",
+      "kind": "primitive",
+      "name": "Frame"
+    },
+    {
+      "id": "primitive.center",
+      "kind": "primitive",
+      "name": "Center"
+    },
+    {
+      "id": "primitive.cover",
+      "kind": "primitive",
+      "name": "Cover"
+    },
+    {
+      "id": "primitive.container",
+      "kind": "primitive",
+      "name": "Container"
+    },
+    {
+      "id": "primitive.surface",
+      "kind": "primitive",
+      "name": "Surface"
+    },
+    {
+      "id": "primitive.section",
+      "kind": "primitive",
+      "name": "Section"
+    },
+    {
+      "id": "primitive.region",
+      "kind": "primitive",
+      "name": "Region"
+    },
+    {
+      "id": "primitive.viewport",
+      "kind": "primitive",
+      "name": "Viewport"
+    },
+    {
+      "id": "primitive.spacer",
+      "kind": "primitive",
+      "name": "Spacer"
+    },
+    {
+      "id": "primitive.inset",
+      "kind": "primitive",
+      "name": "Inset"
+    },
+    {
+      "id": "primitive.flow",
+      "kind": "primitive",
+      "name": "Flow"
+    },
+    {
+      "id": "layout.dashboard",
+      "kind": "layout",
+      "name": "Dashboard"
+    },
+    {
+      "id": "layout.instrument",
+      "kind": "layout",
+      "name": "Instrument"
+    },
+    {
+      "id": "layout.studio",
+      "kind": "layout",
+      "name": "Studio"
+    },
+    {
+      "id": "layout.canvas",
+      "kind": "layout",
+      "name": "Canvas"
+    },
+    {
+      "id": "layout.presentation",
+      "kind": "layout",
+      "name": "Presentation"
+    },
+    {
+      "id": "layout.workspace",
+      "kind": "layout",
+      "name": "Workspace"
+    },
+    {
+      "id": "layout.settings",
+      "kind": "layout",
+      "name": "Settings"
+    },
+    {
+      "id": "layout.documentation",
+      "kind": "layout",
+      "name": "Documentation"
+    },
+    {
+      "id": "layout.landing",
+      "kind": "layout",
+      "name": "Landing"
+    },
+    {
+      "id": "pattern.transport",
+      "kind": "pattern",
+      "name": "Transport"
+    },
+    {
+      "id": "pattern.inspector",
+      "kind": "pattern",
+      "name": "Inspector"
+    },
+    {
+      "id": "pattern.command-palette",
+      "kind": "pattern",
+      "name": "Command Palette"
+    },
+    {
+      "id": "pattern.notification-center",
+      "kind": "pattern",
+      "name": "Notification Center"
+    },
+    {
+      "id": "pattern.search",
+      "kind": "pattern",
+      "name": "Search"
+    },
+    {
+      "id": "pattern.settings",
+      "kind": "pattern",
+      "name": "Settings"
+    },
+    {
+      "id": "pattern.asset-browser",
+      "kind": "pattern",
+      "name": "Asset Browser"
+    },
+    {
+      "id": "pattern.media-library",
+      "kind": "pattern",
+      "name": "Media Library"
+    },
+    {
+      "id": "pattern.project-picker",
+      "kind": "pattern",
+      "name": "Project Picker"
+    },
+    {
+      "id": "pattern.workspace",
+      "kind": "pattern",
+      "name": "Workspace"
+    },
+    {
+      "id": "pattern.timeline",
+      "kind": "pattern",
+      "name": "Timeline"
+    },
+    {
+      "id": "pattern.wizard",
+      "kind": "pattern",
+      "name": "Wizard"
+    },
+    {
+      "id": "token.color.primary.default",
+      "kind": "token",
+      "name": "--ds-color-primary"
+    },
+    {
+      "id": "token.color.primary.hover",
+      "kind": "token",
+      "name": "--ds-color-primary-hover"
+    },
+    {
+      "id": "token.color.primary.pressed",
+      "kind": "token",
+      "name": "--ds-color-primary-pressed"
+    },
+    {
+      "id": "token.color.primary.disabled",
+      "kind": "token",
+      "name": "--ds-color-primary-disabled"
+    },
+    {
+      "id": "token.color.secondary",
+      "kind": "token",
+      "name": "--ds-color-secondary"
+    },
+    {
+      "id": "token.color.accent",
+      "kind": "token",
+      "name": "--ds-color-accent"
+    },
+    {
+      "id": "token.color.surface.default",
+      "kind": "token",
+      "name": "--ds-color-surface-default"
+    },
+    {
+      "id": "token.color.surface.app",
+      "kind": "token",
+      "name": "--ds-color-surface-app"
+    },
+    {
+      "id": "token.color.surface.stage",
+      "kind": "token",
+      "name": "--ds-color-surface-stage"
+    },
+    {
+      "id": "token.color.surface.nav",
+      "kind": "token",
+      "name": "--ds-color-surface-nav"
+    },
+    {
+      "id": "token.color.surface.dock",
+      "kind": "token",
+      "name": "--ds-color-surface-dock"
+    },
+    {
+      "id": "token.color.surface.input",
+      "kind": "token",
+      "name": "--ds-color-surface-input"
+    },
+    {
+      "id": "token.color.surface.card",
+      "kind": "token",
+      "name": "--ds-color-surface-card"
+    },
+    {
+      "id": "token.color.surface.raised",
+      "kind": "token",
+      "name": "--ds-color-surface-raised"
+    },
+    {
+      "id": "token.color.surface.raised-hover",
+      "kind": "token",
+      "name": "--ds-color-surface-raised-hover"
+    },
+    {
+      "id": "token.color.surface.sunken",
+      "kind": "token",
+      "name": "--ds-color-surface-sunken"
+    },
+    {
+      "id": "token.color.surface.overlay",
+      "kind": "token",
+      "name": "--ds-color-surface-overlay"
+    },
+    {
+      "id": "token.color.text.primary",
+      "kind": "token",
+      "name": "--ds-color-text-primary"
+    },
+    {
+      "id": "token.color.text.secondary",
+      "kind": "token",
+      "name": "--ds-color-text-secondary"
+    },
+    {
+      "id": "token.color.text.muted",
+      "kind": "token",
+      "name": "--ds-color-text-muted"
+    },
+    {
+      "id": "token.color.text.accent",
+      "kind": "token",
+      "name": "--ds-color-text-accent"
+    },
+    {
+      "id": "token.color.text.link",
+      "kind": "token",
+      "name": "--ds-color-text-link"
+    },
+    {
+      "id": "token.color.text.inverse",
+      "kind": "token",
+      "name": "--ds-color-text-inverse"
+    },
+    {
+      "id": "token.color.text.on-primary",
+      "kind": "token",
+      "name": "--ds-color-text-on-primary"
+    },
+    {
+      "id": "token.color.text.on-secondary",
+      "kind": "token",
+      "name": "--ds-color-text-on-secondary"
+    },
+    {
+      "id": "token.color.text.on-accent",
+      "kind": "token",
+      "name": "--ds-color-text-on-accent"
+    },
+    {
+      "id": "token.color.border.default",
+      "kind": "token",
+      "name": "--ds-color-border-default"
+    },
+    {
+      "id": "token.color.border.subtle",
+      "kind": "token",
+      "name": "--ds-color-border-subtle"
+    },
+    {
+      "id": "token.color.border.strong",
+      "kind": "token",
+      "name": "--ds-color-border-strong"
+    },
+    {
+      "id": "token.color.border.interactive",
+      "kind": "token",
+      "name": "--ds-color-border-interactive"
+    },
+    {
+      "id": "token.color.border.focus",
+      "kind": "token",
+      "name": "--ds-color-border-focus"
+    },
+    {
+      "id": "token.color.overlay.backdrop",
+      "kind": "token",
+      "name": "--ds-color-overlay-backdrop"
+    },
+    {
+      "id": "token.color.overlay.scrim-light",
+      "kind": "token",
+      "name": "--ds-color-overlay-scrim-light"
+    },
+    {
+      "id": "token.color.overlay.scrim",
+      "kind": "token",
+      "name": "--ds-color-overlay-scrim"
+    },
+    {
+      "id": "token.color.overlay.scrim-strong",
+      "kind": "token",
+      "name": "--ds-color-overlay-scrim-strong"
+    },
+    {
+      "id": "token.color.overlay.glass",
+      "kind": "token",
+      "name": "--ds-color-overlay-glass"
+    },
+    {
+      "id": "token.color.overlay.focus-outline",
+      "kind": "token",
+      "name": "--ds-color-overlay-focus-outline"
+    },
+    {
+      "id": "token.color.decorative.favorite",
+      "kind": "token",
+      "name": "--ds-color-favorite"
+    },
+    {
+      "id": "token.color.brand.primary.500",
+      "kind": "token",
+      "name": "--ds-color-brand-primary-500"
+    },
+    {
+      "id": "token.color.brand.primary.700",
+      "kind": "token",
+      "name": "--ds-color-brand-primary-700"
+    },
+    {
+      "id": "token.color.brand.primary.900",
+      "kind": "token",
+      "name": "--ds-color-brand-primary-900"
+    },
+    {
+      "id": "token.color.status.success",
+      "kind": "token",
+      "name": "--ds-color-success"
+    },
+    {
+      "id": "token.color.status.warning",
+      "kind": "token",
+      "name": "--ds-color-warning"
+    },
+    {
+      "id": "token.color.status.error",
+      "kind": "token",
+      "name": "--ds-color-error"
+    },
+    {
+      "id": "token.color.status.info",
+      "kind": "token",
+      "name": "--ds-color-info"
+    },
+    {
+      "id": "token.color.status.error-surface",
+      "kind": "token",
+      "name": "--ds-color-error-surface"
+    },
+    {
+      "id": "token.color.status.error-border",
+      "kind": "token",
+      "name": "--ds-color-error-border"
+    },
+    {
+      "id": "token.font.family.sans",
+      "kind": "token",
+      "name": "--ds-font-family-sans"
+    },
+    {
+      "id": "token.font.family.mono",
+      "kind": "token",
+      "name": "--ds-font-family-mono"
+    },
+    {
+      "id": "token.font.size.base",
+      "kind": "token",
+      "name": "--ds-font-size-base"
+    },
+    {
+      "id": "token.font.size.display",
+      "kind": "token",
+      "name": "--ds-font-size-display"
+    },
+    {
+      "id": "token.font.size.h1",
+      "kind": "token",
+      "name": "--ds-font-size-h1"
+    },
+    {
+      "id": "token.font.size.h2",
+      "kind": "token",
+      "name": "--ds-font-size-h2"
+    },
+    {
+      "id": "token.font.size.h3",
+      "kind": "token",
+      "name": "--ds-font-size-h3"
+    },
+    {
+      "id": "token.font.size.h4",
+      "kind": "token",
+      "name": "--ds-font-size-h4"
+    },
+    {
+      "id": "token.font.size.body",
+      "kind": "token",
+      "name": "--ds-font-size-body"
+    },
+    {
+      "id": "token.font.size.body-sm",
+      "kind": "token",
+      "name": "--ds-font-size-body-sm"
+    },
+    {
+      "id": "token.font.size.caption",
+      "kind": "token",
+      "name": "--ds-font-size-caption"
+    },
+    {
+      "id": "token.font.size.label",
+      "kind": "token",
+      "name": "--ds-font-size-label"
+    },
+    {
+      "id": "token.font.size.overline",
+      "kind": "token",
+      "name": "--ds-font-size-overline"
+    },
+    {
+      "id": "token.font.line-height.base",
+      "kind": "token",
+      "name": "--ds-line-height-base"
+    },
+    {
+      "id": "token.font.line-height.tight",
+      "kind": "token",
+      "name": "--ds-line-height-tight"
+    },
+    {
+      "id": "token.font.line-height.body",
+      "kind": "token",
+      "name": "--ds-line-height-body"
+    },
+    {
+      "id": "token.font.line-height.relaxed",
+      "kind": "token",
+      "name": "--ds-line-height-relaxed"
+    },
+    {
+      "id": "token.font.weight.body",
+      "kind": "token",
+      "name": "--ds-font-weight-body"
+    },
+    {
+      "id": "token.font.weight.headings",
+      "kind": "token",
+      "name": "--ds-font-weight-headings"
+    },
+    {
+      "id": "token.font.weight.label",
+      "kind": "token",
+      "name": "--ds-font-weight-label"
+    },
+    {
+      "id": "token.font.weight.mono",
+      "kind": "token",
+      "name": "--ds-font-weight-mono"
+    },
+    {
+      "id": "token.font.letter-spacing.label",
+      "kind": "token",
+      "name": "--ds-letter-spacing-label"
+    },
+    {
+      "id": "token.font.letter-spacing.overline",
+      "kind": "token",
+      "name": "--ds-letter-spacing-overline"
+    },
+    {
+      "id": "token.font.letter-spacing.caption",
+      "kind": "token",
+      "name": "--ds-letter-spacing-caption"
+    },
+    {
+      "id": "token.space.0",
+      "kind": "token",
+      "name": "--ds-space-0"
+    },
+    {
+      "id": "token.space.1",
+      "kind": "token",
+      "name": "--ds-space-1"
+    },
+    {
+      "id": "token.space.2",
+      "kind": "token",
+      "name": "--ds-space-2"
+    },
+    {
+      "id": "token.space.12",
+      "kind": "token",
+      "name": "--ds-space-12"
+    },
+    {
+      "id": "token.space.3",
+      "kind": "token",
+      "name": "--ds-space-3"
+    },
+    {
+      "id": "token.space.20",
+      "kind": "token",
+      "name": "--ds-space-20"
+    },
+    {
+      "id": "token.space.4",
+      "kind": "token",
+      "name": "--ds-space-4"
+    },
+    {
+      "id": "token.space.5",
+      "kind": "token",
+      "name": "--ds-space-5"
+    },
+    {
+      "id": "token.space.28",
+      "kind": "token",
+      "name": "--ds-space-28"
+    },
+    {
+      "id": "token.space.6",
+      "kind": "token",
+      "name": "--ds-space-6"
+    },
+    {
+      "id": "token.space.36",
+      "kind": "token",
+      "name": "--ds-space-36"
+    },
+    {
+      "id": "token.space.40",
+      "kind": "token",
+      "name": "--ds-space-40"
+    },
+    {
+      "id": "token.space.44",
+      "kind": "token",
+      "name": "--ds-space-44"
+    },
+    {
+      "id": "token.space.8",
+      "kind": "token",
+      "name": "--ds-space-8"
+    },
+    {
+      "id": "token.space.52",
+      "kind": "token",
+      "name": "--ds-space-52"
+    },
+    {
+      "id": "token.space.56",
+      "kind": "token",
+      "name": "--ds-space-56"
+    },
+    {
+      "id": "token.space.60",
+      "kind": "token",
+      "name": "--ds-space-60"
+    },
+    {
+      "id": "token.space.68",
+      "kind": "token",
+      "name": "--ds-space-68"
+    },
+    {
+      "id": "token.space.72",
+      "kind": "token",
+      "name": "--ds-space-72"
+    },
+    {
+      "id": "token.space.80",
+      "kind": "token",
+      "name": "--ds-space-80"
+    },
+    {
+      "id": "token.space.96",
+      "kind": "token",
+      "name": "--ds-space-96"
+    },
+    {
+      "id": "token.space.128",
+      "kind": "token",
+      "name": "--ds-space-128"
+    },
+    {
+      "id": "token.space.16",
+      "kind": "token",
+      "name": "--ds-space-16"
+    },
+    {
+      "id": "token.space.24",
+      "kind": "token",
+      "name": "--ds-space-24"
+    },
+    {
+      "id": "token.space.32",
+      "kind": "token",
+      "name": "--ds-space-32"
+    },
+    {
+      "id": "token.space.48",
+      "kind": "token",
+      "name": "--ds-space-48"
+    },
+    {
+      "id": "token.space.64",
+      "kind": "token",
+      "name": "--ds-space-64"
+    },
+    {
+      "id": "token.space.999",
+      "kind": "token",
+      "name": "--ds-space-999"
+    },
+    {
+      "id": "token.radius.xs",
+      "kind": "token",
+      "name": "--ds-radius-xs"
+    },
+    {
+      "id": "token.radius.none",
+      "kind": "token",
+      "name": "--ds-radius-none"
+    },
+    {
+      "id": "token.radius.md",
+      "kind": "token",
+      "name": "--ds-radius-md"
+    },
+    {
+      "id": "token.radius.full",
+      "kind": "token",
+      "name": "--ds-radius-full"
+    },
+    {
+      "id": "token.radius.sm",
+      "kind": "token",
+      "name": "--ds-radius-sm"
+    },
+    {
+      "id": "token.radius.default",
+      "kind": "token",
+      "name": "--ds-radius-default"
+    },
+    {
+      "id": "token.radius.lg",
+      "kind": "token",
+      "name": "--ds-radius-lg"
+    },
+    {
+      "id": "token.radius.xl",
+      "kind": "token",
+      "name": "--ds-radius-xl"
+    },
+    {
+      "id": "token.radius.pill",
+      "kind": "token",
+      "name": "--ds-radius-pill"
+    },
+    {
+      "id": "token.shadow.none",
+      "kind": "token",
+      "name": "--ds-shadow-none"
+    },
+    {
+      "id": "token.shadow.sm",
+      "kind": "token",
+      "name": "--ds-shadow-sm"
+    },
+    {
+      "id": "token.shadow.md",
+      "kind": "token",
+      "name": "--ds-shadow-md"
+    },
+    {
+      "id": "token.shadow.lg",
+      "kind": "token",
+      "name": "--ds-shadow-lg"
+    },
+    {
+      "id": "token.shadow.focus",
+      "kind": "token",
+      "name": "--ds-shadow-focus"
+    },
+    {
+      "id": "token.shadow.glow-accent",
+      "kind": "token",
+      "name": "--ds-shadow-glow-accent"
+    },
+    {
+      "id": "token.shadow.stage-inset",
+      "kind": "token",
+      "name": "--ds-shadow-stage-inset"
+    },
+    {
+      "id": "token.transition.instant",
+      "kind": "token",
+      "name": "--ds-transition-instant"
+    },
+    {
+      "id": "token.transition.fast",
+      "kind": "token",
+      "name": "--ds-transition-fast"
+    },
+    {
+      "id": "token.transition.base",
+      "kind": "token",
+      "name": "--ds-transition-base"
+    },
+    {
+      "id": "token.transition.slow",
+      "kind": "token",
+      "name": "--ds-transition-slow"
+    },
+    {
+      "id": "token.transition.slower",
+      "kind": "token",
+      "name": "--ds-transition-slower"
+    },
+    {
+      "id": "token.ease.out",
+      "kind": "token",
+      "name": "--ds-ease-out"
+    },
+    {
+      "id": "token.ease.in",
+      "kind": "token",
+      "name": "--ds-ease-in"
+    },
+    {
+      "id": "token.ease.in-out",
+      "kind": "token",
+      "name": "--ds-ease-in-out"
+    },
+    {
+      "id": "token.ease.standard",
+      "kind": "token",
+      "name": "--ds-ease-standard"
+    },
+    {
+      "id": "token.ease.emphasized",
+      "kind": "token",
+      "name": "--ds-ease-emphasized"
+    },
+    {
+      "id": "token.ease.spring",
+      "kind": "token",
+      "name": "--ds-ease-spring"
+    },
+    {
+      "id": "token.motion.duration.micro",
+      "kind": "token",
+      "name": "--ds-motion-duration-micro"
+    },
+    {
+      "id": "token.motion.duration.fast",
+      "kind": "token",
+      "name": "--ds-motion-duration-fast"
+    },
+    {
+      "id": "token.motion.duration.base",
+      "kind": "token",
+      "name": "--ds-motion-duration-base"
+    },
+    {
+      "id": "token.motion.duration.slow",
+      "kind": "token",
+      "name": "--ds-motion-duration-slow"
+    },
+    {
+      "id": "token.motion.duration.slower",
+      "kind": "token",
+      "name": "--ds-motion-duration-slower"
+    },
+    {
+      "id": "token.motion.easing.standard",
+      "kind": "token",
+      "name": "--ds-motion-easing-standard"
+    },
+    {
+      "id": "token.motion.easing.emphasized",
+      "kind": "token",
+      "name": "--ds-motion-easing-emphasized"
+    },
+    {
+      "id": "token.motion.easing.entrance",
+      "kind": "token",
+      "name": "--ds-motion-easing-entrance"
+    },
+    {
+      "id": "token.motion.easing.exit",
+      "kind": "token",
+      "name": "--ds-motion-easing-exit"
+    },
+    {
+      "id": "token.motion.easing.spring",
+      "kind": "token",
+      "name": "--ds-motion-easing-spring"
+    },
+    {
+      "id": "token.product.nav-height",
+      "kind": "token",
+      "name": "--ps-nav-height"
+    },
+    {
+      "id": "token.product.dock-height",
+      "kind": "token",
+      "name": "--ps-dock-height"
+    },
+    {
+      "id": "token.product.sidebar-width",
+      "kind": "token",
+      "name": "--ps-sidebar-width"
+    },
+    {
+      "id": "token.product.touch-target",
+      "kind": "token",
+      "name": "--ps-touch-target"
+    },
+    {
+      "id": "token.product.touch-target-large",
+      "kind": "token",
+      "name": "--ps-touch-target-large"
+    },
+    {
+      "id": "token.product.instrument-gutter",
+      "kind": "token",
+      "name": "--ps-instrument-gutter"
+    },
+    {
+      "id": "token.product.floating-panel-min",
+      "kind": "token",
+      "name": "--ps-floating-panel-min"
+    },
+    {
+      "id": "token.product.hud-opacity",
+      "kind": "token",
+      "name": "--ps-hud-opacity"
+    },
+    {
+      "id": "token.product.overlay-radius",
+      "kind": "token",
+      "name": "--ps-overlay-radius"
+    },
+    {
+      "id": "token.product.preset-card-radius",
+      "kind": "token",
+      "name": "--ps-preset-card-radius"
+    },
+    {
+      "id": "token.product.preset-card-border",
+      "kind": "token",
+      "name": "--ps-preset-card-border"
+    },
+    {
+      "id": "token.product.preset-card-active-border",
+      "kind": "token",
+      "name": "--ps-preset-card-active-border"
+    },
+    {
+      "id": "token.product.slider-track",
+      "kind": "token",
+      "name": "--ps-slider-track"
+    },
+    {
+      "id": "token.product.slider-thumb",
+      "kind": "token",
+      "name": "--ps-slider-thumb"
+    },
+    {
+      "id": "token.product.stage-border",
+      "kind": "token",
+      "name": "--ps-stage-border"
+    },
+    {
+      "id": "token.product.performance-chrome-opacity",
+      "kind": "token",
+      "name": "--ps-performance-chrome-opacity"
+    },
+    {
+      "id": "token.product.shadow-overlay",
+      "kind": "token",
+      "name": "--ps-shadow-overlay"
+    },
+    {
+      "id": "token.product.shadow-sidebar",
+      "kind": "token",
+      "name": "--ps-shadow-sidebar"
+    },
+    {
+      "id": "token.product.shadow-panel",
+      "kind": "token",
+      "name": "--ps-shadow-panel"
+    },
+    {
+      "id": "token.fontSize.xs",
+      "kind": "token",
+      "name": "--ds-font-size-xs"
+    },
+    {
+      "id": "token.fontSize.sm",
+      "kind": "token",
+      "name": "--ds-font-size-sm"
+    },
+    {
+      "id": "token.fontSize.md",
+      "kind": "token",
+      "name": "--ds-font-size-md"
+    },
+    {
+      "id": "token.fontSize.lg",
+      "kind": "token",
+      "name": "--ds-font-size-lg"
+    },
+    {
+      "id": "token.fontSize.xl",
+      "kind": "token",
+      "name": "--ds-font-size-xl"
+    },
+    {
+      "id": "token.fontSize.2xl",
+      "kind": "token",
+      "name": "--ds-font-size-2xl"
+    },
+    {
+      "id": "token.fontSize.3xl",
+      "kind": "token",
+      "name": "--ds-font-size-3xl"
+    },
+    {
+      "id": "token.fontSize.4xl",
+      "kind": "token",
+      "name": "--ds-font-size-4xl"
+    },
+    {
+      "id": "token.lineHeight.tight",
+      "kind": "token",
+      "name": "--ds-line-height-tight-scale"
+    },
+    {
+      "id": "token.lineHeight.normal",
+      "kind": "token",
+      "name": "--ds-line-height-normal"
+    },
+    {
+      "id": "token.lineHeight.relaxed",
+      "kind": "token",
+      "name": "--ds-line-height-relaxed-scale"
+    },
+    {
+      "id": "token.lineHeight.loose",
+      "kind": "token",
+      "name": "--ds-line-height-loose"
+    },
+    {
+      "id": "token.letterSpacing.tighter",
+      "kind": "token",
+      "name": "--ds-letter-spacing-tighter"
+    },
+    {
+      "id": "token.letterSpacing.tight",
+      "kind": "token",
+      "name": "--ds-letter-spacing-tight"
+    },
+    {
+      "id": "token.letterSpacing.normal",
+      "kind": "token",
+      "name": "--ds-letter-spacing-normal"
+    },
+    {
+      "id": "token.letterSpacing.wide",
+      "kind": "token",
+      "name": "--ds-letter-spacing-wide"
+    },
+    {
+      "id": "token.letterSpacing.wider",
+      "kind": "token",
+      "name": "--ds-letter-spacing-wider"
+    },
+    {
+      "id": "token.size.xs",
+      "kind": "token",
+      "name": "--ds-size-xs"
+    },
+    {
+      "id": "token.size.sm",
+      "kind": "token",
+      "name": "--ds-size-sm"
+    },
+    {
+      "id": "token.size.md",
+      "kind": "token",
+      "name": "--ds-size-md"
+    },
+    {
+      "id": "token.size.lg",
+      "kind": "token",
+      "name": "--ds-size-lg"
+    },
+    {
+      "id": "token.size.xl",
+      "kind": "token",
+      "name": "--ds-size-xl"
+    },
+    {
+      "id": "token.size.xxl",
+      "kind": "token",
+      "name": "--ds-size-xxl"
+    },
+    {
+      "id": "token.opacity.0",
+      "kind": "token",
+      "name": "--ds-opacity-0"
+    },
+    {
+      "id": "token.opacity.50",
+      "kind": "token",
+      "name": "--ds-opacity-50"
+    },
+    {
+      "id": "token.opacity.100",
+      "kind": "token",
+      "name": "--ds-opacity-100"
+    },
+    {
+      "id": "token.borderWidth.hairline",
+      "kind": "token",
+      "name": "--ds-border-width-hairline"
+    },
+    {
+      "id": "token.borderWidth.thin",
+      "kind": "token",
+      "name": "--ds-border-width-thin"
+    },
+    {
+      "id": "token.borderWidth.medium",
+      "kind": "token",
+      "name": "--ds-border-width-medium"
+    },
+    {
+      "id": "token.borderWidth.thick",
+      "kind": "token",
+      "name": "--ds-border-width-thick"
+    },
+    {
+      "id": "token.stroke.subtle",
+      "kind": "token",
+      "name": "--ds-stroke-subtle"
+    },
+    {
+      "id": "token.stroke.default",
+      "kind": "token",
+      "name": "--ds-stroke-default"
+    },
+    {
+      "id": "token.stroke.strong",
+      "kind": "token",
+      "name": "--ds-stroke-strong"
+    },
+    {
+      "id": "token.stroke.emphasis",
+      "kind": "token",
+      "name": "--ds-stroke-emphasis"
+    },
+    {
+      "id": "token.shadow.xs",
+      "kind": "token",
+      "name": "--ds-shadow-xs"
+    },
+    {
+      "id": "token.shadow.xl",
+      "kind": "token",
+      "name": "--ds-shadow-xl"
+    },
+    {
+      "id": "token.shadow.glow",
+      "kind": "token",
+      "name": "--ds-shadow-glow"
+    },
+    {
+      "id": "token.shadow.neon",
+      "kind": "token",
+      "name": "--ds-shadow-neon"
+    },
+    {
+      "id": "token.blur.sm",
+      "kind": "token",
+      "name": "--ds-blur-sm"
+    },
+    {
+      "id": "token.blur.md",
+      "kind": "token",
+      "name": "--ds-blur-md"
+    },
+    {
+      "id": "token.blur.lg",
+      "kind": "token",
+      "name": "--ds-blur-lg"
+    },
+    {
+      "id": "token.zIndex.floating",
+      "kind": "token",
+      "name": "--ds-z-floating"
+    },
+    {
+      "id": "token.zIndex.overlay",
+      "kind": "token",
+      "name": "--ds-z-overlay"
+    },
+    {
+      "id": "token.zIndex.modal",
+      "kind": "token",
+      "name": "--ds-z-modal"
+    },
+    {
+      "id": "token.duration.fast",
+      "kind": "token",
+      "name": "--ds-duration-fast"
+    },
+    {
+      "id": "token.duration.normal",
+      "kind": "token",
+      "name": "--ds-duration-normal"
+    },
+    {
+      "id": "token.easing.standard",
+      "kind": "token",
+      "name": "--ds-easing-standard"
+    },
+    {
+      "id": "token.easing.emphasized",
+      "kind": "token",
+      "name": "--ds-easing-emphasized"
+    },
+    {
+      "id": "token.motion.hover.duration",
+      "kind": "token",
+      "name": "--ds-motion-hover-duration"
+    },
+    {
+      "id": "token.motion.hover.easing",
+      "kind": "token",
+      "name": "--ds-motion-hover-easing"
+    },
+    {
+      "id": "token.iconSize.md",
+      "kind": "token",
+      "name": "--ds-icon-size-md"
+    },
+    {
+      "id": "token.iconSize.lg",
+      "kind": "token",
+      "name": "--ds-icon-size-lg"
+    },
+    {
+      "id": "token.breakpoint.tablet",
+      "kind": "token",
+      "name": "--ds-breakpoint-tablet"
+    },
+    {
+      "id": "token.breakpoint.desktop",
+      "kind": "token",
+      "name": "--ds-breakpoint-desktop"
+    },
+    {
+      "id": "token.grid.gutter",
+      "kind": "token",
+      "name": "--ds-grid-gutter"
+    },
+    {
+      "id": "token.grid.maxWidth",
+      "kind": "token",
+      "name": "--ds-grid-max-width"
+    },
+    {
+      "id": "token.layout.headerHeight",
+      "kind": "token",
+      "name": "--ds-layout-header-height"
+    },
+    {
+      "id": "token.layout.sidebarWidth",
+      "kind": "token",
+      "name": "--ds-layout-sidebar-width"
+    },
+    {
+      "id": "token.layout.inspectorWidth",
+      "kind": "token",
+      "name": "--ds-layout-inspector-width"
+    },
+    {
+      "id": "token.layout.stagePadding",
+      "kind": "token",
+      "name": "--ds-layout-stage-padding"
+    },
+    {
+      "id": "token.creative.stage.background",
+      "kind": "token",
+      "name": "--ps-creative-stage-background"
+    },
+    {
+      "id": "token.creative.stage.border",
+      "kind": "token",
+      "name": "--ps-creative-stage-border"
+    },
+    {
+      "id": "token.creative.stage.shadow",
+      "kind": "token",
+      "name": "--ps-creative-stage-shadow"
+    },
+    {
+      "id": "token.creative.stage.padding",
+      "kind": "token",
+      "name": "--ps-creative-stage-padding"
+    },
+    {
+      "id": "token.creative.hud.text",
+      "kind": "token",
+      "name": "--ps-creative-hud-text"
+    },
+    {
+      "id": "token.creative.hud.opacity",
+      "kind": "token",
+      "name": "--ps-creative-hud-opacity"
+    },
+    {
+      "id": "token.creative.transport.background",
+      "kind": "token",
+      "name": "--ps-creative-transport-background"
+    },
+    {
+      "id": "token.creative.transport.border",
+      "kind": "token",
+      "name": "--ps-creative-transport-border"
+    },
+    {
+      "id": "token.creative.transport.shadow",
+      "kind": "token",
+      "name": "--ps-creative-transport-shadow"
+    },
+    {
+      "id": "token.creative.visualizer.background",
+      "kind": "token",
+      "name": "--ps-creative-visualizer-background"
+    },
+    {
+      "id": "token.creative.visualizer.border",
+      "kind": "token",
+      "name": "--ps-creative-visualizer-border"
+    },
+    {
+      "id": "token.creative.visualizer.shadow",
+      "kind": "token",
+      "name": "--ps-creative-visualizer-shadow"
+    },
+    {
+      "id": "token.creative.ascii.foreground",
+      "kind": "token",
+      "name": "--ps-creative-ascii-foreground"
+    },
+    {
+      "id": "token.creative.ascii.background",
+      "kind": "token",
+      "name": "--ps-creative-ascii-background"
+    },
+    {
+      "id": "token.creative.ascii.glow",
+      "kind": "token",
+      "name": "--ps-creative-ascii-glow"
+    },
+    {
+      "id": "token.creative.waveform.line",
+      "kind": "token",
+      "name": "--ps-creative-waveform-line"
+    },
+    {
+      "id": "token.creative.waveform.fill",
+      "kind": "token",
+      "name": "--ps-creative-waveform-fill"
+    },
+    {
+      "id": "token.creative.waveform.background",
+      "kind": "token",
+      "name": "--ps-creative-waveform-background"
+    },
+    {
+      "id": "token.creative.midi.active",
+      "kind": "token",
+      "name": "--ps-creative-midi-active"
+    },
+    {
+      "id": "token.creative.midi.idle",
+      "kind": "token",
+      "name": "--ps-creative-midi-idle"
+    },
+    {
+      "id": "token.creative.midi.learn",
+      "kind": "token",
+      "name": "--ps-creative-midi-learn"
+    },
+    {
+      "id": "token.creative.performance.chrome-opacity",
+      "kind": "token",
+      "name": "--ps-creative-performance-chrome-opacity"
+    },
+    {
+      "id": "token.creative.performance.background",
+      "kind": "token",
+      "name": "--ps-creative-performance-background"
+    },
+    {
+      "id": "token.creative.instrument.gutter",
+      "kind": "token",
+      "name": "--ps-creative-instrument-gutter"
+    },
+    {
+      "id": "token.creative.instrument.background",
+      "kind": "token",
+      "name": "--ps-creative-instrument-background"
+    },
+    {
+      "id": "token.creative.presetBrowser.background",
+      "kind": "token",
+      "name": "--ps-creative-preset-browser-background"
+    },
+    {
+      "id": "token.creative.presetBrowser.border",
+      "kind": "token",
+      "name": "--ps-creative-preset-browser-border"
+    },
+    {
+      "id": "token.creative.presetBrowser.active-border",
+      "kind": "token",
+      "name": "--ps-creative-preset-browser-active-border"
+    },
+    {
+      "id": "token.creative.presetBrowser.radius",
+      "kind": "token",
+      "name": "--ps-creative-preset-browser-radius"
+    },
+    {
+      "id": "token.creative.inspector.background",
+      "kind": "token",
+      "name": "--ps-creative-inspector-background"
+    },
+    {
+      "id": "token.creative.inspector.border",
+      "kind": "token",
+      "name": "--ps-creative-inspector-border"
+    },
+    {
+      "id": "token.creative.inspector.shadow",
+      "kind": "token",
+      "name": "--ps-creative-inspector-shadow"
+    },
+    {
+      "id": "token.creative.overlay.backdrop",
+      "kind": "token",
+      "name": "--ps-creative-overlay-backdrop"
+    },
+    {
+      "id": "token.creative.overlay.shadow",
+      "kind": "token",
+      "name": "--ps-creative-overlay-shadow"
+    },
+    {
+      "id": "token.creative.overlay.radius",
+      "kind": "token",
+      "name": "--ps-creative-overlay-radius"
+    },
+    {
+      "id": "token.creative.glass.background",
+      "kind": "token",
+      "name": "--ps-creative-glass-background"
+    },
+    {
+      "id": "token.creative.glass.blur",
+      "kind": "token",
+      "name": "--ps-creative-glass-blur"
+    },
+    {
+      "id": "token.creative.glow.shadow",
+      "kind": "token",
+      "name": "--ps-creative-glow-shadow"
+    },
+    {
+      "id": "token.creative.glow.accent",
+      "kind": "token",
+      "name": "--ps-creative-glow-accent"
+    },
+    {
+      "id": "token.creative.focusRing.color",
+      "kind": "token",
+      "name": "--ps-creative-focus-ring-color"
+    },
+    {
+      "id": "token.creative.focusRing.width",
+      "kind": "token",
+      "name": "--ps-creative-focus-ring-width"
+    },
+    {
+      "id": "token.creative.focusRing.shadow",
+      "kind": "token",
+      "name": "--ps-creative-focus-ring-shadow"
+    },
+    {
+      "id": "token.creative.selection.background",
+      "kind": "token",
+      "name": "--ps-creative-selection-background"
+    },
+    {
+      "id": "token.creative.selection.border",
+      "kind": "token",
+      "name": "--ps-creative-selection-border"
+    },
+    {
+      "id": "token.creative.selection.text",
+      "kind": "token",
+      "name": "--ps-creative-selection-text"
+    },
+    {
+      "id": "theme.dark",
+      "kind": "theme",
+      "name": "Dark"
+    },
+    {
+      "id": "theme.light",
+      "kind": "theme",
+      "name": "Light"
+    }
+  ],
+  "edges": [
+    {
+      "from": "component.button",
+      "to": "token.motion.duration.fast",
+      "type": "uses-token"
+    },
+    {
+      "from": "component.iconButton",
+      "to": "component.button",
+      "type": "depends-on"
+    },
+    {
+      "from": "component.toolbarGroup",
+      "to": "component.toolbar",
+      "type": "depends-on"
+    },
+    {
+      "from": "component.panel",
+      "to": "component.panelHeader",
+      "type": "depends-on"
+    },
+    {
+      "from": "layout.instrument",
+      "to": "component.panel",
+      "type": "used-in-layout"
+    },
+    {
+      "from": "layout.studio",
+      "to": "component.panel",
+      "type": "used-in-layout"
+    },
+    {
+      "from": "layout.dashboard",
+      "to": "component.panel",
+      "type": "used-in-layout"
+    },
+    {
+      "from": "layout.workspace",
+      "to": "component.panel",
+      "type": "used-in-layout"
+    },
+    {
+      "from": "component.surface",
+      "to": "primitive.surface",
+      "type": "depends-on"
+    },
+    {
+      "from": "layout.instrument",
+      "to": "component.controlGroup",
+      "type": "used-in-layout"
+    },
+    {
+      "from": "layout.settings",
+      "to": "component.controlGroup",
+      "type": "used-in-layout"
+    },
+    {
+      "from": "layout.studio",
+      "to": "component.controlGroup",
+      "type": "used-in-layout"
+    },
+    {
+      "from": "layout.dashboard",
+      "to": "pattern.search",
+      "type": "composed-of"
+    },
+    {
+      "from": "layout.dashboard",
+      "to": "pattern.command-palette",
+      "type": "composed-of"
+    },
+    {
+      "from": "layout.dashboard",
+      "to": "pattern.notification-center",
+      "type": "composed-of"
+    },
+    {
+      "from": "layout.dashboard",
+      "to": "pattern.settings",
+      "type": "composed-of"
+    },
+    {
+      "from": "layout.instrument",
+      "to": "pattern.transport",
+      "type": "composed-of"
+    },
+    {
+      "from": "layout.instrument",
+      "to": "pattern.inspector",
+      "type": "composed-of"
+    },
+    {
+      "from": "layout.instrument",
+      "to": "pattern.timeline",
+      "type": "composed-of"
+    },
+    {
+      "from": "layout.instrument",
+      "to": "pattern.command-palette",
+      "type": "composed-of"
+    },
+    {
+      "from": "layout.studio",
+      "to": "pattern.asset-browser",
+      "type": "composed-of"
+    },
+    {
+      "from": "layout.studio",
+      "to": "pattern.inspector",
+      "type": "composed-of"
+    },
+    {
+      "from": "layout.studio",
+      "to": "pattern.media-library",
+      "type": "composed-of"
+    },
+    {
+      "from": "layout.studio",
+      "to": "pattern.timeline",
+      "type": "composed-of"
+    },
+    {
+      "from": "layout.canvas",
+      "to": "component.iconButton",
+      "type": "used-in-layout"
+    },
+    {
+      "from": "layout.canvas",
+      "to": "component.statusIndicator",
+      "type": "used-in-layout"
+    },
+    {
+      "from": "layout.canvas",
+      "to": "component.badge",
+      "type": "used-in-layout"
+    },
+    {
+      "from": "layout.canvas",
+      "to": "pattern.command-palette",
+      "type": "composed-of"
+    },
+    {
+      "from": "layout.presentation",
+      "to": "component.statusIndicator",
+      "type": "used-in-layout"
+    },
+    {
+      "from": "layout.presentation",
+      "to": "primitive.cover",
+      "type": "used-in-layout"
+    },
+    {
+      "from": "layout.presentation",
+      "to": "primitive.center",
+      "type": "used-in-layout"
+    },
+    {
+      "from": "layout.workspace",
+      "to": "pattern.inspector",
+      "type": "composed-of"
+    },
+    {
+      "from": "layout.workspace",
+      "to": "pattern.project-picker",
+      "type": "composed-of"
+    },
+    {
+      "from": "layout.workspace",
+      "to": "pattern.workspace",
+      "type": "composed-of"
+    },
+    {
+      "from": "layout.settings",
+      "to": "component.section",
+      "type": "used-in-layout"
+    },
+    {
+      "from": "layout.settings",
+      "to": "component.controlGroup",
+      "type": "used-in-layout"
+    },
+    {
+      "from": "layout.settings",
+      "to": "component.card",
+      "type": "used-in-layout"
+    },
+    {
+      "from": "layout.settings",
+      "to": "component.button",
+      "type": "used-in-layout"
+    },
+    {
+      "from": "layout.settings",
+      "to": "pattern.settings",
+      "type": "composed-of"
+    },
+    {
+      "from": "layout.settings",
+      "to": "pattern.search",
+      "type": "composed-of"
+    },
+    {
+      "from": "layout.documentation",
+      "to": "primitive.center",
+      "type": "used-in-layout"
+    },
+    {
+      "from": "layout.documentation",
+      "to": "primitive.flow",
+      "type": "used-in-layout"
+    },
+    {
+      "from": "layout.documentation",
+      "to": "component.section",
+      "type": "used-in-layout"
+    },
+    {
+      "from": "layout.documentation",
+      "to": "component.card",
+      "type": "used-in-layout"
+    },
+    {
+      "from": "layout.documentation",
+      "to": "pattern.search",
+      "type": "composed-of"
+    },
+    {
+      "from": "layout.landing",
+      "to": "primitive.cover",
+      "type": "used-in-layout"
+    },
+    {
+      "from": "layout.landing",
+      "to": "primitive.center",
+      "type": "used-in-layout"
+    },
+    {
+      "from": "layout.landing",
+      "to": "primitive.grid",
+      "type": "used-in-layout"
+    },
+    {
+      "from": "layout.landing",
+      "to": "component.card",
+      "type": "used-in-layout"
+    },
+    {
+      "from": "layout.landing",
+      "to": "component.button",
+      "type": "used-in-layout"
+    },
+    {
+      "from": "pattern.transport",
+      "to": "component.iconButton",
+      "type": "composed-of"
+    },
+    {
+      "from": "pattern.transport",
+      "to": "component.toolbar",
+      "type": "composed-of"
+    },
+    {
+      "from": "pattern.transport",
+      "to": "component.statusIndicator",
+      "type": "composed-of"
+    },
+    {
+      "from": "pattern.transport",
+      "to": "layout.instrument",
+      "type": "fits-layout"
+    },
+    {
+      "from": "pattern.transport",
+      "to": "layout.studio",
+      "type": "fits-layout"
+    },
+    {
+      "from": "pattern.transport",
+      "to": "layout.canvas",
+      "type": "fits-layout"
+    },
+    {
+      "from": "pattern.inspector",
+      "to": "component.panel",
+      "type": "composed-of"
+    },
+    {
+      "from": "pattern.inspector",
+      "to": "component.controlGroup",
+      "type": "composed-of"
+    },
+    {
+      "from": "pattern.inspector",
+      "to": "component.section",
+      "type": "composed-of"
+    },
+    {
+      "from": "pattern.inspector",
+      "to": "layout.instrument",
+      "type": "fits-layout"
+    },
+    {
+      "from": "pattern.inspector",
+      "to": "layout.studio",
+      "type": "fits-layout"
+    },
+    {
+      "from": "pattern.inspector",
+      "to": "layout.workspace",
+      "type": "fits-layout"
+    },
+    {
+      "from": "pattern.command-palette",
+      "to": "component.button",
+      "type": "composed-of"
+    },
+    {
+      "from": "pattern.command-palette",
+      "to": "component.badge",
+      "type": "composed-of"
+    },
+    {
+      "from": "pattern.notification-center",
+      "to": "component.badge",
+      "type": "composed-of"
+    },
+    {
+      "from": "pattern.notification-center",
+      "to": "component.statusIndicator",
+      "type": "composed-of"
+    },
+    {
+      "from": "pattern.notification-center",
+      "to": "component.card",
+      "type": "composed-of"
+    },
+    {
+      "from": "pattern.search",
+      "to": "component.card",
+      "type": "composed-of"
+    },
+    {
+      "from": "pattern.search",
+      "to": "component.badge",
+      "type": "composed-of"
+    },
+    {
+      "from": "pattern.search",
+      "to": "primitive.stack",
+      "type": "composed-of"
+    },
+    {
+      "from": "pattern.search",
+      "to": "layout.dashboard",
+      "type": "fits-layout"
+    },
+    {
+      "from": "pattern.search",
+      "to": "layout.documentation",
+      "type": "fits-layout"
+    },
+    {
+      "from": "pattern.search",
+      "to": "layout.settings",
+      "type": "fits-layout"
+    },
+    {
+      "from": "pattern.settings",
+      "to": "component.section",
+      "type": "composed-of"
+    },
+    {
+      "from": "pattern.settings",
+      "to": "component.controlGroup",
+      "type": "composed-of"
+    },
+    {
+      "from": "pattern.settings",
+      "to": "component.card",
+      "type": "composed-of"
+    },
+    {
+      "from": "pattern.settings",
+      "to": "component.button",
+      "type": "composed-of"
+    },
+    {
+      "from": "pattern.settings",
+      "to": "layout.settings",
+      "type": "fits-layout"
+    },
+    {
+      "from": "pattern.asset-browser",
+      "to": "primitive.grid",
+      "type": "composed-of"
+    },
+    {
+      "from": "pattern.asset-browser",
+      "to": "component.card",
+      "type": "composed-of"
+    },
+    {
+      "from": "pattern.asset-browser",
+      "to": "component.badge",
+      "type": "composed-of"
+    },
+    {
+      "from": "pattern.asset-browser",
+      "to": "layout.studio",
+      "type": "fits-layout"
+    },
+    {
+      "from": "pattern.asset-browser",
+      "to": "layout.workspace",
+      "type": "fits-layout"
+    },
+    {
+      "from": "pattern.media-library",
+      "to": "primitive.grid",
+      "type": "composed-of"
+    },
+    {
+      "from": "pattern.media-library",
+      "to": "component.card",
+      "type": "composed-of"
+    },
+    {
+      "from": "pattern.media-library",
+      "to": "component.toolbar",
+      "type": "composed-of"
+    },
+    {
+      "from": "pattern.media-library",
+      "to": "layout.studio",
+      "type": "fits-layout"
+    },
+    {
+      "from": "pattern.project-picker",
+      "to": "component.card",
+      "type": "composed-of"
+    },
+    {
+      "from": "pattern.project-picker",
+      "to": "component.button",
+      "type": "composed-of"
+    },
+    {
+      "from": "pattern.project-picker",
+      "to": "primitive.grid",
+      "type": "composed-of"
+    },
+    {
+      "from": "pattern.project-picker",
+      "to": "layout.workspace",
+      "type": "fits-layout"
+    },
+    {
+      "from": "pattern.project-picker",
+      "to": "layout.dashboard",
+      "type": "fits-layout"
+    },
+    {
+      "from": "pattern.workspace",
+      "to": "component.panel",
+      "type": "composed-of"
+    },
+    {
+      "from": "pattern.workspace",
+      "to": "pattern.inspector",
+      "type": "composed-of"
+    },
+    {
+      "from": "pattern.workspace",
+      "to": "layout.studio",
+      "type": "fits-layout"
+    },
+    {
+      "from": "pattern.workspace",
+      "to": "layout.workspace",
+      "type": "fits-layout"
+    },
+    {
+      "from": "pattern.workspace",
+      "to": "layout.instrument",
+      "type": "fits-layout"
+    },
+    {
+      "from": "pattern.timeline",
+      "to": "component.toolbar",
+      "type": "composed-of"
+    },
+    {
+      "from": "pattern.timeline",
+      "to": "primitive.split",
+      "type": "composed-of"
+    },
+    {
+      "from": "pattern.timeline",
+      "to": "layout.instrument",
+      "type": "fits-layout"
+    },
+    {
+      "from": "pattern.timeline",
+      "to": "layout.studio",
+      "type": "fits-layout"
+    },
+    {
+      "from": "pattern.wizard",
+      "to": "component.card",
+      "type": "composed-of"
+    },
+    {
+      "from": "pattern.wizard",
+      "to": "component.button",
+      "type": "composed-of"
+    },
+    {
+      "from": "pattern.wizard",
+      "to": "component.badge",
+      "type": "composed-of"
+    },
+    {
+      "from": "pattern.wizard",
+      "to": "primitive.stack",
+      "type": "composed-of"
+    },
+    {
+      "from": "pattern.wizard",
+      "to": "layout.dashboard",
+      "type": "fits-layout"
+    },
+    {
+      "from": "pattern.wizard",
+      "to": "layout.workspace",
+      "type": "fits-layout"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.color.primary.default",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.color.primary.hover",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.color.primary.pressed",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.color.primary.disabled",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.color.secondary",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.color.accent",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.color.surface.default",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.color.surface.app",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.color.surface.stage",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.color.surface.nav",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.color.surface.dock",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.color.surface.input",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.color.surface.card",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.color.surface.raised",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.color.surface.raised-hover",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.color.surface.sunken",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.color.surface.overlay",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.color.text.primary",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.color.text.secondary",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.color.text.muted",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.color.text.accent",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.color.text.link",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.color.text.inverse",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.color.text.on-primary",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.color.text.on-secondary",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.color.text.on-accent",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.color.border.default",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.color.border.subtle",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.color.border.strong",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.color.border.interactive",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.color.border.focus",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.color.overlay.backdrop",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.color.overlay.scrim-light",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.color.overlay.scrim",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.color.overlay.scrim-strong",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.color.overlay.glass",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.color.overlay.focus-outline",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.color.decorative.favorite",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.color.brand.primary.500",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.color.brand.primary.700",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.color.brand.primary.900",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.color.status.success",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.color.status.warning",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.color.status.error",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.color.status.info",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.color.status.error-surface",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.color.status.error-border",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.font.family.sans",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.font.family.mono",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.font.size.base",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.font.size.display",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.font.size.h1",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.font.size.h2",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.font.size.h3",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.font.size.h4",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.font.size.body",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.font.size.body-sm",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.font.size.caption",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.font.size.label",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.font.size.overline",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.font.line-height.base",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.font.line-height.tight",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.font.line-height.body",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.font.line-height.relaxed",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.font.weight.body",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.font.weight.headings",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.font.weight.label",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.font.weight.mono",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.font.letter-spacing.label",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.font.letter-spacing.overline",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.font.letter-spacing.caption",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.space.0",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.space.1",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.space.2",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.space.12",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.space.3",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.space.20",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.space.4",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.space.5",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.space.28",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.space.6",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.space.36",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.space.40",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.space.44",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.space.8",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.space.52",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.space.56",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.space.60",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.space.68",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.space.72",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.space.80",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.space.96",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.space.128",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.space.16",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.space.24",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.space.32",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.space.48",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.space.64",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.space.999",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.radius.xs",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.radius.none",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.radius.md",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.radius.full",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.radius.sm",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.radius.default",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.radius.lg",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.radius.xl",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.radius.pill",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.shadow.none",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.shadow.sm",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.shadow.md",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.shadow.lg",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.shadow.focus",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.shadow.glow-accent",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.shadow.stage-inset",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.transition.instant",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.transition.fast",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.transition.base",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.transition.slow",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.transition.slower",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.ease.out",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.ease.in",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.ease.in-out",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.ease.standard",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.ease.emphasized",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.ease.spring",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.motion.duration.micro",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.motion.duration.fast",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.motion.duration.base",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.motion.duration.slow",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.motion.duration.slower",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.motion.easing.standard",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.motion.easing.emphasized",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.motion.easing.entrance",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.motion.easing.exit",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.motion.easing.spring",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.product.nav-height",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.product.dock-height",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.product.sidebar-width",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.product.touch-target",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.product.touch-target-large",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.product.instrument-gutter",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.product.floating-panel-min",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.product.hud-opacity",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.product.overlay-radius",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.product.preset-card-radius",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.product.preset-card-border",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.product.preset-card-active-border",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.product.slider-track",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.product.slider-thumb",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.product.stage-border",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.product.performance-chrome-opacity",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.product.shadow-overlay",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.product.shadow-sidebar",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.product.shadow-panel",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.fontSize.xs",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.fontSize.sm",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.fontSize.md",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.fontSize.lg",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.fontSize.xl",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.fontSize.2xl",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.fontSize.3xl",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.fontSize.4xl",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.lineHeight.tight",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.lineHeight.normal",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.lineHeight.relaxed",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.lineHeight.loose",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.letterSpacing.tighter",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.letterSpacing.tight",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.letterSpacing.normal",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.letterSpacing.wide",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.letterSpacing.wider",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.size.xs",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.size.sm",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.size.md",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.size.lg",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.size.xl",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.size.xxl",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.opacity.0",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.opacity.50",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.opacity.100",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.borderWidth.hairline",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.borderWidth.thin",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.borderWidth.medium",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.borderWidth.thick",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.stroke.subtle",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.stroke.default",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.stroke.strong",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.stroke.emphasis",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.shadow.xs",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.shadow.xl",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.shadow.glow",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.shadow.neon",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.blur.sm",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.blur.md",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.blur.lg",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.zIndex.floating",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.zIndex.overlay",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.zIndex.modal",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.duration.fast",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.duration.normal",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.easing.standard",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.easing.emphasized",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.motion.hover.duration",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.motion.hover.easing",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.iconSize.md",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.iconSize.lg",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.breakpoint.tablet",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.breakpoint.desktop",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.grid.gutter",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.grid.maxWidth",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.layout.headerHeight",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.layout.sidebarWidth",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.layout.inspectorWidth",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.layout.stagePadding",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.creative.stage.background",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.creative.stage.border",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.creative.stage.shadow",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.creative.stage.padding",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.creative.hud.text",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.creative.hud.opacity",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.creative.transport.background",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.creative.transport.border",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.creative.transport.shadow",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.creative.visualizer.background",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.creative.visualizer.border",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.creative.visualizer.shadow",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.creative.ascii.foreground",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.creative.ascii.background",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.creative.ascii.glow",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.creative.waveform.line",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.creative.waveform.fill",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.creative.waveform.background",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.creative.midi.active",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.creative.midi.idle",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.creative.midi.learn",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.creative.performance.chrome-opacity",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.creative.performance.background",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.creative.instrument.gutter",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.creative.instrument.background",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.creative.presetBrowser.background",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.creative.presetBrowser.border",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.creative.presetBrowser.active-border",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.creative.presetBrowser.radius",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.creative.inspector.background",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.creative.inspector.border",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.creative.inspector.shadow",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.creative.overlay.backdrop",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.creative.overlay.shadow",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.creative.overlay.radius",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.creative.glass.background",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.creative.glass.blur",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.creative.glow.shadow",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.creative.glow.accent",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.creative.focusRing.color",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.creative.focusRing.width",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.creative.focusRing.shadow",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.creative.selection.background",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.creative.selection.border",
+      "type": "themes"
+    },
+    {
+      "from": "theme.dark",
+      "to": "token.creative.selection.text",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.color.primary.default",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.color.primary.hover",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.color.primary.pressed",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.color.primary.disabled",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.color.secondary",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.color.accent",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.color.surface.default",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.color.surface.app",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.color.surface.stage",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.color.surface.nav",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.color.surface.dock",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.color.surface.input",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.color.surface.card",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.color.surface.raised",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.color.surface.raised-hover",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.color.surface.sunken",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.color.surface.overlay",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.color.text.primary",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.color.text.secondary",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.color.text.muted",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.color.text.accent",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.color.text.link",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.color.text.inverse",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.color.text.on-primary",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.color.text.on-secondary",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.color.text.on-accent",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.color.border.default",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.color.border.subtle",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.color.border.strong",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.color.border.interactive",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.color.border.focus",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.color.overlay.backdrop",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.color.overlay.scrim-light",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.color.overlay.scrim",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.color.overlay.scrim-strong",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.color.overlay.glass",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.color.overlay.focus-outline",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.color.decorative.favorite",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.color.brand.primary.500",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.color.brand.primary.700",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.color.brand.primary.900",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.color.status.success",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.color.status.warning",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.color.status.error",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.color.status.info",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.color.status.error-surface",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.color.status.error-border",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.font.family.sans",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.font.family.mono",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.font.size.base",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.font.size.display",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.font.size.h1",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.font.size.h2",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.font.size.h3",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.font.size.h4",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.font.size.body",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.font.size.body-sm",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.font.size.caption",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.font.size.label",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.font.size.overline",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.font.line-height.base",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.font.line-height.tight",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.font.line-height.body",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.font.line-height.relaxed",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.font.weight.body",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.font.weight.headings",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.font.weight.label",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.font.weight.mono",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.font.letter-spacing.label",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.font.letter-spacing.overline",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.font.letter-spacing.caption",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.space.0",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.space.1",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.space.2",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.space.12",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.space.3",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.space.20",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.space.4",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.space.5",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.space.28",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.space.6",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.space.36",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.space.40",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.space.44",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.space.8",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.space.52",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.space.56",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.space.60",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.space.68",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.space.72",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.space.80",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.space.96",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.space.128",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.space.16",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.space.24",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.space.32",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.space.48",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.space.64",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.space.999",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.radius.xs",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.radius.none",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.radius.md",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.radius.full",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.radius.sm",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.radius.default",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.radius.lg",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.radius.xl",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.radius.pill",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.shadow.none",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.shadow.sm",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.shadow.md",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.shadow.lg",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.shadow.focus",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.shadow.glow-accent",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.shadow.stage-inset",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.transition.instant",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.transition.fast",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.transition.base",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.transition.slow",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.transition.slower",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.ease.out",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.ease.in",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.ease.in-out",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.ease.standard",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.ease.emphasized",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.ease.spring",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.motion.duration.micro",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.motion.duration.fast",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.motion.duration.base",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.motion.duration.slow",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.motion.duration.slower",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.motion.easing.standard",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.motion.easing.emphasized",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.motion.easing.entrance",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.motion.easing.exit",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.motion.easing.spring",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.product.nav-height",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.product.dock-height",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.product.sidebar-width",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.product.touch-target",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.product.touch-target-large",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.product.instrument-gutter",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.product.floating-panel-min",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.product.hud-opacity",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.product.overlay-radius",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.product.preset-card-radius",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.product.preset-card-border",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.product.preset-card-active-border",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.product.slider-track",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.product.slider-thumb",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.product.stage-border",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.product.performance-chrome-opacity",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.product.shadow-overlay",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.product.shadow-sidebar",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.product.shadow-panel",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.fontSize.xs",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.fontSize.sm",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.fontSize.md",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.fontSize.lg",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.fontSize.xl",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.fontSize.2xl",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.fontSize.3xl",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.fontSize.4xl",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.lineHeight.tight",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.lineHeight.normal",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.lineHeight.relaxed",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.lineHeight.loose",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.letterSpacing.tighter",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.letterSpacing.tight",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.letterSpacing.normal",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.letterSpacing.wide",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.letterSpacing.wider",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.size.xs",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.size.sm",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.size.md",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.size.lg",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.size.xl",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.size.xxl",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.opacity.0",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.opacity.50",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.opacity.100",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.borderWidth.hairline",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.borderWidth.thin",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.borderWidth.medium",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.borderWidth.thick",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.stroke.subtle",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.stroke.default",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.stroke.strong",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.stroke.emphasis",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.shadow.xs",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.shadow.xl",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.shadow.glow",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.shadow.neon",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.blur.sm",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.blur.md",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.blur.lg",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.zIndex.floating",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.zIndex.overlay",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.zIndex.modal",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.duration.fast",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.duration.normal",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.easing.standard",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.easing.emphasized",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.motion.hover.duration",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.motion.hover.easing",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.iconSize.md",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.iconSize.lg",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.breakpoint.tablet",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.breakpoint.desktop",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.grid.gutter",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.grid.maxWidth",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.layout.headerHeight",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.layout.sidebarWidth",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.layout.inspectorWidth",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.layout.stagePadding",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.creative.stage.background",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.creative.stage.border",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.creative.stage.shadow",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.creative.stage.padding",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.creative.hud.text",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.creative.hud.opacity",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.creative.transport.background",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.creative.transport.border",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.creative.transport.shadow",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.creative.visualizer.background",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.creative.visualizer.border",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.creative.visualizer.shadow",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.creative.ascii.foreground",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.creative.ascii.background",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.creative.ascii.glow",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.creative.waveform.line",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.creative.waveform.fill",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.creative.waveform.background",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.creative.midi.active",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.creative.midi.idle",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.creative.midi.learn",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.creative.performance.chrome-opacity",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.creative.performance.background",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.creative.instrument.gutter",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.creative.instrument.background",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.creative.presetBrowser.background",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.creative.presetBrowser.border",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.creative.presetBrowser.active-border",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.creative.presetBrowser.radius",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.creative.inspector.background",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.creative.inspector.border",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.creative.inspector.shadow",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.creative.overlay.backdrop",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.creative.overlay.shadow",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.creative.overlay.radius",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.creative.glass.background",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.creative.glass.blur",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.creative.glow.shadow",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.creative.glow.accent",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.creative.focusRing.color",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.creative.focusRing.width",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.creative.focusRing.shadow",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.creative.selection.background",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.creative.selection.border",
+      "type": "themes"
+    },
+    {
+      "from": "theme.light",
+      "to": "token.creative.selection.text",
+      "type": "themes"
+    }
+  ]
+}
