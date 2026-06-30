@@ -1,0 +1,30 @@
+{
+  "id": "default",
+  "name": "Plantasonic Default",
+  "status": "active",
+  "description": "Default reusable Plantasonic theme package mirroring the Design System dark and light semantic token files.",
+  "source": {
+    "owner": "packages/design-system",
+    "tokens": [
+      "packages/design-system/tokens/theme.dark.tokens.json",
+      "packages/design-system/tokens/theme.light.tokens.json"
+    ],
+    "css": "packages/design-system/css/variables.css",
+    "scssBridge": "packages/design-system/scss/css-theme-bridge.scss"
+  },
+  "mirrors": [
+    {
+      "id": "dark",
+      "selector": "[data-theme=\"dark\"]",
+      "source": "packages/design-system/tokens/theme.dark.tokens.json",
+      "tokens": "themes/default/tokens/theme.dark.tokens.json"
+    },
+    {
+      "id": "light",
+      "selector": "[data-theme=\"light\"]",
+      "source": "packages/design-system/tokens/theme.light.tokens.json",
+      "tokens": "themes/default/tokens/theme.light.tokens.json"
+    }
+  ],
+  "runtimeChanged": false
+}

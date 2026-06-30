@@ -2,7 +2,7 @@
 
 Audit and migration plan for making **Plantasonic Design System** part of **Plantasonic Platform** as the single source of truth for engines, design system, themes, templates, AI workflow, and app generation.
 
-**Status:** Phase 1 executed — `plantasonic-design-system` has been copied into `packages/design-system/` without changing package name, exports, token values, or component behavior.
+**Status:** Phase 2 executed — `plantasonic-design-system` lives in `packages/design-system/`, and reusable theme package definitions live in `themes/` without changing package name, exports, token values, component behavior, or runtime theme output.
 
 ---
 
@@ -15,7 +15,7 @@ Audit and migration plan for making **Plantasonic Design System** part of **Plan
 | `packages/` | Yes | `packages/*` | sdk, shared-types, create-plantasonic-app, design-system, sound-engine, visual-engine |
 | `apps/` | Yes | `apps/*` | demo, plantasonic-reference, plantasonic-v2, signal-9-live |
 | `templates/` | Yes | `templates/` | Catalog stubs (instrument active; 6 placeholder types) |
-| `themes/` | **No** | — | Blueprint semantic themes live in app `src/config/theme.ts` |
+| `themes/` | Yes | `themes/*` | `default` mirrors DS dark/light tokens; `plantasia` and `signal9` are placeholders |
 | `docs/` | Yes | `docs/` | 20 guides including AI_WORKFLOW, TOOLCHAIN |
 | Workspace config | Yes | `pnpm-workspace.yaml` | `packages/*`, `apps/*` only |
 | Skills / AI rules | Yes | `skills/`, `.cursor/rules/` | 10 agent workflows |
@@ -157,9 +157,9 @@ plantasonic-platform/
 | `packages/midi-engine/` | Web MIDI in platform SDK + sound-engine MIDI | Future |
 | `packages/ai/` | DS `src/ai/` + platform `skills/` | Phase 5 (consolidate docs/context) |
 | `packages/shared/` | `packages/shared-types` | Phase 3 (optional rename) |
-| `themes/default/` | DS `tokens/theme.dark.tokens.json`, `theme.light.tokens.json` | Phase 2 |
-| `themes/signal9/` | `apps/signal-9-live/src/config/theme.ts` | Phase 2 |
-| `themes/plantasia/` | DS foundation tokens (default brand) | Phase 2 |
+| `themes/default/` | DS `tokens/theme.dark.tokens.json`, `theme.light.tokens.json` | **Phase 2 complete** |
+| `themes/signal9/` | Placeholder; Signal 9 app-specific values stay in app | **Phase 2 placeholder** |
+| `themes/plantasia/` | Placeholder; inherits default until reusable mappings are approved | **Phase 2 placeholder** |
 | `apps/plantasonic-xyz/` | Sibling repo `../plantasonic-xyz/` (reference host) | Phase 6 |
 
 ---
@@ -225,7 +225,7 @@ These remain in the application layer (eventually `apps/plantasonic-xyz/` as the
 | `vite.config.ts` | App bundler config | Deployment |
 | `vercel.json` | Production deployment | Hosting |
 
-**Blueprint semantic themes** (e.g. Signal 9 accent colors in `apps/signal-9-live/src/config/theme.ts`) stay in apps or move to `themes/signal9/` — not into core DS tokens.
+**Blueprint semantic themes** (e.g. Signal 9 accent colors in app theme config) stay app-owned until a later approved extraction into `themes/<blueprint>/` — never into core DS tokens.
 
 ---
 
@@ -281,7 +281,7 @@ Document the boundary; do not merge without explicit API design.
 | Risk | Severity | Mitigation |
 |------|----------|------------|
 | `plantasonic-xyz/src/styles/_ps-aliases.scss` duplicates `--ds-*` | **Low** | Keep as app shim until aliases removed |
-| Blueprint themes (`SIGNAL_9_LIVE_SEMANTIC_THEME`) vs DS tokens | **Medium** | Move to `themes/signal9/`; never merge into foundation tokens |
+| Blueprint themes vs DS tokens | **Medium** | Keep app-owned until approved; reusable mappings belong in `themes/<blueprint>/`, never foundation tokens |
 | Figma import path `tokens/figma-source/` | **Low** | Move with tokens/ intact |
 
 ### 6.4 Duplicated components
@@ -343,13 +343,13 @@ Document the boundary; do not merge without explicit API design.
 
 ### Phase 2 — Extract themes
 
-1. Create `themes/default/` — reference DS `theme.dark.tokens.json` / `theme.light.tokens.json` (no value changes)
-2. Create `themes/plantasia/` — document mapping to foundation tokens
-3. Create `themes/signal9/` — move `SIGNAL_9_LIVE_SEMANTIC_THEME` from signal-9-live app
-4. Update blueprint generator to scaffold theme from `themes/<concept>/`
-5. Document theme vs token boundary in `docs/AI_WORKFLOW.md`
+1. Create `themes/default/` — mirror DS `theme.dark.tokens.json` / `theme.light.tokens.json` (no value changes)
+2. Create `themes/plantasia/` — planned placeholder; no new token values
+3. Create `themes/signal9/` — planned placeholder; Signal 9 app files untouched
+4. Defer generator consumption of `themes/<concept>/` to a later approved phase
+5. Document theme vs token boundary in `themes/README.md` and Design System theme docs
 
-**Validation gate:** Signal 9 app appearance unchanged.
+**Validation gate:** App appearance unchanged; DS token file hashes match the default theme mirrors.
 
 ### Phase 3 — Consolidate shared config
 

@@ -2,6 +2,12 @@
 
 Plantasonic uses **semantic design tokens** resolved into CSS custom properties.
 
+## Ownership
+
+- **Design System** owns base token files, generated CSS variables, SCSS bridges, and component behavior.
+- **Theme System** owns reusable theme package definitions in `themes/` at the platform root.
+- **Applications** own app-specific theme choices and local visual treatment.
+
 ## Themes
 
 - **Dark** (default) — instrument UI, low-light environments
@@ -34,5 +40,9 @@ Generated CSS provides:
 ## Bootstrap bridge
 
 `scss/css-theme-bridge.scss` maps Bootstrap component classes to `--ds-*` variables so Bootstrap re-themes when `data-theme` changes without recompiling SCSS.
+
+## Platform theme catalog
+
+Phase 2 mirrors the active dark/light semantic token files into `themes/default/` without changing values. `themes/plantasia/` and `themes/signal9/` are placeholders until reusable mappings are approved.
 
 See [Bootstrap Integration](./BOOTSTRAP.md).

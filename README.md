@@ -10,6 +10,7 @@ This repository is the source of truth for orchestration, SDK, generator, templa
 - **Orchestration SDK** — `@plantasonic/platform`
 - **Shared types** — `@plantasonic/platform-types`
 - **Design System** — `plantasonic-design-system` in `packages/design-system`
+- **Theme System** — reusable theme catalog in `themes/`
 - **Prototype generator** — `@plantasonic/create-app`
 - **Development environment** — rules, skills, templates, docs, validation
 
@@ -27,6 +28,7 @@ plantasonic-platform/
 ├── .cursor/rules/          # Always-on AI rules
 ├── skills/                 # Agent workflows (synced to .cursor/skills/)
 ├── templates/              # Prototype template catalog
+├── themes/                 # Reusable theme packages
 ├── docs/                   # Documentation framework
 ├── packages/
 │   ├── sdk/                # @plantasonic/platform
@@ -56,7 +58,7 @@ Future apps                       ← inherit platform; customize themes, tokens
 
 | Repository / app | Role |
 |------------------|------|
-| **plantasonic-platform** | SDK, generator, orchestration, engines, templates, docs |
+| **plantasonic-platform** | SDK, generator, orchestration, engines, themes, templates, docs |
 | **plantasonic-design-system** | UI, tokens, shell, Creative Workspace layouts |
 | **plantasonic-xyz** v0.4.0 | Official reference host — demonstrates all platform capabilities |
 | **Signal 9 Live** (`apps/signal-9-live/`) | First real product app — blueprint `signal-9` |
@@ -78,7 +80,17 @@ pnpm install
 pnpm build
 ```
 
-Design System, sound, and visual engines are workspace packages under `packages/design-system`, `packages/sound-engine`, and `packages/visual-engine`.
+Design System, themes, sound, and visual engines are platform-owned reusable systems under `packages/design-system`, `themes/`, `packages/sound-engine`, and `packages/visual-engine`.
+
+## Theme System
+
+Reusable theme packages live in `themes/`.
+
+- `themes/default/` mirrors the active Design System dark/light semantic token files exactly.
+- `themes/plantasia/` and `themes/signal9/` are planned placeholders until reusable theme definitions are approved.
+- Apps choose active themes and may keep app-specific visual treatment locally.
+
+The Design System still owns base token generation and runtime CSS output in `packages/design-system/`.
 
 ## AI First Development Workflow
 

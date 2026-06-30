@@ -230,7 +230,7 @@ Make Plantasonic Platform the single source of truth for the Design System, them
 
 - [x] Audit complete — [docs/DESIGN_SYSTEM_CONSOLIDATION_PLAN.md](./docs/DESIGN_SYSTEM_CONSOLIDATION_PLAN.md)
 - [x] Phase 1: Vendor `plantasonic-design-system` into `packages/design-system/` (workspace deps, preserve exports)
-- [ ] Phase 2: Extract `themes/` (default, plantasia, signal9) from DS tokens and blueprint apps
+- [x] Phase 2: Extract `themes/` catalog (default mirror; plantasia and signal9 placeholders)
 - [ ] Phase 3: Shared Vite/tsconfig helpers — eliminate duplicated DS alias blocks
 - [ ] Phase 4: Engine naming alignment (audio-engine, ascii-engine placeholders — no engine refactors)
 - [ ] Phase 5: AI context and template catalog consolidation
