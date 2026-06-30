@@ -147,6 +147,7 @@ Milestones for `plantasonic-platform`, in order.
 
 - `@plantasonic/create-app` CLI (`create-plantasonic-app`)
 - `instrument` template — thin platform consumer with full stack pre-wired
+- **Application blueprints** — data-driven identity and startup experience (`signal-9`)
 - Monorepo detection — defaults output to `apps/<slug>/`
 - Generated app validation script (`pnpm validate`)
 - Root command: `pnpm create:app <slug>`
@@ -180,9 +181,11 @@ Milestones for `plantasonic-platform`, in order.
 
 - [x] Unified CLI: `pnpm plantasonic create <type> <name>`
 - [x] `audio-reactive` template with pulse/drift/glitch preset bundles
+- [x] **Application Blueprints** — data-driven identity + startup experience (`signal-9` first complete blueprint)
 - [ ] Implement `generative-art`, `installation`, `visual-synth`, `portfolio-demo`, `research` templates
 - [ ] Template-specific preset defaults and workspace configs (remaining types)
 - [ ] Runnable examples per template type
+- [ ] Additional application blueprints beyond Signal 9
 
 ## 16. Plugin Ecosystem
 
@@ -203,3 +206,17 @@ Milestones for `plantasonic-platform`, in order.
 - [ ] Ecosystem audit tool (`scripts/audit.ts`)
 - [ ] Native FFT bands in audio-reactive bridge
 - [ ] Autosave and cloud persistence adapters
+
+## 18. AI First Development Workflow
+
+**Status: Complete**
+
+Official support for AI first application development from design through deployment.
+
+- [x] Documented end-to-end workflow: Figma → Figma MCP → Design System → v0 → Cursor → Platform → GitHub → Vercel
+- [x] **v0** — officially supported UI generation tool for bootstrapping component scaffolding
+- [x] **Cursor** — documented as the primary implementation environment (rules, skills, agent workflows)
+- [x] **Vercel Preview Deployments** — preview URL review gate before production merge
+- [x] **GitHub Pull Request workflow** — PR checklist and review requirements for AI-generated code
+- [x] Platform principles: source of truth, token alignment, integration over blind copy, review before merge, prefer reusable components
+- [x] Docs: [docs/AI_WORKFLOW.md](./docs/AI_WORKFLOW.md), [docs/TOOLCHAIN.md](./docs/TOOLCHAIN.md)

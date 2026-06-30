@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.11.0] - 2026-06-30
+
+### Added
+
+- AI First Development Workflow — official toolchain from design through deployment
+- Docs: [docs/AI_WORKFLOW.md](./docs/AI_WORKFLOW.md) — end-to-end workflow, platform principles, design handoff, UI generation, platform integration, deployment
+- Docs: [docs/TOOLCHAIN.md](./docs/TOOLCHAIN.md) — Figma, Figma MCP, v0, Cursor, GitHub, Vercel, Plantasonic Platform, Design System reference
+- README: AI First Development Workflow section with official pipeline diagram
+- ROADMAP: Milestone 18 — AI First Development Workflow (Complete)
+
+### Documented
+
+- v0 as officially supported UI generation tool
+- Cursor as primary implementation environment
+- Vercel Preview Deployments as review gate
+- GitHub Pull Request workflow for AI-generated code review
+- Platform principles: source of truth, token alignment, integration over blind copy, review before merge, prefer reusable components
+
 ## [0.10.0] - 2026-06-29
 
 ### Added

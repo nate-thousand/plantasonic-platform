@@ -76,6 +76,51 @@ Sibling path required for demo/reference:
 
 Sound and visual engines are workspace packages under `packages/sound-engine` and `packages/visual-engine`.
 
+## AI First Development Workflow
+
+Plantasonic officially supports an AI first development workflow from design through deployment. Each tool has a defined role; the platform remains the source of truth for orchestration and architecture.
+
+```
+Figma
+    ↓
+Figma MCP
+    ↓
+Plantasonic Design System
+    ↓
+v0
+    ↓
+Cursor
+    ↓
+Plantasonic Platform
+    ↓
+GitHub
+    ↓
+Vercel Preview
+    ↓
+Production
+```
+
+| Phase | Tool | Role |
+|-------|------|------|
+| Design | Figma | Layouts, tokens, component specs |
+| Handoff | Figma MCP | Design context into Cursor |
+| UI foundation | Plantasonic Design System | Tokens, shell, Creative Workspace |
+| UI generation | v0 | Initial component scaffolding |
+| Development | Cursor | Primary implementation environment |
+| Platform | Plantasonic Platform | SDK, generator, orchestration |
+| Version control | GitHub | Pull requests and review |
+| Deployment | Vercel | Preview deployments and production |
+
+**Platform principles:**
+
+- Plantasonic remains the source of truth
+- Design tokens remain the source of truth
+- Generated UI is integrated into the platform, not copied blindly
+- AI generated code is reviewed and aligned with Plantasonic architecture before merging
+- Reusable platform components are preferred over generated duplicates
+
+See [docs/AI_WORKFLOW.md](./docs/AI_WORKFLOW.md) and [docs/TOOLCHAIN.md](./docs/TOOLCHAIN.md).
+
 ## Development workflow
 
 ```
@@ -106,9 +151,12 @@ Iterate
 ## Create applications
 
 ```bash
-pnpm create:app my-instrument --name "My Instrument"
-pnpm --filter @plantasonic/my-instrument dev
+pnpm plantasonic create audio-reactive signal-9-live --concept signal-9
+pnpm plantasonic create audio-reactive my-instrument --name "My Instrument"
+pnpm --filter @plantasonic/signal-9-live dev
 ```
+
+Application **blueprints** (`signal-9`) define full startup experiences. **Concept templates** (`plantasonic`, `flowers`) provide identity-only overlays.
 
 See [docs/GENERATOR_GUIDE.md](./docs/GENERATOR_GUIDE.md) and skill `create-prototype`.
 
@@ -128,6 +176,8 @@ See [templates/README.md](./templates/README.md).
 
 | Document | Description |
 |----------|-------------|
+| [docs/AI_WORKFLOW.md](./docs/AI_WORKFLOW.md) | AI first development workflow |
+| [docs/TOOLCHAIN.md](./docs/TOOLCHAIN.md) | Official toolchain reference |
 | [docs/PLATFORM_OVERVIEW.md](./docs/PLATFORM_OVERVIEW.md) | Ecosystem home |
 | [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) | Layer model |
 | [docs/APPLICATION_GUIDE.md](./docs/APPLICATION_GUIDE.md) | Building thin apps |
@@ -140,8 +190,8 @@ See [templates/README.md](./templates/README.md).
 
 ## Future roadmap
 
-- Unified `pnpm plantasonic create <type> <name>` CLI
-- Additional prototype templates (audio-reactive, installation, etc.)
+- Additional application blueprints
+- Additional prototype templates (installation, generative-art, etc.)
 - `@plantasonic/app-kit` — stable mount API package
 - Platform v1.0 publish
 
