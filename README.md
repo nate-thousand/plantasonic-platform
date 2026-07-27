@@ -2,7 +2,9 @@
 
 The **home of Plantasonic Platform development** — the AI First Application Platform for creative, audio-reactive, and instrument-style applications.
 
-This repository is the source of truth for orchestration, SDK, generator, templates, skills, and documentation. Every future application, engine integration, and prototype follows the workflow defined here.
+This repository is the source of truth for orchestration, SDK, generator, templates, skills, and documentation.
+
+**Reference experience:** [Plantasonic](https://www.plantasonic.xyz/) Every future application, engine integration, and prototype follows the workflow defined here.
 
 **Current milestone:** `v0.12.0` — **Foundation Complete**.
 
@@ -231,3 +233,4 @@ See [ROADMAP.md](./ROADMAP.md).
 ## License
 
 Private — not published.
+
