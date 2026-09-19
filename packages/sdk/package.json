@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@plantasonic/platform-types": "workspace:*",
-    "ascii-visual-engine": "workspace:*",
+    "ascii-visual-engine": "file:../../../ascii-visual-engine",
     "plantasia-sound-engine": "file:../../../plantasia-sound-engine"
   },
   "devDependencies": {
