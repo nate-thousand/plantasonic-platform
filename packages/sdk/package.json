@@ -20,7 +20,7 @@
   "dependencies": {
     "@plantasonic/platform-types": "workspace:*",
     "ascii-visual-engine": "workspace:*",
-    "plantasia-sound-engine": "workspace:*"
+    "plantasia-sound-engine": "file:../../../plantasia-sound-engine"
   },
   "devDependencies": {
     "typescript": "^5.7.3"
