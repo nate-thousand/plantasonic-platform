@@ -2,28 +2,32 @@
   "id": "default",
   "name": "Plantasonic Default",
   "status": "active",
-  "description": "Default reusable Plantasonic theme package mirroring the Design System dark and light semantic token files.",
+  "description": "Default reusable Plantasonic theme package mirroring the Design System light (default) and dark semantic token files.",
   "source": {
-    "owner": "packages/design-system",
+    "owner": "../plantasonic-design-system (sibling repository, file: dependency)",
+    "version": "1.3.0",
+    "syncedAt": "2026-09-20",
     "tokens": [
-      "packages/design-system/tokens/theme.dark.tokens.json",
-      "packages/design-system/tokens/theme.light.tokens.json"
+      "../plantasonic-design-system/tokens/theme.light.tokens.json",
+      "../plantasonic-design-system/tokens/theme.dark.tokens.json"
     ],
-    "css": "packages/design-system/css/variables.css",
-    "scssBridge": "packages/design-system/scss/css-theme-bridge.scss"
+    "css": "../plantasonic-design-system/css/variables.css",
+    "scssBridge": "../plantasonic-design-system/scss/css-theme-bridge.scss",
+    "sync": "pnpm themes:sync"
   },
+  "default": "light",
   "mirrors": [
+    {
+      "id": "light",
+      "selector": ":root, [data-theme=\"light\"]",
+      "source": "../plantasonic-design-system/tokens/theme.light.tokens.json",
+      "tokens": "themes/default/tokens/theme.light.tokens.json"
+    },
     {
       "id": "dark",
       "selector": "[data-theme=\"dark\"]",
-      "source": "packages/design-system/tokens/theme.dark.tokens.json",
+      "source": "../plantasonic-design-system/tokens/theme.dark.tokens.json",
       "tokens": "themes/default/tokens/theme.dark.tokens.json"
-    },
-    {
-      "id": "light",
-      "selector": "[data-theme=\"light\"]",
-      "source": "packages/design-system/tokens/theme.light.tokens.json",
-      "tokens": "themes/default/tokens/theme.light.tokens.json"
     }
   ],
   "runtimeChanged": false

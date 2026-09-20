@@ -9,6 +9,7 @@
     "create:app": "node packages/create-plantasonic-app/bin/create-plantasonic-app.mjs",
     "plantasonic": "node packages/create-plantasonic-app/bin/plantasonic.mjs",
     "typecheck": "pnpm -r typecheck",
+  "themes:sync": "node scripts/sync-themes.mjs",
     "clean": "pnpm -r exec rm -rf dist"
   },
   "devDependencies": {

@@ -15,10 +15,10 @@
     "@plantasonic/platform": "workspace:*",
     "@plantasonic/platform-demo": "workspace:*",
     "@plantasonic/platform-types": "workspace:*",
-    "ascii-visual-engine": "workspace:*",
+    "ascii-visual-engine": "file:../../../ascii-visual-engine",
     "bootstrap": "^5.0.2",
-    "plantasia-sound-engine": "workspace:*",
-    "plantasonic-design-system": "file:../../../plantasonic-xyz/plantasonic-design-system"
+    "plantasia-sound-engine": "file:../../../plantasia-sound-engine",
+    "plantasonic-design-system": "file:../../../plantasonic-design-system"
   },
   "devDependencies": {
     "sass": "^1.89.2",

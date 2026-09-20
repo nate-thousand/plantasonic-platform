@@ -10,6 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - **Depend on `plantasonic-design-system` directly instead of vendoring a copy.** `apps/demo` now resolves the design system through `file:../../../plantasonic-design-system` (the sibling repository, currently v1.3.0), matching how the sound and visual engines are consumed. The vendored `packages/design-system/` (stuck at 1.0.1, before the Plantasia palette, light default and editorial layer) is removed; docs point at the sibling repository. Note the design system now defaults to the light theme — `apps/demo` keeps `theme: 'dark'` in its shell config.
+- **Scaffolding templates resolve the engines and design system as sibling repos.** `create-plantasonic-app`'s `instrument` and `visual-synth` templates pointed `ascii-visual-engine`, `plantasia-sound-engine` and `plantasonic-design-system` at `workspace:*` (no longer workspace packages) or at a path inside `plantasonic-xyz` that no longer exists; they now use `file:../../../<repo>` like `apps/demo`. `pnpm-workspace.yaml` includes `apps/*` so a scaffolded `apps/<slug>` joins the workspace and its `@plantasonic/*` `workspace:*` deps resolve.
+- **`themes/default` regenerated from design system 1.3.0** (Plantasia palette, tint/tone tokens, light default) and `pnpm themes:sync` added to refresh the mirrors; `theme.json` records the source version and marks light as the default.
 
 ## [0.12.0] - 2026-06-30
 
