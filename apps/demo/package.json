@@ -17,7 +17,7 @@
     "@plantasonic/platform": "workspace:*",
     "@plantasonic/platform-types": "workspace:*",
     "bootstrap": "^5.0.2",
-    "plantasonic-design-system": "workspace:*"
+    "plantasonic-design-system": "file:../../../plantasonic-design-system"
   },
   "devDependencies": {
     "sass": "^1.89.2",

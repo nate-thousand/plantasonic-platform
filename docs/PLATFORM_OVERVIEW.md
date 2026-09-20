@@ -29,7 +29,7 @@ Independent Applications          ← plantasonic-xyz · Signal 9 · Plantasia �
 | Layer | Repository / path | Role |
 |-------|-------------------|------|
 | **Platform** | `plantasonic-platform` | SDK, generator, orchestration, engines, themes, templates, docs |
-| **Design System** | `packages/design-system/` | UI shell, tokens, components, Creative Workspace |
+| **Design System** | `../plantasonic-design-system/` (sibling repo, `file:` dependency) | UI shell, tokens, components, Creative Workspace, editorial layer |
 | **Theme System** | `themes/` | Reusable theme catalog |
 | **Reference app** | `plantasonic-xyz` v0.4.0 | Independent official reference application |
 | **Product apps** | Signal 9, Plantasia, future apps | Independent repositories that consume the Platform |
@@ -53,7 +53,7 @@ Independent Applications
 | `packages/sdk/` | `@plantasonic/platform` — orchestration SDK |
 | `packages/shared-types/` | `@plantasonic/platform-types` — contracts |
 | `packages/create-plantasonic-app/` | Prototype generator CLI |
-| `packages/design-system/` | `plantasonic-design-system` — tokens, shell, components, Creative Workspace |
+| `../plantasonic-design-system/` | `plantasonic-design-system` (sibling repository) — tokens, shell, components, Creative Workspace |
 | `themes/` | Reusable theme catalog |
 | `templates/` | Prototype template catalog |
 | `skills/` | Cursor agent workflows |

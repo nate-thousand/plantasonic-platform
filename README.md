@@ -13,7 +13,7 @@ This repository is the source of truth for orchestration, SDK, generator, templa
 - **AI First Application Platform** — orchestration layer for the entire ecosystem
 - **Orchestration SDK** — `@plantasonic/platform`
 - **Shared types** — `@plantasonic/platform-types`
-- **Design System** — `plantasonic-design-system` in `packages/design-system`
+- **Design System** — `plantasonic-design-system`, a sibling repository (`../plantasonic-design-system`) consumed as a `file:` dependency
 - **Theme System** — reusable theme catalog in `themes/`
 - **Prototype generator** — `@plantasonic/create-app`
 - **Development environment** — rules, skills, templates, docs, validation
@@ -97,7 +97,7 @@ pnpm install
 pnpm build
 ```
 
-Design System, themes, sound, and visual engines are platform-owned reusable systems under `packages/design-system`, `themes/`, `packages/sound-engine`, and `packages/visual-engine`.
+Design System, themes, sound, and visual engines are platform-owned reusable systems in their own sibling repositories (`../plantasonic-design-system`, `../plantasia-sound-engine`, `../ascii-visual-engine`) plus `themes/` here.
 
 ## Theme System
 
@@ -107,7 +107,7 @@ Reusable theme packages live in `themes/`.
 - `themes/plantasia/` and `themes/signal9/` are planned placeholders until reusable theme definitions are approved.
 - Apps choose active themes and may keep app-specific visual treatment locally.
 
-The Design System still owns base token generation and runtime CSS output in `packages/design-system/`.
+The Design System still owns base token generation and runtime CSS output in the `plantasonic-design-system` repository.
 
 ## AI First Development Workflow
 

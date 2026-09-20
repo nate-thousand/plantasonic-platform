@@ -2,7 +2,7 @@
 
 Each package in the Plantasonic ecosystem has exactly one responsibility. This document defines what each package owns and what it must never do.
 
-## plantasonic-design-system (`packages/design-system/`)
+## plantasonic-design-system (sibling repository `../plantasonic-design-system`, `file:` dependency)
 
 **Owns:** UI components, layout primitives, theming, accessibility, design tokens
 

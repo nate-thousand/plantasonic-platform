@@ -44,7 +44,7 @@ See [AI_WORKFLOW.md](./AI_WORKFLOW.md) for the end-to-end development flow.
 
 ## Plantasonic Design System
 
-**Location:** `packages/design-system/`
+**Location:** `../plantasonic-design-system/` (sibling repository, `file:` dependency)
 
 **Role:** UI source of truth — tokens, shell, Creative Workspace layouts
 
@@ -57,7 +57,7 @@ See [AI_WORKFLOW.md](./AI_WORKFLOW.md) for the end-to-end development flow.
 - Import tokens via `css/variables.css` and theme SCSS layers
 - Use `renderApplicationShell()` and `renderCreativeWorkspace()` — do not rebuild shell layout
 - Map Figma components to existing DS exports before generating new UI
-- Make reusable DS changes in `packages/design-system/`; do not patch locally in application repos
+- Make reusable DS changes in the `plantasonic-design-system` repository; do not patch locally in application repos
 - Design tokens override ad-hoc styling in generated or hand-written code
 
 ---
@@ -170,7 +170,7 @@ See [AI_WORKFLOW.md](./AI_WORKFLOW.md) for the end-to-end development flow.
 
 ## Plantasonic Design Tokens
 
-**Location:** `packages/design-system/` (CSS variables, SCSS theme layers) and `themes/` (reusable theme catalog)
+**Location:** `../plantasonic-design-system/` (sibling repository; CSS variables, SCSS theme layers) and `themes/` (reusable theme catalog)
 
 **Role:** Visual source of truth across design and code
 

@@ -4,7 +4,7 @@ Platform-owned catalog for reusable Plantasonic themes.
 
 ## Ownership
 
-- **Design System** owns base token sources, generated CSS variables, SCSS bridges, and component theme behavior in `packages/design-system/`.
+- **Design System** owns base token sources, generated CSS variables, SCSS bridges, and component theme behavior in the `plantasonic-design-system` repository (`../plantasonic-design-system`).
 - **Theme System** owns reusable theme package definitions in `themes/`.
 - **Applications** own app-specific theme choices, such as which theme is active in shell config or whether an app adds local visual treatment.
 

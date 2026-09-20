@@ -57,7 +57,7 @@ plantasonic-xyz v0.4.0 is the canonical example for each platform surface:
 | Artifact | Location today | Notes |
 |----------|----------------|-------|
 | Reference application | `../plantasonic-xyz/` (independent repo) | v0.4.0 — production deploy at plantasonic.vercel.app |
-| Design System | `packages/design-system/` | Platform-owned workspace package; sibling copy remains as a temporary mirror until Phase 6 |
+| Design System | `../plantasonic-design-system/` | Sibling repository consumed as a `file:` dependency; the vendored workspace copy was retired |
 | Theme System | `themes/` | Platform-owned theme catalog; default mirrors dark/light DS tokens |
 | Platform thin consumer | `../plantasonic-xyz/src/platform-consumer/` | Creative layer injection pattern |
 | Internal demo/scaffold | `apps/` | Internal validation/demo scaffolds only; not product app ownership |
