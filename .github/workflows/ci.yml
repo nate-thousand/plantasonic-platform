@@ -8,18 +8,73 @@ on:
 permissions:
   contents: read
 
+# The platform consumes the design system and the two engines as sibling repositories
+# (`file:../../../<repo>` in apps/demo and packages/sdk). CI recreates that layout: the
+# platform is checked out into a subdirectory and the siblings next to it, pinned to the
+# release tags the platform was verified against. Bump these when moving to a new release.
+env:
+  DESIGN_SYSTEM_REF: v1.3.1
+  SOUND_ENGINE_REF: 1.2.0
+  VISUAL_ENGINE_REF: v0.4.1
+
 jobs:
   validate:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: plantasonic-platform
     steps:
-      - uses: actions/checkout@v5
+      - name: Check out platform
+        uses: actions/checkout@v5
+        with:
+          path: plantasonic-platform
+
+      - name: Check out plantasonic-design-system
+        uses: actions/checkout@v5
+        with:
+          repository: nate-thousand/plantasonic-design-system
+          ref: ${{ env.DESIGN_SYSTEM_REF }}
+          path: plantasonic-design-system
+
+      - name: Check out plantasia-sound-engine
+        uses: actions/checkout@v5
+        with:
+          repository: nate-thousand/plantasia-sound-engine
+          ref: ${{ env.SOUND_ENGINE_REF }}
+          path: plantasia-sound-engine
+
+      - name: Check out ascii-visual-engine
+        uses: actions/checkout@v5
+        with:
+          repository: nate-thousand/ascii-visual-engine
+          ref: ${{ env.VISUAL_ENGINE_REF }}
+          path: ascii-visual-engine
+
       - uses: pnpm/action-setup@v4
         with:
           version: 9.15.4
+
       - uses: actions/setup-node@v5
         with:
           node-version: 22
           cache: pnpm
+          cache-dependency-path: plantasonic-platform/pnpm-lock.yaml
+
+      # Both engines resolve to dist/, which is not committed. pnpm does not run `prepare`
+      # for directory dependencies, so build them before the platform installs.
+      # The design system ships css/, scss/, generated/ and src/ committed; no build needed.
+      - name: Build plantasia-sound-engine
+        working-directory: plantasia-sound-engine
+        run: |
+          npm ci --ignore-scripts
+          npm run build
+
+      - name: Build ascii-visual-engine
+        working-directory: ascii-visual-engine
+        run: |
+          npm ci --ignore-scripts
+          npm run build
+
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
       - run: pnpm typecheck

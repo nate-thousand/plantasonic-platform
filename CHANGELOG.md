@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Fixed
+
+- **CI recreates the sibling-repository layout.** The workflow checks the platform out into a subdirectory and `plantasonic-design-system`, `plantasia-sound-engine` and `ascii-visual-engine` next to it, pinned to release tags (`DESIGN_SYSTEM_REF`, `SOUND_ENGINE_REF`, `VISUAL_ENGINE_REF` at the top of `.github/workflows/ci.yml`), and builds both engines (`dist/` is not committed and pnpm does not run `prepare` for directory dependencies) before `pnpm install --frozen-lockfile`. Bump the refs when adopting a new release of a sibling.
+
 ## [0.13.0] - 2026-09-25
 
 ### Changed
